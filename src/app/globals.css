@@ -1,27 +1,92 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* FONTS */
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* 1. Bebas Neue */
+
+@font-face {
+  font-family: 'Bebas Neue Regular';
+  src: local('Bebas Neue Regular'), local('BebasNeueRegular'), url('./fonts/bebasneue/bebasneueregular.woff2') format('woff2'), url('./fonts/bebasneue/bebasneueregular.woff') format('woff'), url('./fonts/bebasneue/bebasneueregular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: 'Bebas Neue Thin';
+  src: local('Bebas Neue Thin'), local('BebasNeue-Thin'), url('./fonts/bebasneue/bebasneuethin.woff2') format('woff2'), url('./fonts/bebasneue/bebasneuethin.woff') format('woff'), url('./fonts/bebasneue/bebasneuethin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue Light';
+  src: local('Bebas Neue Light'), local('./fonts/bebasneue/BebasNeue-Light'), url('./fonts/bebasneue/bebasneuelight.woff2') format('woff2'), url('./fonts/bebasneue/bebasneuelight.woff') format('woff'), url('./fonts/bebasneue/bebasneuelight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue Book';
+  src: local('Bebas Neue Book'), local('./fonts/bebasneue/BebasNeueBook'), url('./fonts/bebasneue/bebasneuebook.woff2') format('woff2'), url('./fonts/bebasneue/bebasneuebook.woff') format('woff'), url('./fonts/bebasneue/bebasneuebook.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bebas Neue Bold';
+  src: local('Bebas Neue Bold'), local('./fonts/bebasneue/BebasNeueBold'), url('./fonts/bebasneue/bebasneuebold.woff2') format('woff2'), url('./fonts/bebasneue/bebasneuebold.woff') format('woff'), url('./fonts/bebasneue/bebasneuebold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 2. Noto Sans */
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: local('Noto Sans'), local('NotoSans'), url('./fonts/notosans/notosans.woff2') format('woff2'), url('./fonts/notosans/notosans.woff') format('woff'), url('./fonts/notosans/notosans.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Italic';
+  src: local('Noto Sans Italic'), local('NotoSans-Italic'), url('./fonts/notosans/notosansitalic.woff2') format('woff2'), url('./fonts/notosans/notosansitalic.woff') format('woff'), url('./fonts/notosans/notosansitalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Noto Sans Bold';
+  src: local('Noto Sans Bold'), local('NotoSans-Bold'), url('./fonts/notosans/notosansbold.woff2') format('woff2'), url('./fonts/notosans/notosansbold.woff') format('woff'), url('./fonts/notosans/notosansbold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Bold Italic';
+  src: local('Noto Sans Bold Italic'), local('NotoSans-BoldItalic'), url('./fonts/notosans/notosansbolditalic.woff2') format('woff2'), url('./fonts/notosans/notosansbolditalic.woff') format('woff'), url('./fonts/notosans/notosansbolditalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* MAIN STYLES */
+
+* {
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #1A1C1D;
+  color: white;
 }
+
+p {
+  font-family: 'Noto Sans';
+}
+
+/* @media screen and (min-width: 998px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+} */

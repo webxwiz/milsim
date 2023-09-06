@@ -1,0 +1,37 @@
+$orange: rgba(233, 189, 62, 1);
+$white: #fff;
+$black: #000;
+
+.button {
+    cursor: pointer;
+    border: 1px solid $orange;
+    background-color: $orange;
+    height: 45px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: transparent;
+    border: 1px solid $orange;
+    .title {
+        color: $white;
+        p {
+            color: $white;
+        }
+    }
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 10px;
+    p {
+        font-family: 'Noto Sans';
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 18px;
+        color: $black;
+    }
+}

@@ -1,0 +1,39 @@
+$gray: rgba(216, 216, 216, 0.6);
+$orange: rgba(233, 189, 62, 1);
+
+.block {
+    max-width: 250px;
+    max-height: 306px;
+    border: 2px solid rgba(216, 216, 216, 0.6);
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.title {
+    font-size: 30px;
+    margin-top: 22px;
+    font-family: 'Bebas Neue Regular';
+}
+
+.description {
+    font-weight: 500;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-size: 18px;
+    max-width: 175px;
+}
+
+.button {
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    p {
+        font-size: 18px;
+        font-family: 'Bebas Neue Regular';
+    }
+}
+
+.button:hover {
+    color: $orange;
+}

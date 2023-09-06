@@ -1,0 +1,150 @@
+$orange: rgba(233, 189, 62, 1);
+$darkOrange: rgba(193, 87, 73, 1);
+$black: #000;
+
+.header {
+    background-image: url('/images/homeBackground.webp');
+    background-size: cover;
+    padding-top: 105px;
+}
+
+.headerInfo {
+    margin-left: 40px;
+    margin-right: 40px;
+    border: 2px solid $orange;
+    border-radius: 10px;
+    max-width: 783px;
+    padding-top: 63px;
+    padding-bottom: 63px;
+    padding-left: 46px;
+}
+
+.bigTitle {
+    font-size: 96px;
+    font-family: 'Bebas Neue Regular';
+    font-weight: 700;
+}
+
+.hdDescription {
+    max-width: 683px;
+    margin-bottom: 16px;
+    font-size: 22px;
+    line-height: 29px;
+    font-weight: 500;
+}
+
+.facts {
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    p {
+        font-weight: 500;
+        margin-top: 5px;
+    }
+}
+
+.footerItems {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.headerEvent {
+    background-color: $black;
+    text-transform: uppercase;
+    font-weight: 600;
+    max-height: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 13px;
+    border-radius: 5px;
+    border: 1px solid $darkOrange;
+}
+
+.rectangle {
+    background-image: url('/images/rectangle.webp');
+    background-size: cover;
+    height: 25px;
+    margin-top: 179px;
+}
+
+.blocksInfo {
+    display: flex;
+    justify-content: space-between;
+    gap: 27px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 107px;
+    margin-bottom: 106px;
+}
+
+.invertRectangle {
+    background-image: url('/images/invertRectangle.webp');
+    background-size: cover;
+    height: 30px;
+}
+
+.allEvents {
+    background-image: url('/images/eventsBackground.webp');
+    background-size: cover;
+    padding-top: 67px;
+    padding-left: 40px;
+    padding-bottom: 113px;
+}
+
+.eventItems {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 33px;
+}
+
+.pastEvents {
+    padding-top: 94px;
+    padding-bottom: 120px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.pastEventItems {
+    margin-top: 29px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.footer {
+    padding-top: 106px;
+    margin-left: 40px;
+}
+
+.title {
+    font-size: 64px;
+    font-family: 'Bebas Neue Regular';
+    font-weight: 700;
+}
+
+.orangeTitle {
+    @extend .title;
+    color: $orange;
+}
+
+.footerItem {
+    display: flex;
+    gap: 11px;
+}
+
+.footerDescription {
+    max-width: 80%;
+    margin-top: 18px;
+    margin-bottom: 48px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 29px;
+}

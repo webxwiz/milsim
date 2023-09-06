@@ -1,112 +1,222 @@
+import { Button } from '@/uikit/Button'
+import styles from './Home.module.scss'
 import Image from 'next/image'
+import { AboutAny } from '@/uikit/AboutAny'
+import { Event } from '@/uikit/Event'
+import { PastEvent } from '@/uikit/PastEvent'
+
+const infoData = [
+  {
+    id: 1,
+    title: 'HOW IT WORKS',
+    description: 'Lorem ipsum dolor sit amet',
+    iconUrl: '/svg/helmet.svg'
+  },
+  {
+    id: 2,
+    title: 'WHAT IT TAKES',
+    description: 'what’s required To Join A Platoon',
+    iconUrl: '/svg/engineer.svg'
+  },
+  {
+    id: 3,
+    title: 'HOW TO JOIN',
+    description: 'Lorem ipsum dolor sit amet',
+    iconUrl: '/svg/token.svg'
+  },
+  {
+    id: 4,
+    title: 'BOOTCAMP',
+    description: 'Basic Training in the Bootcamp',
+    iconUrl: '/svg/boots.svg'
+  },
+  {
+    id: 4,
+    title: 'ABOUT US',
+    description: 'All About MilSim Academy',
+    iconUrl: '/svg/UAFlag.svg'
+  },
+]
+
+const allEventsData = [
+  {
+    id: 1,
+    title: 'Lorem ipsum 1',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+    url: '/images/eventImg1.webp'
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum 2',
+    description: 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+    url: '/images/eventImg2.webp'
+  },
+  {
+    id: 3,
+    title: 'Lorem ipsum 3',
+    description: 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+    url: '/images/eventImg3.webp'
+  },
+  {
+    id: 4,
+    title: 'Lorem ipsum 4',
+    description: 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+    url: '/images/eventImg2.webp'
+  },
+]
+
+const pastEventsData = [
+  {
+    id: 1,
+    title: 'Lorem Ipsum Dolor Sit 1',
+    date: '24 aug 2023',
+    url: '/images/pastEvent1.webp'
+  },
+  {
+    id: 2,
+    title: 'Lorem Ipsum Dolor Sit 2',
+    date: '25 sep 2023',
+    url: '/images/pastEvent1.webp'
+  },
+  {
+    id: 3,
+    title: 'Lorem Ipsum Dolor Sit 3',
+    date: '26 oct 2023',
+    url: '/images/pastEvent1.webp'
+  },
+  {
+    id: 4,
+    title: 'Lorem Ipsum Dolor Sit 4',
+    date: '27 aug 2023',
+    url: '/images/pastEvent1.webp'
+  }
+]
+
+const footerData = [
+  {
+    id: 1,
+    url: '/svg/helmet.svg',
+    style: 'title',
+    title: 'how it works',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
+  },
+  {
+    id: 2,
+    style: 'orangeTitle',
+    url: '/svg/engineer.svg',
+    title: 'what it takes',
+    description: 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
+  },
+  {
+    id: 3,
+    style: 'title',
+    url: '/svg/token.svg',
+    title: 'how to join',
+    description: 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
+  },
+  {
+    id: 4,
+    style: 'orangeTitle',
+    url: '/svg/boots.svg',
+    title: 'bootcamp',
+    description: 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
+  },
+  {
+    id: 5,
+    style: 'title',
+    url: '/svg/UAFlag.svg',
+    title: 'about us',
+    description: 'Lorem 5 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
+  },
+]
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <main>
+      <div className={styles.header}>
+        <div className={styles.headerInfo}>
+          <p className={styles.bigTitle}>ENList NOW!</p>
+          <p className={styles.hdDescription}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia.
+          </p>
+          <div className={styles.facts}>
+            <div>
+              <Image alt='' src={'/svg/team.svg'} width={58} height={32} />
+              <p>Teamwork</p>
+            </div>
+            <div>
+              <Image alt='' src={'/svg/walkieTalkie.svg'} width={20} height={47} />
+              <p>Communication</p>
+            </div>
+            <div>
+              <Image alt='' src={'/svg/shoulderStraps.svg'} width={35} height={36} />
+              <p>Discipline</p>
+            </div>
+          </div>
+          <div className={styles.footerItems}>
+            <div className={styles.headerEvent}>
+              <p>select an event</p>
+            </div>
+            <Button title='Connect' />
+          </div>
+        </div>
+        <div className={styles.rectangle} />
+      </div>
+      <div className={styles.blocksInfo}>
+        {infoData.map(e => (
+          <AboutAny
+            key={e.id}
+            title={e.title}
+            description={e.description}
           >
-            By{' '}
             <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+              alt=''
+              src={e.iconUrl}
+              width={41}
+              height={41}
+              />
+          </AboutAny>
+        ))}
+      </div>
+      <div className={styles.invertRectangle} />
+      <div className={styles.allEvents}>
+        <p className={styles.bigTitle}>All Events</p>
+        <div className={styles.eventItems}>
+          {allEventsData.map(e => (
+            <Event
+              key={e.id}
+              title={e.title}
+              description={e.description}
+              url={e.url}
             />
-          </a>
+          ))}
         </div>
       </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className={styles.pastEvents}>
+        <p className={styles.bigTitle}>Past Events</p>
+        <div className={styles.pastEventItems}>
+          {pastEventsData.map(e => (
+            <PastEvent
+              key={e.id}
+              title={e.title}
+              date={e.date}
+              url={e.url}
+            />
+          ))}
+        </div>
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className={styles.footer}>
+        {footerData.map(e => (
+          <div key={e.id}>
+            <div className={styles.footerItem}>
+              <Image alt='' src={e.url} width={41} height={41} />
+              <p className={styles[e.style]}>{e.title}</p>
+            </div>
+            <p className={styles.footerDescription}>
+              {e.description}
+            </p>
+          </div>
+        ))}
       </div>
     </main>
   )

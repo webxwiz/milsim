@@ -1,0 +1,66 @@
+$background: rgba(42, 34, 30, 0.4);
+$orange: rgba(233, 189, 62, 1);
+$white: #fff;
+$title: rgba(255, 255, 255, 0.8);
+$textFooter: rgba(216, 216, 216, 0.8);
+
+.footer {
+    background-color: $background;
+    padding-top: 49px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.wrapFooter {
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links {
+    color: $white;
+    display: flex;
+    gap: 60px;
+    p {
+        cursor: pointer;
+    }
+    p:hover {
+        color: $orange;
+    }
+}
+
+.logos {
+    display: flex;
+    gap: 20px;
+}
+
+.title {
+    color: $title;
+    text-decoration: none;
+    font-family: 'Noto Sans';
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.title:hover {
+    color: $orange;
+}
+
+.footerInfo {
+    margin-top: 32px;
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    p {
+        font-size: 18px;
+        color: $textFooter;
+        a {
+            color: $orange;
+        }
+    }
+    p:last-child {
+        font-size: 14px;
+    }
+}
