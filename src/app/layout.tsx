@@ -21,11 +21,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
           <NextAuthProvider>
+          <Navbar />
             {children}
+            <Footer />
           </NextAuthProvider>
-        <Footer />
       </body>
     </html>
   )

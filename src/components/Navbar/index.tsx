@@ -4,8 +4,11 @@ import { BsDiscord } from 'react-icons/bs'
 import styles from './Navbar.module.scss'
 import Image from 'next/image'
 import { Button } from '@/uikit/Button';
+import { signIn, useSession } from "next-auth/react"
 
 export default function index() {  
+  const {data} = useSession()
+  console.log(data)
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
@@ -22,7 +25,7 @@ export default function index() {
           <Link className={styles.title} href={'#'}>
             Discord
           </Link>
-          <Button title='connect to discord'>
+          <Button onClick={() => signIn()} title='connect to discord'>
             <BsDiscord size={20} />
           </Button>
         </div>
