@@ -16,10 +16,10 @@ export default function index() {
           <Image alt='' src={'/svg/logo.svg'} width={317} height={41} />
         </Link>
         <div className={styles.menu}>
-          <Link className={styles.title} href={'#'}>
+          <Link className={styles.title} href={'/'}>
             Home
           </Link>
-          <Link className={styles.title} href={'#'}>
+          <Link className={styles.title} href={'/events'}>
             Events
           </Link>
           <Link className={styles.title} href={'#'}>
