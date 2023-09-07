@@ -5,10 +5,13 @@ import styles from './Navbar.module.scss'
 import Image from 'next/image'
 import { Button } from '@/uikit/Button';
 import { signIn, useSession } from "next-auth/react"
+import { useSearchParams } from 'next/navigation'
 
 export default function index() {  
-  const {data} = useSession()
-  console.log(data)
+  const searchParams = useSearchParams()
+ 
+  const code = searchParams.get('code')
+  console.log(code)
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
