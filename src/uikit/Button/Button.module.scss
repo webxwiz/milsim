@@ -1,13 +1,21 @@
 $orange: rgba(233, 189, 62, 1);
 $white: #fff;
 $black: #000;
+$red: rgba(193, 87, 73, 1);
 
 .button {
     cursor: pointer;
     border: 1px solid $orange;
     background-color: $orange;
     height: 45px;
+    min-width: 179px;
     border-radius: 5px;
+}
+
+.cancelButton {
+    @extend .button;
+    border: 1px solid $red;
+    background-color: $red;
 }
 
 .button:hover {
@@ -21,10 +29,21 @@ $black: #000;
     }
 }
 
+.cancelButton:hover {
+    background-color: transparent;
+    border: 1px solid $red;
+    .title {
+        color: $white;
+        p {
+            color: $white;
+        }
+    }
+}
+
 .title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 5px;
     padding: 10px;
     p {

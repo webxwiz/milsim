@@ -1,0 +1,47 @@
+$orange: rgba(233, 189, 62, 1);
+
+.header {
+    margin-top: 136px;
+    margin-left: 40px;
+}
+
+.title {
+    font-family: 'Bebas Neue Regular';
+    font-size: 64px;
+}
+
+.stepTitle {
+    @extend .title;
+    cursor: pointer;
+}
+
+.activeStep {
+    @extend .title;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 14px;
+}
+
+.stepTitle:hover {
+    @extend .activeStep;
+    text-decoration-color: $orange;
+}
+
+.steps {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.events {
+    display: flex;
+    flex-direction: column;
+    margin-top: 66px;
+    gap: 32px;
+    margin-bottom: 80px;
+}
+
+.main {
+    padding-bottom: 112px;
+}

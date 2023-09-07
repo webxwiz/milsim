@@ -1,0 +1,41 @@
+//phone
+@media screen and (max-width: 768px) {
+    .buttonGroup {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .container {
+        margin-left: 100px;
+    }
+}
+
+//tablet
+@media screen and (min-width: 768px) and (max-width: 998px) {
+    .buttonGroup {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .container {
+        margin-left: 100px;
+    }
+}
+
+//desktop
+@media screen and (min-width: 998px) {
+    .buttonGroup {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 99%;
+        top: -270px;
+        margin-left: 40px;
+        max-width: 1440px;
+    }
+    .container {
+        margin-left: 100px;
+    }
+}

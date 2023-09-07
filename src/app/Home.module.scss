@@ -93,15 +93,15 @@ $black: #000;
     background-image: url('/images/eventsBackground.webp');
     background-size: cover;
     padding-top: 67px;
-    padding-left: 40px;
     padding-bottom: 113px;
 }
 
+.eventTitle {
+    padding-left: 40px;
+}
+
 .eventItems {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 40px;
-    margin-right: 40px;
+    padding-right: 40px;
     margin-top: 33px;
 }
 

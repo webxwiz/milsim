@@ -1,0 +1,115 @@
+$dark: rgba(16, 16, 16, 1);
+$gold: rgba(233, 189, 62, 1);
+$white: #fff;
+$gray: rgba(168, 168, 168, 1);
+
+.event {
+    margin-top: 138px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.title {
+    font-family: 'Bebas Neue Regular';
+    font-size: 64px;
+}
+
+.input {
+    width: 390px;
+    max-height: 44px;
+    margin-top: 16px;
+    margin-bottom: 80px;
+    padding-top: 8px;
+    padding-left: 11px;
+    padding-bottom: 8px;
+    border: 2px solid $gold;
+    background-color: $dark;
+    border-radius: 5px;
+    outline: none;
+    color: $white;
+    font-family: 'Noto Sans';
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.addImage {
+    border: 2px dashed $gold;
+    max-width: 279px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 98px;
+    border-radius: 5px;
+    margin-top: 16px;
+    cursor: pointer;
+    margin-bottom: 80px;
+}
+
+.textArea {
+    width: 872px;
+    height: 170px;
+    padding-top: 27px;
+    padding-left: 16px;
+    resize: none;
+    outline: none;
+    background-color: transparent;
+    color: $white;
+    font-family: 'Noto Sans';
+    font-size: 18px;
+    border-radius: 10px;
+    border: 3px solid $gold;
+    margin-top: 16px;
+    margin-bottom: 80px;
+}
+
+.platoons {
+    margin-top: 32px;
+    display: flex;
+    
+}
+
+.addPlatoon {
+    border: 3px dashed $gold;
+    border-radius: 5px;
+    margin-left: 62px;
+    width: 144px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.addImage:hover, .addPlatoon:hover {
+    opacity: 0.5;
+}
+
+.footer {
+    margin-top: 80px;
+    width: 1361px;
+    height: 992px;
+    background-image: url('/images/createPlatoon.webp');
+    background-size: cover;
+    border: 2px solid $gray;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.items {
+    margin-top: 84px;
+    margin-left: 31px;
+}
+
+.footerButtons {
+    display: flex;
+    align-items: center;
+    gap: 46px;
+    margin-bottom: 162px;
+}
+
+.inlineButtons {
+    display: flex;
+    align-items: center;
+    gap: 46px;
+    margin-bottom: 80px;
+}

@@ -1,0 +1,89 @@
+$white: #fff;
+$black: #000;
+$orange: rgba(233, 189, 62, 1);
+$gray1: rgba(167, 168, 168, 1);
+$gray2: rgba(54, 56, 57, 1);
+$whiteOpacity: rgba(216, 216, 216, 0.15);
+$borderOpacity: rgba(216, 216, 216, 0.7);
+
+.card {
+    border: 1px solid $borderOpacity;
+    border-radius: 10px;
+    width: 573px;
+    padding-bottom: 40px;
+}
+
+.editCard {
+    @extend .card;
+    background-color: $whiteOpacity;
+}
+
+.remove {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 25px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+.remove:hover {
+    opacity: 0.5;
+}
+
+.title {
+    font-family: 'Bebas Neue Regular';
+    font-size: 30px;
+    color: $orange;
+    margin-left: 36px;
+}
+
+.editTitle {
+    font-family: 'Bebas Neue Regular';
+    font-size: 60px;
+    padding-bottom: 39px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 36px;
+    margin-top: 32px;
+}
+
+.dataItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    div {
+        font-family: 'Noto Sans';
+        font-size: 20px;
+        background-color: $gray2;
+        padding: 5px;
+        padding-right: 50px;
+        border-radius: 5px;
+        border: 1px solid $gray1;
+        max-height: 30px;
+    }
+}
+
+.button {
+    background-color: $black;
+    cursor: pointer;
+    max-width: 140px;
+    border: 2px solid $white;
+    border-radius: 5px;
+    margin-left: 36px;
+    p {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+}
+
+.button:hover {
+    background-color: transparent;
+}
