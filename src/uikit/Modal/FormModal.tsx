@@ -81,6 +81,7 @@ export const FormModal = ({
                             you can press several time on the same role !
                         </p>
                     </div>}
+                    
                     {isPlatoon ? <div>
                         <p className={styles.subtitle}>Platoon image</p>
                         <div className={styles.addImage}>
