@@ -67,3 +67,11 @@ $gray2: rgba(216, 216, 216, 0.7);
 .button:hover {
     background-color: transparent;
 }
+
+.close {
+    cursor: pointer;
+}
+
+.close:hover {
+    opacity: 0.5;
+}

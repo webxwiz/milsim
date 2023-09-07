@@ -15,7 +15,7 @@ export default function index() {
                 </div>
                 <div className={styles.links}>
                     <BsDiscord size={24} />
-                    <Link className={styles.title} href={'#'}>
+                    <Link className={styles.title} href={'/'}>
                         Home
                     </Link>
                     <Link className={styles.title} href={'#'}>

@@ -1,9 +1,12 @@
+'use client'
 import { FaPlus } from 'react-icons/fa'
 import styles from './EventForm.module.scss'
 import { RegisterCard } from '@/uikit/RegisterCard'
 import { EditCard } from '@/uikit/RegisterCard/EditCard'
 import { Button } from '@/uikit/Button'
 import { EventFormProps } from './interface'
+import { FormModal } from '@/uikit/Modal/FormModal'
+import { useState } from 'react'
 
 const platoons = [
     {
@@ -68,8 +71,13 @@ const editPlatoons = [
 ]
 
 export const EventForm = ({ isEdit }: EventFormProps) => {
+    const [platoonModal, setPlatoonModal] = useState(false)
+
+    const handlePlatoonModal = () => setPlatoonModal(!platoonModal)
+
     return (
         <div className={styles.event}>
+            <FormModal isOpen={platoonModal} onClose={handlePlatoonModal} />
             <p className={styles.title}>{isEdit ? 'Change' : 'NEW'} EVENT NAME</p>
             <input className={styles.input} />
             <p className={styles.title}>{isEdit ? 'Change' : 'NEW'} Date</p>
@@ -98,7 +106,7 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
                         />
                     ))}
                 </div>
-                <div className={styles.addPlatoon}>
+                <div onClick={handlePlatoonModal} className={styles.addPlatoon}>
                     <FaPlus size={34} />
                 </div>
             </div>
