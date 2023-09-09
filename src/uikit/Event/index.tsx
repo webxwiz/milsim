@@ -10,7 +10,7 @@ export const Event = ({
 }: EventProps) => {
     return (
         <div className={styles.event}>
-            <Image alt='' src={url} width={295} height={297} />
+            <Image alt='' src={url} width={295} height={297} className={styles.image} />
             <p className={styles.title}>{title}</p>
             <p className={styles.description}>{description}</p>
             <div className={styles.button}>

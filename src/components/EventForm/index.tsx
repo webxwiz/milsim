@@ -7,6 +7,7 @@ import { Button } from '@/uikit/Button'
 import { EventFormProps } from './interface'
 import { FormModal } from '@/uikit/Modal/FormModal'
 import { useState } from 'react'
+import { ImageUploader } from '@/uikit/ImageUploader/ImageUploader'
 
 const platoons = [
     {
@@ -85,9 +86,7 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
             <p className={styles.title}>Duration of the event</p>
             <input className={styles.input} />
             <p className={styles.title}>{isEdit ? 'Change' : 'FEATURE'} IMAGE</p>
-            <div className={styles.addImage}>
-                <FaPlus size={34} />
-            </div>
+            <ImageUploader />
             <p className={styles.title}>{isEdit ? 'Change' : 'Write'} DESCRIPTION </p>
             <textarea className={styles.textArea}></textarea>
             {isEdit && <div className={styles.inlineButtons}>

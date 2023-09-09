@@ -12,7 +12,7 @@ export const EditCard = ({ title, data, isEdit }: RegisterCardProps) => {
                     <RiCloseCircleFill size={29} color={'rgba(193, 87, 73, 1)'} />
                 </div>
                 <p className={styles.title}>Squad 3:</p>
-                <div className={styles.items}>
+                <div className={styles.editItems}>
                     {data.map(e => (
                         <div className={styles.dataItem} key={e.id}>
                             <div>{e.title}</div>

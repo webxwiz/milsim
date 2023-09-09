@@ -1,37 +1,163 @@
 $background: rgba(42, 34, 30, 0.7);
 $orange: rgba(233, 189, 62, 1);
 $white: #fff;
+$darkGray: #1A1C1D;
 
-.header {
-  max-width: 1440px;
-  width: 100%;
-  background-color: $background;
+//phone
+@media screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+    background-color: $background;
+  }
+
+  .logo {
+    width: 105px;
+    height: 23px;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 33px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 33px;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    right: 0px;
+    top: 99px;
+    position: absolute;
+    background-color: $darkGray;
+    width: 100%;
+    padding-top: 38px;
+    padding-bottom: 20px;
+  }
+
+  .discordConnect {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .title {
+    color: $white;
+    text-decoration: none;
+    font-family: 'Noto Sans';
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .title:hover {
+    color: $orange;
+  }
+
+  .menuIcon {
+    cursor: pointer;
+  }
+
+  .menuIcon:hover {
+    opacity: 0.5;
+  }
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 33px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-bottom: 33px;
+//tablet
+@media screen and (min-width: 768px) and (max-width: 998px) {
+  .header {
+    width: 100%;
+    background-color: $background;
+  }
+
+  .logo {
+    width: 150px;
+    height: 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 33px;
+    padding-left: 14px;
+    padding-right: 35px;
+    padding-bottom: 33px;
+  }
+  
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  
+  .title {
+    color: $white;
+    text-decoration: none;
+    font-family: 'Noto Sans';
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .title:hover {
+    color: $orange;
+  }
+
+  .menuIcon {
+    display: none;
+  }
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-}
+//desktop
+@media screen and (min-width: 998px) {
+  .header {
+    background-color: $background;
+    width: 100%;
 
-.title {
-  color: $white;
-  text-decoration: none;
-  font-family: 'Noto Sans';
-  font-size: 18px;
-  font-weight: 500;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 33px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 33px;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+  
+  .title {
+    color: $white;
+    text-decoration: none;
+    font-family: 'Noto Sans';
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .title:hover {
+    color: $orange;
+  }
 
-.title:hover {
-  color: $orange;
+  .menuIcon {
+    display: none;
+  }
 }

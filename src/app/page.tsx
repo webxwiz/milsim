@@ -1,12 +1,15 @@
 'use client'
-import { Button } from '@/uikit/Button'
-import styles from './Home.module.scss'
+
 import Image from 'next/image'
+import { Link, animateScroll as scroll } from 'react-scroll'
+
+import { Button } from '@/uikit/Button'
 import { AboutAny } from '@/uikit/AboutAny'
 import { Event } from '@/uikit/Event'
 import { PastEvent } from '@/uikit/PastEvent'
-import { useSession } from 'next-auth/react'
 import { Slider } from '@/uikit/Slider'
+
+import styles from './Home.module.scss'
 
 const infoData = [
   {
@@ -134,73 +137,87 @@ const footerData = [
 ]
 
 export default function Home() {
-  const { data: session, status } = useSession();
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId)
 
-  console.log(229, session, status)
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth',
+      })
+    }
+  };
 
   return (
-    <main>
+    <main className={styles.main}>
       <div className={styles.header}>
-        <div className={styles.headerInfo}>
-          <p className={styles.bigTitle}>ENList NOW!</p>
-          <p className={styles.hdDescription}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia.
-          </p>
-          <div className={styles.facts}>
-            <div>
-              <Image alt='' src={'/svg/team.svg'} width={58} height={32} />
-              <p>Teamwork</p>
+        <div className={styles.adaptiveBackground}>
+          <div className={styles.headerInfo}>
+            <p className={styles.headerBigTitle}>ENList NOW!</p>
+            <p className={styles.hdDescription}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia.
+            </p>
+            <div className={styles.facts}>
+              <div>
+                <Image alt='' src={'/svg/team.svg'} width={58} height={32} />
+                <p>Teamwork</p>
+              </div>
+              <div>
+                <Image alt='' src={'/svg/walkieTalkie.svg'} width={20} height={47} />
+                <p>Communication</p>
+              </div>
+              <div>
+                <Image alt='' src={'/svg/shoulderStraps.svg'} width={35} height={36} />
+                <p>Discipline</p>
+              </div>
             </div>
-            <div>
-              <Image alt='' src={'/svg/walkieTalkie.svg'} width={20} height={47} />
-              <p>Communication</p>
+            <div className={styles.footerItems}>
+              <div className={styles.headerEvent}>
+                <p>select an event</p>
+              </div>
+              <Button title='Connect' />
             </div>
-            <div>
-              <Image alt='' src={'/svg/shoulderStraps.svg'} width={35} height={36} />
-              <p>Discipline</p>
-            </div>
-          </div>
-          <div className={styles.footerItems}>
-            <div className={styles.headerEvent}>
-              <p>select an event</p>
-            </div>
-            <Button title='Connect' />
           </div>
         </div>
         <div className={styles.rectangle} />
       </div>
-      <div className={styles.blocksInfo}>
-        {infoData.map(e => (
-          <AboutAny
-            key={e.id}
-            title={e.title}
-            description={e.description}
-          >
-            <Image
-              alt=''
-              src={e.iconUrl}
-              width={41}
-              height={41}
+      <div className={styles.blocksWrap}>
+        <div className={styles.blocksInfo}>
+          {infoData.map(e => (
+            <AboutAny
+              key={e.id}
+              title={e.title}
+              description={e.description}
+              onClick={() => scrollToSection('footerInfo')}
+            >
+              <Image
+                alt=''
+                src={e.iconUrl}
+                width={41}
+                height={41}
               />
-          </AboutAny>
-        ))}
+            </AboutAny>
+          ))}
+        </div>
       </div>
       <div className={styles.invertRectangle} />
       <div className={styles.allEvents}>
-        <div className={styles.eventTitle}>
-          <p className={styles.bigTitle}>All Events</p>
-        </div>
-        <div className={styles.eventItems}>
-        <Slider>
-          {allEventsData.map(e => (
-              <Event
-                key={e.id}
-                title={e.title}
-                description={e.description}
-                url={e.url}
-              />
-          ))}
-          </Slider>
+        <div className={styles.adaptiveBackground}>
+          <div className={styles.eventTitle}>
+            <p className={styles.bigTitle}>All Events</p>
+          </div>
+          <div className={styles.eventItems}>
+          <Slider>
+            {allEventsData.map(e => (
+                <Event
+                  key={e.id}
+                  title={e.title}
+                  description={e.description}
+                  url={e.url}
+                />
+            ))}
+            </Slider>
+          </div>
         </div>
       </div>
       <div className={styles.pastEvents}>
@@ -216,7 +233,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <div className={styles.footer}>
+      <div className={styles.footer} id='footerInfo'>
         {footerData.map(e => (
           <div key={e.id}>
             <div className={styles.footerItem}>

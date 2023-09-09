@@ -32,16 +32,16 @@ export const Slider = ({
       slidesToSlide: 1,
     },
     desktop: {
-      breakpoint: { max: 1024, min: 800 },
+      breakpoint: { max: 768, min: 1024 },
       items: size === 'small' ? 1 : 4,
     },
     tablet: {
-      breakpoint: { max: 800, min: 464 },
-      items: size === 'small' ? 1 : 4,
+      breakpoint: { max: 1024, min: 768 },
+      items: size === 'small' ? 1 : 2,
     },
     mobile: {
       breakpoint: { max: 768, min: 0 },
-      items: size === 'small' ? 1 : 2,
+      items: size === 'small' ? 1 : 1,
     },
 }
 

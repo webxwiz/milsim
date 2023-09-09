@@ -17,7 +17,7 @@ export const PastEvent = ({ title, date, url, isEdit }: PastEventProps) => {
             <Modal isOpen={openModal} onClose={handleModal} />
             <div className={styles.event}>
                 <div className={styles.imageBlock}>
-                    <Image alt='' src={url} width={272} height={120} />
+                    <Image alt='' src={url} width={272} height={120} className={styles.image} />
                     <div className={styles.operation}>
                         <p>operation:</p>
                         <p>{title}</p>

@@ -1,89 +1,280 @@
 $orange: rgba(233, 189, 62, 1);
 $gray: rgba(168, 168, 168, 1);
+$white: #fff;
 
-.content {
-    margin-left: 40px;
-    margin-right: 40px;
+//phone
+@media screen and (max-width: 768px) {
+    .content {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    
+    .header {
+        padding-top: 97px;
+        padding-bottom: 48px;
+        gap: 10px;
+    }
+    
+    .bigTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 58px;
+        color: $white;
+    }
+    
+    .fullInfo {
+        margin-top: 30px;
+    }
+    
+    .list {
+        margin-left: 15px;
+    }
+    
+    .mapImg {
+        max-width: 80%;
+        height: 248px;
+        margin-top: 48px;
+        margin-bottom: 48px;
+    }
+    
+    .bigOrangeTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 58px;
+
+        color: $orange;
+    }
+    
+    .subtitle {
+        font-family: 'Bebas Neue Regular';
+        color: $orange;
+        font-size: 64px;
+    }
+    
+    .smallTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 24px;
+    }
+    
+    .title {
+        font-family: 'Noto Sans';
+        font-weight: 500;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    .text {
+        font-family: 'Noto Sans';
+        font-size: 14px;
+    }
+    
+    .registration {
+        margin-top: 58px;
+    }
+    
+    
+    .cards {
+        margin-top: 32px;
+        margin-bottom: 96px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .footer {
+        background-image: url('/images/eventImg4.webp');
+        background-size: cover;
+        border: 2px solid $gray;
+        height: 1033px;
+        margin-bottom: 136px;
+        border-radius: 10px;
+        padding-right: 40px;
+    }
+    
+    .items {
+        margin-top: 84px;
+        margin-left: 31px;
+    }
 }
 
-.header {
-    margin-top: 189px;
-    display: flex;
-    align-items: center;
-    padding-bottom: 48px;
-    gap: 10px;
+//tablet
+@media screen and (min-width: 768px) and (max-width: 998px) {
+    .content {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+    
+    .header {
+        padding-top: 189px;
+        padding-bottom: 48px;
+        gap: 10px;
+    }
+    
+    .bigTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 82px;
+        color: $white;
+    }
+    
+    .fullInfo {
+        margin-top: 30px;
+    }
+    
+    .list {
+        margin-left: 15px;
+    }
+    
+    .mapImg {
+        width: 567px;
+        height: 417px;
+        margin-top: 48px;
+        margin-bottom: 48px;
+    }
+    
+    .bigOrangeTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 82px;
+
+        color: $orange;
+    }
+    
+    .subtitle {
+        font-family: 'Bebas Neue Regular';
+        color: $orange;
+        font-size: 64px;
+    }
+    
+    .smallTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 28px;
+    }
+    
+    .title {
+        font-family: 'Noto Sans';
+        font-weight: 500;
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    
+    .text {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+    }
+    
+    .registration {
+        margin-top: 64px;
+    }
+    
+    
+    .cards {
+        margin-top: 32px;
+        margin-bottom: 96px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .footer {
+        background-image: url('/images/eventImg4.webp');
+        background-size: cover;
+        border: 2px solid $gray;
+        height: 1033px;
+        margin-bottom: 136px;
+        border-radius: 10px;
+    }
+    
+    .items {
+        margin-top: 84px;
+        margin-left: 31px;
+    }
 }
 
-.bigTitle {
-    font-family: 'Bebas Neue Regular';
-    font-size: 96px;
-}
+//desktop
+@media screen and (min-width: 998px) {
+    .content {
+        margin-left: 40px;
+        margin-right: 40px;
+        max-width: 1440px;
+    }
+    
+    .header {
+        padding-top: 189px;
+        padding-bottom: 48px;
+        gap: 10px;
+    }
+    
+    .bigTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 96px;
+    }
+    
+    .fullInfo {
+        margin-top: 30px;
+    }
+    
+    .list {
+        margin-left: 15px;
+        max-width: 70%;
+    }
+    
+    .mapImg {
+        width: 90%;
+        margin-top: 48px;
+        margin-bottom: 48px;
+    }
+    
+    .bigOrangeTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 96px;
 
-.fullInfo {
-    margin-top: 30px;
-}
-
-.list {
-    margin-left: 15px;
-    max-width: 70%;
-}
-
-.mapImg {
-    margin-top: 48px;
-    margin-bottom: 48px;
-}
-
-.bigOrangeTitle {
-    @extend .bigTitle;
-    color: $orange;
-}
-
-.subtitle {
-    font-family: 'Bebas Neue Regular';
-    color: $orange;
-    font-size: 64px;
-}
-
-.smallTitle {
-    font-family: 'Bebas Neue Regular';
-    font-size: 32px;
-}
-
-.title {
-    font-family: 'Noto Sans';
-    font-weight: 500;
-    font-size: 22px;
-    margin-top: 20px;
-}
-
-.text {
-    font-family: 'Noto Sans';
-    font-size: 18px;
-}
-
-.registration {
-    margin-top: 64px;
-}
-
-
-.cards {
-    margin-top: 32px;
-    margin-bottom: 96px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer {
-    background-image: url('/images/eventImg4.webp');
-    background-size: cover;
-    border: 2px solid $gray;
-    height: 1546px;
-    margin-bottom: 183px;
-    border-radius: 10px;
-}
-
-.items {
-    margin-top: 84px;
-    margin-left: 31px;
+        color: $orange;
+    }
+    
+    .subtitle {
+        font-family: 'Bebas Neue Regular';
+        color: $orange;
+        font-size: 64px;
+    }
+    
+    .smallTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 32px;
+    }
+    
+    .title {
+        font-family: 'Noto Sans';
+        font-weight: 500;
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    
+    .text {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+    }
+    
+    .registration {
+        margin-top: 64px;
+    }
+    
+    
+    .cards {
+        margin-top: 32px;
+        margin-bottom: 96px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    
+    .footer {
+        background-image: url('/images/eventImg4.webp');
+        background-size: cover;
+        border: 2px solid $gray;
+        height: 1546px;
+        margin-bottom: 183px;
+        border-radius: 10px;
+    }
+    
+    .items {
+        margin-top: 84px;
+        margin-left: 31px;
+    }
 }
