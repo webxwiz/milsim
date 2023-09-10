@@ -10,8 +10,8 @@ export default function index() {
         <footer className={styles.footer}>
             <div className={styles.wrapFooter}>
                 <div className={styles.logos}>
-                    <Image alt='' src={'/svg/milsimacademy.svg'} width={172} height={54} />
-                    <Image alt='' src={'/svg/squadhub.svg'} width={128} height={54} />
+                    <Image alt='' src={'/svg/milsimacademy.svg'} width={172} height={54} className={styles.logo1} />
+                    <Image alt='' src={'/svg/squadhub.svg'} width={128} height={54} className={styles.logo2} />
                 </div>
                 <div className={styles.links}>
                     <BsDiscord size={24} />

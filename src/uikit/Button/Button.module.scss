@@ -3,54 +3,203 @@ $white: #fff;
 $black: #000;
 $red: rgba(193, 87, 73, 1);
 
-.button {
-    cursor: pointer;
-    border: 1px solid $orange;
-    background-color: $orange;
-    height: 45px;
-    min-width: 179px;
-    border-radius: 5px;
-}
+//phone
+@media screen and (max-width: 768px) {
+    .button {
+        cursor: pointer;
+        border: 1px solid $orange;
+        background-color: $orange;
+        height: 31px;
+        min-width: 153px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cancelButton {
+        cursor: pointer;
+        border: 1px solid $orange;
+        background-color: $orange;
+        height: 31px;
+        min-width: 153px;
+        border-radius: 5px;
 
-.cancelButton {
-    @extend .button;
-    border: 1px solid $red;
-    background-color: $red;
-}
+        border: 1px solid $red;
+        background-color: $red;
 
-.button:hover {
-    background-color: transparent;
-    border: 1px solid $orange;
-    .title {
-        color: $white;
-        p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .button:hover {
+        background-color: transparent;
+        border: 1px solid $orange;
+        .title {
             color: $white;
+            p {
+                color: $white;
+            }
+        }
+    }
+    
+    .cancelButton:hover {
+        background-color: transparent;
+        border: 1px solid $red;
+        .title {
+            color: $white;
+            p {
+                color: $white;
+            }
+        }
+    }
+    
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+        p {
+            font-family: 'Noto Sans';
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            color: $black;
         }
     }
 }
 
-.cancelButton:hover {
-    background-color: transparent;
-    border: 1px solid $red;
-    .title {
-        color: $white;
-        p {
+//tablet
+@media screen and (min-width: 768px) and (max-width: 998px) {
+    .button {
+        cursor: pointer;
+        border: 1px solid $orange;
+        background-color: $orange;
+        height: 34px;
+        min-width: 157px;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cancelButton {
+        cursor: pointer;
+        border: 1px solid $orange;
+        background-color: $orange;
+        height: 34px;
+        min-width: 157px;
+        border-radius: 5px;
+
+        border: 1px solid $red;
+        background-color: $red;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .button:hover {
+        background-color: transparent;
+        border: 1px solid $orange;
+        .title {
             color: $white;
+            p {
+                color: $white;
+            }
+        }
+    }
+    
+    .cancelButton:hover {
+        background-color: transparent;
+        border: 1px solid $red;
+        .title {
+            color: $white;
+            p {
+                color: $white;
+            }
+        }
+    }
+    
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+        p {
+            font-family: 'Noto Sans';
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 16px;
+            color: $black;
         }
     }
 }
 
-.title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    padding: 10px;
-    p {
-        font-family: 'Noto Sans';
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 18px;
-        color: $black;
+//desktop
+@media screen and (min-width: 998px) {
+    .button {
+        cursor: pointer;
+        border: 1px solid $orange;
+        background-color: $orange;
+        height: 45px;
+        min-width: 179px;
+        border-radius: 5px;
+    }
+    
+    .cancelButton {
+        cursor: pointer;
+        border: 1px solid $orange;
+        background-color: $orange;
+        height: 45px;
+        min-width: 179px;
+        border-radius: 5px;
+
+        border: 1px solid $red;
+        background-color: $red;
+    }
+    
+    .button:hover {
+        background-color: transparent;
+        border: 1px solid $orange;
+        .title {
+            color: $white;
+            p {
+                color: $white;
+            }
+        }
+    }
+    
+    .cancelButton:hover {
+        background-color: transparent;
+        border: 1px solid $red;
+        .title {
+            color: $white;
+            p {
+                color: $white;
+            }
+        }
+    }
+    
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 10px;
+        p {
+            font-family: 'Noto Sans';
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 18px;
+            color: $black;
+        }
     }
 }

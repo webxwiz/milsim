@@ -1,21 +1,75 @@
-.terms {
-    margin-left: 40px;
-    padding-top: 173px;
-    padding-bottom: 181px;
+//phone
+@media screen and (max-width: 768px) {
+    .terms {
+        margin-left: 40px;
+        padding-top: 74px;
+        padding-bottom: 117px;
+    }
+    
+    .title {
+        font-family: 'Bebas Neue Regular';
+        font-size: 58px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 51px;
+    }
+    
+    .text {
+        font-size: 14px;
+        max-width: 90%;
+    }
 }
 
-.title {
-    font-family: 'Bebas Neue Regular';
-    font-size: 96px;
+//tablet
+@media screen and (min-width: 768px) and (max-width: 998px) {
+    .terms {
+        margin-left: 40px;
+        padding-top: 100px;
+        padding-bottom: 137px;
+    }
+    
+    .title {
+        font-family: 'Bebas Neue Regular';
+        font-size: 82px;
+    }
+    
+    .subtitle {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 51px;
+    }
+    
+    .text {
+        font-size: 16px;
+        max-width: 90%;
+    }
 }
 
-.subtitle {
-    font-size: 22px;
-    font-weight: 600;
-    margin-top: 51px;
-}
-
-.text {
-    font-size: 18px;
-    max-width: 90%;
+//desktop
+@media screen and (min-width: 998px) {
+    .terms {
+        margin-left: 40px;
+        padding-top: 173px;
+        padding-bottom: 181px;
+        max-width: 1440px;
+    }
+    
+    .title {
+        font-family: 'Bebas Neue Regular';
+        font-size: 96px;
+    }
+    
+    .subtitle {
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 51px;
+    }
+    
+    .text {
+        font-size: 18px;
+        max-width: 90%;
+    }
 }

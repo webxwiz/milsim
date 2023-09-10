@@ -1,10 +1,13 @@
 //phone
 @media screen and (max-width: 768px) {
     .buttonGroup {
-        position: absolute;
+        position: relative;
         display: flex;
         justify-content: space-between;
-        width: 100%;
+        // width: 420px;
+        top: -230px;
+        margin-left: 40px;
+        max-width: 1440px;
     }
     .container {
         margin-left: 100px;
@@ -14,10 +17,13 @@
 //tablet
 @media screen and (min-width: 768px) and (max-width: 998px) {
     .buttonGroup {
-        position: absolute;
+        position: relative;
         display: flex;
         justify-content: space-between;
-        width: 100%;
+        width: 95%;
+        top: -270px;
+        margin-left: 40px;
+        max-width: 1440px;
     }
     .container {
         margin-left: 100px;

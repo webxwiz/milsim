@@ -83,10 +83,10 @@ p {
   font-family: 'Noto Sans';
 }
 
-/* @media screen and (min-width: 998px) {
+@media screen and (min-width: 998px) {
   body {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-} */
+}

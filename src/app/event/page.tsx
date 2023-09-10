@@ -109,9 +109,7 @@ export default function Event() {
     return (
         <div className={styles.content}>
             <div className={styles.header}>
-                <p className={styles.bigOrangeTitle}>
-                    Operation:
-                </p>
+                <p className={styles.bigOrangeTitle}>Operation: </p>
                 <p className={styles.bigTitle}>
                     Freedom Area - Part 1
                 </p>

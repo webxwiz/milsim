@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { TbRectangleFilled } from 'react-icons/tb'
-import { CiImageOn } from 'react-icons/ci'
 import { AiOutlineWarning } from 'react-icons/ai'
 import { RiCloseCircleFill } from 'react-icons/ri'
 import { FaPlus } from 'react-icons/fa'
@@ -10,6 +9,7 @@ import { ModalProps } from './interface'
 import styles from './Modal.module.scss'
 import { platoonColors } from './const'
 import { Button } from '../Button'
+import { ImageUploader } from '../ImageUploader/ImageUploader'
 
 const squad = [
     {
@@ -29,21 +29,6 @@ export const FormModal = ({
     isEdit,
 }: ModalProps) => {
     const [activeColor, setActiveColor] = useState(0)
-    const [imageUpload, setImageUpload] = useState(null)
-    const [previewImage, setPreviewImage] = useState('')
-
-    function onChangePreviewImage({ target: { validity, files } }) {
-        if (validity.valid && files && files[0])
-        setPreviewImage(files)
-        const file = files[0]
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImageUpload(reader.result)
-            }
-            reader.readAsDataURL(file);
-        }
-      }
 
     const isPlatoon = mode === 'platoon'
     const isSquad = mode === 'squad'
@@ -84,12 +69,7 @@ export const FormModal = ({
                     
                     {isPlatoon ? <div>
                         <p className={styles.subtitle}>Platoon image</p>
-                        <div className={styles.addImage}>
-                            <CiImageOn size={30} />
-                            <p>Upload a File</p>
-                            <input type="file" required onChange={onChangePreviewImage} className={styles.fileInput} />
-                            {imageUpload && <img alt='' src={imageUpload} width={200} height={200} className={styles.image} />}
-                        </div>
+                        <ImageUploader isSingle />
                     </div> : isSquad && <div className={styles.squadData}>
                         {squad.map((e, i) => (
                             <>

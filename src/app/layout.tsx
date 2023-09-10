@@ -22,8 +22,8 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
           <NextAuthProvider>
-          <Navbar />
-            {children}
+            <Navbar />
+              {children}
             <Footer />
           </NextAuthProvider>
       </body>

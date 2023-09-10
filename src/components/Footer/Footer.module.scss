@@ -4,63 +4,230 @@ $white: #fff;
 $title: rgba(255, 255, 255, 0.8);
 $textFooter: rgba(216, 216, 216, 0.8);
 
-.footer {
-    background-color: $background;
-    padding-top: 49px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-}
-
-.wrapFooter {
-    max-width: 1440px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.links {
-    color: $white;
-    display: flex;
-    gap: 60px;
-    p {
-        cursor: pointer;
+//phone
+@media screen and (max-width: 768px) {
+    .footer {
+        background-color: $background;
+        padding-top: 31px;
+        padding-bottom: 32px;
+        padding-left: 20px;
+        padding-right: 40px;
     }
-    p:hover {
-        color: $orange;
+    
+    .wrapFooter {
+        max-width: 1440px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-}
-
-.logos {
-    display: flex;
-    gap: 20px;
-}
-
-.title {
-    color: $title;
-    text-decoration: none;
-    font-family: 'Noto Sans';
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.title:hover {
-    color: $orange;
-}
-
-.footerInfo {
-    margin-top: 32px;
-    max-width: 1440px;
-    display: flex;
-    justify-content: space-between;
-    p {
-        font-size: 18px;
-        color: $textFooter;
-        a {
+    
+    .links {
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        p {
+            cursor: pointer;
+        }
+        p:hover {
             color: $orange;
         }
     }
-    p:last-child {
-        font-size: 14px;
+    
+    .logos {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+    
+    .title {
+        color: $title;
+        text-decoration: none;
+        font-family: 'Noto Sans';
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .title:hover {
+        color: $orange;
+    }
+    
+    .footerInfo {
+        margin-top: 36px;
+        max-width: 1440px;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 25px;
+        p {
+            font-size: 12px;
+            color: $textFooter;
+            a {
+                color: $orange;
+            }
+        }
+        p:last-child {
+            font-size: 10px;
+        }
+    }
+
+    .logo1 {
+        width: 116px;
+        height: 36px;
+    }
+    .logo2 {
+        width: 82px;
+        height: 36px;
+    }
+}
+
+//tablet
+@media screen and (min-width: 768px) and (max-width: 998px) {
+    .footer {
+        background-color: $background;
+        padding-top: 31px;
+        padding-bottom: 32px;
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+    
+    .wrapFooter {
+        max-width: 1440px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .links {
+        color: $white;
+        display: flex;
+        gap: 32px;
+        p {
+            cursor: pointer;
+        }
+        p:hover {
+            color: $orange;
+        }
+    }
+    
+    .logos {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+    
+    .title {
+        color: $title;
+        text-decoration: none;
+        font-family: 'Noto Sans';
+        font-size: 16px;
+        font-weight: 500;
+    }
+    
+    .title:hover {
+        color: $orange;
+    }
+    
+    .footerInfo {
+        margin-top: 36px;
+        max-width: 1440px;
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-size: 16px;
+            color: $textFooter;
+            a {
+                color: $orange;
+            }
+        }
+        p:last-child {
+            font-size: 14px;
+        }
+    }
+
+    .logo1 {
+        width: 128px;
+        height: 40px;
+    }
+    .logo2 {
+        width: 91px;
+        height: 40px;
+    }
+}
+
+//desktop
+@media screen and (min-width: 998px) {
+    .footer {
+        background-color: $background;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .wrapFooter {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 49px;
+        padding-bottom: 32px;
+        padding-left: 40px;
+        padding-right: 40px;
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    
+    .links {
+        color: $white;
+        display: flex;
+        gap: 60px;
+        p {
+            cursor: pointer;
+        }
+        p:hover {
+            color: $orange;
+        }
+    }
+    
+    .logos {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .title {
+        color: $title;
+        text-decoration: none;
+        font-family: 'Noto Sans';
+        font-size: 18px;
+        font-weight: 500;
+    }
+    
+    .title:hover {
+        color: $orange;
+    }
+    
+    .footerInfo {
+        margin-top: 32px;
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding-bottom: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-size: 18px;
+            color: $textFooter;
+            a {
+                color: $orange;
+            }
+        }
+        p:last-child {
+            font-size: 14px;
+        }
     }
 }
