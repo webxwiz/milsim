@@ -36,6 +36,7 @@ export const AllEvents = () => {
                 {eventsData.map(e => (
                     <PastEvent
                         key={e.id}
+                        id={e.id}
                         title={e.title}
                         date={e.date}
                         url={e.url}

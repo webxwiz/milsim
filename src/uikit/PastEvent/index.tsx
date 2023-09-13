@@ -1,15 +1,22 @@
 import Image from "next/image"
 import { RiCloseCircleFill } from 'react-icons/ri'
+import { useRouter } from "next/navigation"
 
 import { PastEventProps } from "./interface"
 import styles from './PastEvent.module.scss'
 import { useState } from "react"
 import { Modal } from "../Modal"
 
-export const PastEvent = ({ title, date, url, isEdit }: PastEventProps) => {
+export const PastEvent = ({ id, title, date, url, isEdit }: PastEventProps) => {
+    const router = useRouter()
+
     const [openModal, setOpenModal] = useState(false)
 
     const handleModal = () => setOpenModal(!openModal)
+    const handleOpenEvent = () => {
+        const path = isEdit ? 'change-event' : 'event'
+        router.push(`/${path}?id=${id}`)
+    }
 
     const button = isEdit ? 'Edit' : 'Read'
     return (
@@ -25,7 +32,10 @@ export const PastEvent = ({ title, date, url, isEdit }: PastEventProps) => {
                 </div>
                 <div className={styles.date}>
                     <p className={styles.dateText}>{date}</p>
-                    <div className={styles.button}>
+                    <div
+                        onClick={handleOpenEvent}
+                        className={styles.button}
+                    >
                         <p>{button}</p>
                     </div>
                     {isEdit && (

@@ -59,7 +59,7 @@ $gray: rgba(168, 168, 168, 1);
         border: 3px dashed $gold;
         border-radius: 5px;
         margin-top: 22px;
-        width: 100%;
+        max-width: 336px;
         height: 100px;
         display: flex;
         align-items: center;
@@ -72,26 +72,35 @@ $gray: rgba(168, 168, 168, 1);
     }
     
     .footer {
-        margin-top: 80px;
+        margin-top: 20px;
         width: 80%;
         height: 1147px;
-        background-image: url('/images/createPlatoon.webp');
         background-size: cover;
         border: 2px solid $gray;
         border-radius: 10px;
-        margin-bottom: 40px;
         padding-right: 35px;
+        overflow: scroll;
     }
     
     .items {
         margin-top: 84px;
         margin-left: 31px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
     
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
     .footerButtons {
         display: flex;
         flex-direction: column;
         gap: 20px;
+        margin-top: 40px;
         margin-bottom: 162px;
     }
     
@@ -100,6 +109,12 @@ $gray: rgba(168, 168, 168, 1);
         align-items: center;
         gap: 46px;
         margin-bottom: 80px;
+    }
+
+    .squadTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 40px;
+        padding-bottom: 39px;
     }
 }
 
@@ -154,14 +169,14 @@ $gray: rgba(168, 168, 168, 1);
     .platoons {
         margin-top: 32px;
         display: flex;
-        
     }
     
     .addPlatoon {
         border: 3px dashed $gold;
         border-radius: 5px;
-        margin-left: 62px;
-        width: 144px;
+        margin-top: 23px;
+        width: 519px;
+        height: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -173,26 +188,35 @@ $gray: rgba(168, 168, 168, 1);
     }
     
     .footer {
-        margin-top: 80px;
+        margin-top: 40px;
         width: 100%;
         height: 1147px;
-        background-image: url('/images/createPlatoon.webp');
         background-size: cover;
         border: 2px solid $gray;
         border-radius: 10px;
-        margin-bottom: 40px;
+        overflow: scroll;
     }
     
     .items {
         margin-top: 84px;
         margin-left: 31px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
     }
     
     .footerButtons {
         display: flex;
         align-items: center;
         gap: 46px;
+        margin-top: 40px;
         margin-bottom: 162px;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
     }
     
     .inlineButtons {
@@ -200,6 +224,12 @@ $gray: rgba(168, 168, 168, 1);
         align-items: center;
         gap: 46px;
         margin-bottom: 80px;
+    }
+
+    .squadTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 60px;
+        padding-bottom: 39px;
     }
 }
 
@@ -261,12 +291,19 @@ $gray: rgba(168, 168, 168, 1);
         display: flex;
         
     }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
     
     .addPlatoon {
         border: 3px dashed $gold;
         border-radius: 5px;
-        margin-left: 62px;
-        width: 144px;
+        margin-top: 32px;
+        width: 570px;
+        height: 144px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -278,25 +315,28 @@ $gray: rgba(168, 168, 168, 1);
     }
     
     .footer {
-        margin-top: 80px;
         width: 100%;
         height: 992px;
-        background-image: url('/images/createPlatoon.webp');
         background-size: cover;
         border: 2px solid $gray;
         border-radius: 10px;
-        margin-bottom: 40px;
+        margin-top: 40px;
+        overflow: scroll;
     }
     
     .items {
         margin-top: 84px;
         margin-left: 31px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
     }
     
     .footerButtons {
         display: flex;
         align-items: center;
         gap: 46px;
+        margin-top: 40px;
         margin-bottom: 162px;
     }
     
@@ -305,5 +345,11 @@ $gray: rgba(168, 168, 168, 1);
         align-items: center;
         gap: 46px;
         margin-bottom: 80px;
+    }
+
+    .squadTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 60px;
+        padding-bottom: 39px;
     }
 }

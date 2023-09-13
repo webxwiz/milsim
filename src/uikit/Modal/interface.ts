@@ -3,4 +3,5 @@ export interface ModalProps {
     onClose: () => void
     mode?: 'platoon' | 'squad' | 'role'
     isEdit?: boolean
+    onSubmit?: () => void
 }
