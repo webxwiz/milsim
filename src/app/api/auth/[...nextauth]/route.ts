@@ -18,10 +18,10 @@ export const authOptions: NextAuthOptions = {
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, token }: any) {
       if (token) {
         if (token?.picture?.includes("discord")) {
-          session.user.id = token.sub;
+          session.user.id = token.sub
         }
       }
       return session;

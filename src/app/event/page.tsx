@@ -5,7 +5,7 @@ import { RegisterCard } from '@/uikit/RegisterCard'
 import { EditCard } from '@/uikit/RegisterCard/EditCard'
 import { useRouter } from 'next/navigation'
 import { EventProps } from './interface'
-import { RoleType } from '@/components/EventForm/interface'
+import { RoleType, SquadType } from '@/components/EventForm/interface'
 
 const eventData = {
     id: 'tewgwegwe',
@@ -141,7 +141,7 @@ export default function Event(props: EventProps) {
             <div className={styles.registration}>
                 <p className={styles.subtitle}>Registration</p>
                 <div className={styles.cards}>
-                    {eventData.eventPlatoons.map(e => (
+                    {eventData.eventPlatoons.map((e: any) => (
                         <div key={e.id} className={styles.eventPlatoons}>
                             <RegisterCard
                                 key={e.id}
@@ -155,7 +155,7 @@ export default function Event(props: EventProps) {
                                 className={styles.footer}
                             >
                                 <div className={styles.items}>
-                                    {e.squads.map((s, i) => (
+                                    {e.squads.map((s: SquadType, i: number) => (
                                         <div key={s.id}>
                                             {i === 0 && <p className={styles.squadTitle}>{e.name}</p>}
                                             <EditCard

@@ -1,9 +1,10 @@
 export interface EventFormProps {
     isEdit?: boolean
+    id?: string | number
 }
 
 export interface EventFormTypes {
-    id: string
+    id: string | number
     eventName: string
     eventDate: string
     eventDuration: string
@@ -13,7 +14,7 @@ export interface EventFormTypes {
 }
 
 export interface PlatoonType {
-    id: string
+    id: never
     name: string
     color: string
     image: string
@@ -21,23 +22,24 @@ export interface PlatoonType {
 }
 
 export interface SquadType {
-    id: string
+    id: never
     name: string
     roles: RoleType[]
 
-    busyRoles: RolesType[]
-    waitingList: RolesType[]
-    enlisted: RolesType[]
+    busyRoles?: RolesType[]
+    waitingList?: RolesType[]
+    enlisted?: RolesType[]
 }
 
 export interface RoleType {
-    id: string
+    id: string | number
     name: string
-    count: number
+    count: number | string
 }
 
 export interface RolesType {
-    id: string
+    id: string | number
     discordId: String
+    name: string
     role: String
   }

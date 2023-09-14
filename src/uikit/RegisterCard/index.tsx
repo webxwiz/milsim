@@ -9,16 +9,16 @@ export const RegisterCard = ({ platoonId, title, data, isEdit, addSquad, removeS
             <div className={styles.header}>
                 <p className={styles.title}>{title}</p>
                 {isEdit && <div className={styles.remove}>
-                    <RiCloseCircleFill onClick={() => removePlatoon(platoonId)} size={29} color={'rgba(193, 87, 73, 1)'} />
+                    <RiCloseCircleFill onClick={() => removePlatoon && removePlatoon(platoonId as string)} size={29} color={'rgba(193, 87, 73, 1)'} />
                 </div>}
             </div>
             <div className={styles.items}>
-                {data?.map(e => (
+                {data?.map((e: any) => (
                     <div className={styles.dataItem} key={e.id}>
                         {isEdit ?
-                        <input defaultValue={e.name} onChange={(event) => onChangeName(platoonId, e.id, event.target.value)} className={styles.input} />
+                        <input defaultValue={e.name} onChange={(event) => onChangeName && onChangeName(platoonId as string, e.id, event.target.value)} className={styles.input} />
                         : <div>{e.name}</div>}
-                        {isEdit && <RiCloseCircleFill onClick={() => removeSquad(platoonId, e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                        {isEdit && <RiCloseCircleFill onClick={() => removeSquad && removeSquad(platoonId as string, e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
                     </div>
                 ))}
             </div>

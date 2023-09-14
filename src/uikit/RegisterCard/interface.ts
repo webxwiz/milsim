@@ -10,9 +10,10 @@ export interface RegisterCardProps {
     handleRole?: (id: string, role: RoleType, name: string, isRemove: boolean) => void
     squadId?: string
     busyRoles?: RolesType[]
-    removeSquad?: () => void
-    removePlatoon?: () => void
-    onChangeName?: () => void
-    onChangeNameRole?: () => void
+    removeSquad?: (platoonId: string, squadId: string) => void
+    removePlatoon?: (id: string) => void
+    onChangeName?: (id: string, squadId: string, name: string) => void
+    onChangeNameRole?: (id: string, squadId: string, roleId: string, value: string, type: string) => void
+    removeSquadRole?: (id: string, squadId: string, roleId: string) => void
     platoonId?: string
 }

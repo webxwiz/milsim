@@ -10,6 +10,8 @@ import { PastEvent } from '@/uikit/PastEvent'
 import { Slider } from '@/uikit/Slider'
 
 import styles from './Home.module.scss'
+import { useQuery } from '@apollo/client'
+import { GET_ALL_EVENTS } from '@/apollo/queries/request'
 
 const infoData = [
   {
@@ -44,7 +46,7 @@ const infoData = [
   },
 ]
 
-const allEventsData = [
+const allEvents = [
   {
     id: 111,
     title: 'Lorem ipsum 1',
@@ -137,6 +139,12 @@ const footerData = [
 ]
 
 export default function Home() {
+  // const { data: eventsData } = useQuery(GET_ALL_EVENTS)
+
+  // const allEvents = eventsData?.getAllEvents
+
+  // console.log(777777, allEvents)
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
 
@@ -208,12 +216,12 @@ export default function Home() {
           </div>
           <div className={styles.eventItems}>
           <Slider>
-            {allEventsData.map(e => (
+            {allEvents?.map(e => (
                 <Event
                   key={e.id}
-                  title={e.title}
+                  title={e.name}
                   description={e.description}
-                  url={e.url}
+                  url={e.image}
                 />
             ))}
             </Slider>

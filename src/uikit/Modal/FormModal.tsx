@@ -10,6 +10,7 @@ import styles from './Modal.module.scss'
 import { Button } from '../Button'
 import { ImageUploader } from '../ImageUploader/ImageUploader'
 import { UploadedImage } from '../ImageUploader/interface'
+import { RoleType } from '@/components/EventForm/interface'
 
 export const FormModal = ({
     isOpen,
@@ -32,7 +33,7 @@ export const FormModal = ({
     const [roleName, setRoleName] = useState('')
     const [roleCount, setRoleCount] = useState('')
 
-    const [roles, setRoles] = useState<any>([])
+    const [roles, setRoles] = useState<RoleType[]>([])
 
     useEffect(() => {
         if (watchData?.name) {
@@ -80,8 +81,8 @@ export const FormModal = ({
         setMode('role')
     }
 
-    const removeRoleFromSquad = (id: string) => {
-        setRoles(roles.filter(e => e.id !== id))
+    const removeRoleFromSquad = (id: string | number) => {
+        setRoles(roles.filter((e: RoleType) => e.id !== id))
     }
 
     const handleSetActiveColor = (color: ColorResult) => {
@@ -136,7 +137,7 @@ export const FormModal = ({
                             <FaPlus size={20} />
                         </div>}
                         <div className={styles.squadItems}>
-                            {roles?.map((e, i) => (
+                            {roles?.map((e: RoleType, i: number) => (
                                 <Fragment key={e.id}>
                                     <div className={styles.squadItem}>
                                         <div className={styles.squadName}>{e.name}</div>

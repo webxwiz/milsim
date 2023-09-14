@@ -6,7 +6,7 @@ import { ChangeEventProps } from "./interface";
 export default function ChangeEvent(props: ChangeEventProps) {
     const router = useRouter()
 
-    console.log('event id for chaange event page', props)
+    const eventId = props?.searchParams?.id
 
-    return <EventForm isEdit />
+    return <EventForm isEdit id={eventId} />
 }

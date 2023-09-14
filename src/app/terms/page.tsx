@@ -1,6 +1,7 @@
 import styles from './Terms.module.scss'
 
 export default function Terms() {
+
     return (
         <div className={styles.terms}>
             <p className={styles.title}>use of terms and privacy policy</p>

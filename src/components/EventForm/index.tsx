@@ -1,102 +1,37 @@
 'use client'
-import { useEffect } from 'react'
+
 import { FaPlus } from 'react-icons/fa'
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styles from './EventForm.module.scss'
 import { RegisterCard } from '@/uikit/RegisterCard'
 import { EditCard } from '@/uikit/RegisterCard/EditCard'
 import { Button } from '@/uikit/Button'
-import { EventFormProps, EventFormTypes } from './interface'
+import { EventFormProps, EventFormTypes, PlatoonType, RoleType, RolesType, SquadType } from './interface'
 import { FormModal } from '@/uikit/Modal/FormModal'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ImageUploader } from '@/uikit/ImageUploader/ImageUploader'
 import { UploadedImage } from '@/uikit/ImageUploader/interface'
+import { useMutation, useQuery } from '@apollo/client';
+import { CHANGE_EVENT, CREATE_EVENT } from '@/apollo/mutations/request';
+import { GET_ONE_EVENT } from '@/apollo/queries/request';
 
-const eventData = {
-    id: 'tewgwegwe',
-    eventName: 'Event First',
-    eventDate: '2023-09-15',
-    eventDuration: '2 hours',
-    eventImage: '/images/eventImg1.webp',
-    eventDescription: 'Description of event :P',
-    eventPlatoons: [
-        {
-            id: 'g2143rq',
-            name: 'Platoon 1',
-            color: 'red',
-            image: '/images/eventsBackground.webp',
-            squads: [
-                {
-                    id: 'bhdfbwrq',
-                    name: 'Squad 1',
-                    roles: [
-                        { id: 'bnw', name: 'M2', count: 10 },
-                        { id: '911', name: 'M5 Competition', count: 5 },
-                    ],
-                    },
-                {
-                    id: '434gewgw12314214',
-                    name: 'Squad 3',
-                    roles: [
-                        { id: '2590', name: 'E63 AMG', count: 8 },
-                        { id: 'adwe23', name: 'S COUPE', count: 4 },
-                    ],
-                },
-                {
-                    id: '525bhdfbwrq',
-                    name: 'Squad 3 (!)',
-                    roles: [
-                        { id: 'bnw', name: 'Bentley', count: 10 },
-                        { id: '911', name: 'Rolls-Royce', count: 5 },
-                    ],
-                    },
-                {
-                    id: 'ge552wgw12314214',
-                    name: 'Squad 4',
-                    roles: [
-                        { id: '2590', name: 'Lamborghini', count: 8 },
-                        { id: 'adwe23', name: 'Maserati', count: 4 },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 'ggwegbfnsawedsfd',
-            name: 'Platoon 2',
-            color: 'blue',
-            image: '/images/eventImg4.webp',
-            squads: [
-                {
-                    id: 'bgasdsdsdsd',
-                    name: 'Squad 1!',
-                    roles: [
-                        { id: 'zmsksa', name: 'Cadillac', count: 12 },
-                        { id: 'glppq', name: 'Plane', count: 6 },
-                    ],
-                },
-                {
-                    id: 'gsdgvdsghjdh',
-                    name: 'Squad 2!',
-                    roles: [
-                        { id: '1222', name: 'Joker', count: 9 },
-                        { id: '2s112', name: 'Hello?', count: 3 },
-                    ],
-                },
-            ],
-        },
-    ],
-}
+export const EventForm = ({ id, isEdit }: EventFormProps) => {
+    const { data: eventData } = useQuery(GET_ONE_EVENT, {
+        variables: {
+            id,
+        }
+    })
 
-export const EventForm = ({ isEdit }: EventFormProps) => {
+    const [createEvent, { error }] = useMutation(CREATE_EVENT)
+    const [changeEvent, { error: changeEventError }] = useMutation(CHANGE_EVENT)
+
     const {
         register,
-        control,
         handleSubmit,
         setValue,
         reset,
-        getValues,
         watch,
-    } = useForm<EventFormTypes>({
+    } = useForm<EventFormTypes | any>({
         defaultValues: isEdit ? eventData : {
             eventName: '',
             eventDate: '',
@@ -106,6 +41,33 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
             eventPlatoons: []
         },
     })
+
+    useEffect(() => {
+        if (eventData) {
+            reset({
+                eventName: eventData.getOneEvent.name,
+                eventDate: new Date(eventData.getOneEvent.date).toLocaleDateString(),
+                eventDescription: eventData.getOneEvent.description,
+                eventDuration: eventData.getOneEvent.duration,
+                eventImage: eventData.getOneEvent.image,
+                eventPlatoons: eventData.getOneEvent.platoons.map((p: PlatoonType) => ({
+                    id: p._id,
+                    color: p.color,
+                    image: p.image,
+                    name: p.name,
+                    squads: p.squads.map(s => ({
+                        id: s._id,
+                        name: s.name,
+                        roles: s.roles.map(r => ({
+                            id: r._id,
+                            count: Number(r.count),
+                            name: r.name,
+                        }))
+                    }))
+                }))
+            })
+        }
+    }, [eventData])
     
     const [itemId, setItemId] = useState('')
     const [editSquadId, setEditSquadId] = useState('')
@@ -119,7 +81,66 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
     const handleEditSquad = () => setEditSquad(!editSquad)
 
     const handleEventSubmit = (event: EventFormTypes) => {
-        console.log(123, event)
+        if (isEdit) {
+            changeEvent({
+                variables: {
+                    updateEventInput: {
+                        _id: id,
+                        data: {
+                            date: new Date(event.eventDate),
+                            description: event.eventDescription,
+                            duration: Number(event.eventDuration),
+                            image: event.eventImage,
+                            name: event.eventName,
+                            platoons: event.eventPlatoons.map(p => ({
+                                color: p.color,
+                                image: p.image,
+                                name: p.name,
+                                squads: p.squads.map(s => ({
+                                    name: s.name,
+                                    roles: s.roles.map(r => ({
+                                        count: Number(r.count),
+                                        name: r.name,
+                                    }))
+                                }))
+                            }))
+                        }
+                    }
+                }
+            })
+        } else {
+            createEvent({
+                variables: {
+                    createEventInput: {
+                        date: new Date(event.eventDate),
+                        description: event.eventDescription,
+                        duration: Number(event.eventDuration),
+                        image: event.eventImage,
+                        name: event.eventName,
+                        platoons: event.eventPlatoons.map(p => ({
+                            color: p.color,
+                            image: p.image,
+                            name: p.name,
+                            squads: p.squads.map(s => ({
+                                name: s.name,
+                                roles: s.roles.map(r => ({
+                                    count: Number(r.count),
+                                    name: r.name,
+                                }))
+                            }))
+                        }))
+                    }
+                }
+            })
+        }
+        if (isEdit ? changeEventError : error) {
+            console.log(error)
+            alert('Error!')
+        } else {
+            if (!isEdit) {
+                reset()
+            }
+        }
     }
 
     const handleSetImage = (image: UploadedImage[]) => {
@@ -140,13 +161,13 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
     }
 
     const removePlatoon = (id: string) => {
-        setValue('eventPlatoons', watch('eventPlatoons').filter(e => e.id !== id))
+        setValue('eventPlatoons', watch('eventPlatoons').filter((e: PlatoonType) => e.id !== id))
     }
 
     const onChangeNameSquad = (id: string, squadId: string, name: string) => {
-        setValue('eventPlatoons', watch('eventPlatoons').map(platoon => {
+        setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
             if (platoon.id === id) {
-                platoon.squads.map(squad => {
+                platoon.squads.map((squad: SquadType) => {
                     if (squad.id === squadId) {
                         squad.name = name
                     }
@@ -160,11 +181,11 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
     }
 
     const onChangeNameRole = (id: string, squadId: string, roleId: string, value: string, type: string) => {
-        setValue('eventPlatoons', watch('eventPlatoons').map(platoon => {
+        setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
             if (platoon.id === id) {
-                platoon.squads.map(squad => {
+                platoon.squads.map((squad: SquadType) => {
                     if (squad.id === squadId) {
-                        squad.roles.map(role => {
+                        squad.roles.map((role: RoleType) => {
                             if (type === 'name') {
                                 if (role.id === roleId) {
                                     role.name = value
@@ -173,7 +194,7 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
 
                             if (type === 'count') {
                                 if (role.id === roleId) {
-                                    role.count = value
+                                    role.count = Number(value)
                                 }
                             }
 
@@ -189,11 +210,11 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
     }
 
     const removeSquadRole = (id: string, squadId: string, roleId: string) => {
-        setValue('eventPlatoons', watch('eventPlatoons').map(platoon => {
+        setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
             if (platoon.id === id) {
-                platoon.squads.map(squad => {
+                platoon.squads.map((squad: SquadType) => {
                     if (squad.id === squadId) {
-                        squad.roles = squad.roles.filter(role => role.id !== roleId)
+                        squad.roles = squad.roles.filter((role: RoleType) => role.id !== roleId)
                     }
                     return squad
                 })
@@ -202,8 +223,8 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
         }))
     }
 
-    const createSquad = (name: string, roles) => {
-        watch('eventPlatoons').find(e => e.id === itemId).squads.push({
+    const createSquad = (name: string, roles: RoleType[]) => {
+        watch('eventPlatoons').find((e: PlatoonType) => e.id === itemId).squads.push({
             id: Date.now(),
             name,
             roles,
@@ -211,19 +232,19 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
     }
 
     const removeSquad = (platoonId: string, squadId: string) => {
-        setValue('eventPlatoons', watch('eventPlatoons').map(platoon => {
+        setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
             if (platoon.id === platoonId) {
-                platoon.squads = platoon.squads.filter(squad => squad.id !== squadId)
+                platoon.squads = platoon.squads.filter((squad: SquadType) => squad.id !== squadId)
             }
 
             return platoon
         }))
     }
 
-    const onEditSquad = (id: string, squadId: string, squadName: string, roles: string) => {
-        setValue('eventPlatoons', watch('eventPlatoons').map(platoon => {
+    const onEditSquad = (id: string, squadId: string, squadName: string, roles: RoleType[]) => {
+        setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
             if (platoon.id === id) {
-                platoon.squads.map(squad => {
+                platoon.squads.map((squad: SquadType) => {
                     if (squad.id === squadId) {
                         squad.name = squadName
                         squad.roles = roles
@@ -237,7 +258,7 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
         }))
         
     }
-    const watchData = watch && watch('eventPlatoons').find(p => p.id === itemId)?.squads?.find(s => s.id === editSquadId)
+    const watchData = watch && watch('eventPlatoons')?.find((p: PlatoonType) => p.id === itemId)?.squads?.find((s: SquadType) => s.id === editSquadId)
 
     return (
         <div className={styles.event}>
@@ -254,7 +275,7 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
             <input {...register('eventDuration', { required: true })} className={styles.input} />
             <p className={styles.title}>{isEdit ? 'Change' : 'FEATURE'} IMAGE</p>
             <ImageUploader
-                defaultImage={{ preview: watch('eventImage')}}
+                defaultImage={watch('eventImage') ? { preview: watch('eventImage')} : undefined}
                 onSubmit={handleSetImage}
                 isBigSingle
             />
@@ -266,7 +287,7 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
                     <div onClick={handlePlatoonModal} className={styles.addPlatoon}>
                         <FaPlus size={34} />
                     </div>
-                    {eventPlatoons.map((e) => (
+                    {eventPlatoons.map((e: PlatoonType) => (
                         <div key={e.id}>
                             <RegisterCard
                                 platoonId={e.id}
@@ -288,7 +309,7 @@ export const EventForm = ({ isEdit }: EventFormProps) => {
                                 className={styles.footer}
                             >
                                 <div className={styles.items}>
-                                    {e.squads?.map((squad, i) => (
+                                    {e.squads?.map((squad: SquadType, i: number) => (
                                         <div key={squad.id}>
                                             {i === 0 && <p className={styles.squadTitle}>
                                                 {e.name}
