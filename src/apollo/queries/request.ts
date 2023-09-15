@@ -21,11 +21,13 @@ query GetAllEvents {
           _id
           discordId
           role
+          playerName
         }
         enlisted {
           _id
           discordId
           role
+          playerName
         }
         name
         roles {
@@ -65,11 +67,13 @@ query GetOneEvent($id: ID) {
           _id
           discordId
           role
+          playerName
         }
         enlisted {
           _id
           discordId
           role
+          playerName
         }
         name
         roles {

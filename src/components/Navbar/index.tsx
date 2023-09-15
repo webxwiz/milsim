@@ -7,12 +7,27 @@ import { Button } from '@/uikit/Button';
 import { signIn, signOut, useSession } from "next-auth/react"
 import { Loading } from '@/uikit/Loading'
 import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
+import { SAVE_USER } from '@/apollo/mutations/request'
+import { useMutation } from '@apollo/client'
 
 export default function index() {
   const { data: session, status } = useSession()
 
   const [openMenu, setOpenMenu] = useState(false)
   const [screenWidth, setScreenWidth] = useState(0)
+
+  const [saveUser] = useMutation(SAVE_USER)
+
+  useEffect(() => {
+    if (session?.user && Cookies.get('token') === undefined) {
+      saveUser({
+        variables: {
+          discordId: session?.user?.id
+        }
+      }).then(data => Cookies.set('token', data?.data?.saveUser?.token))
+    }
+  }, [session])
 
   useEffect(() => {
       const updateScreenWidth = () => {
@@ -27,6 +42,8 @@ export default function index() {
       window.removeEventListener('resize', updateScreenWidth)
       }
   }, [])
+
+  console.log(99991, Cookies.get('token'))
 
   const toggleMenu = () => setOpenMenu(!openMenu)
 
@@ -55,7 +72,10 @@ export default function index() {
             Discord
           </Link>
           {session?.user ? (
-            <p onClick={() => signOut()} className={styles.title}>
+            <p onClick={() => {
+              Cookies.remove('token')
+              signOut()
+            }} className={styles.title}>
               Logout
             </p>
           ) : (

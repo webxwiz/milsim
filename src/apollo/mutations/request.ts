@@ -101,3 +101,26 @@ mutation UpdateEvent($updateEventInput: UpdateEventInput) {
     }
   }
 `
+
+export const ADD_USER_TO_EVENT = gql`
+mutation AddUserToEvent($addUserToEventInput: AddUserToEventInput) {
+    addUserToEvent(addUserToEventInput: $addUserToEventInput) {
+      _id
+      platoons {
+        squads {
+          roles {
+            _id
+            count
+            name
+          }
+          busyRoles {
+            _id
+            discordId
+            role
+            playerName
+          }
+        }
+      }
+    }
+  }
+`

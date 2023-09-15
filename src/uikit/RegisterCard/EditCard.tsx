@@ -23,7 +23,8 @@ export const EditCard = ({
     onChangeNameRole,
     platoonId,
     removeSquad,
-    removeSquadRole
+    removeSquadRole,
+    indexId
 }: RegisterCardProps) => {
     const { data: session } = useSession()
 
@@ -35,6 +36,10 @@ export const EditCard = ({
     
     const userId = session?.user?.id
 
+    const roleData = dataRoles.find((_, i) => i === indexId)
+
+    console.log('iddd', userId)
+    
     const [data, setData] = useState(dataRoles)
 
     useEffect(() => {
@@ -50,7 +55,7 @@ export const EditCard = ({
 
     const busyOptions = busyRoles?.filter((e: RolesType) => e.discordId === userId).map((item: RolesType, index: number) => ({
         value: index.toString(),
-        label: item.name,
+        label: item.role,
         discordId: item.discordId,
         className: styles.dropdownOption
     }))
@@ -60,7 +65,7 @@ export const EditCard = ({
     const isShowSelect = isMyRole ? true : !allRolesTaken
 
     const handleRoleLogic = () => {
-        handleRole && handleRole(squadId as string, role as never, playerName, isMyRole)
+        handleRole && handleRole(squadId as string, role.label as never, playerName, isMyRole, roleData._id as string)
         if (isMyRole) {
             setBusyRoles([])
             setData(
@@ -98,9 +103,9 @@ export const EditCard = ({
                         <Dropdown
                             options={isMyRole ? busyOptions : options}
                             className={isMyRole ? styles.editDropdown : styles.dropdown}
-                            value={isMyRole ? busyOptions?.[0]?.value : role}
+                            value={isMyRole ? busyOptions?.[0]?.value : role.value}
                             disabled={isMyRole}
-                            onChange={(e) => setRole(e.value)}
+                            onChange={(e) => setRole(e)}
                             placeholderClassName={styles.dropdownPlaceholder}
                             controlClassName={styles.controlDropdown}
                             arrowClosed={
@@ -116,7 +121,7 @@ export const EditCard = ({
                             placeholder='Role A'
                         />
                         <input
-                            value={`${isMyRole ? busyOptions?.[0]?.discordId : playerName}`}
+                            value={`${isMyRole ? busyOptions?.[0]?.playerName : playerName}`}
                             onChange={(e) => setPlayerName(e.target.value)}
                             placeholder='Player Name'
                             disabled={isMyRole}

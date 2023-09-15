@@ -6,8 +6,11 @@ import { EditCard } from '@/uikit/RegisterCard/EditCard'
 import { useRouter } from 'next/navigation'
 import { EventProps } from './interface'
 import { RoleType, SquadType } from '@/components/EventForm/interface'
+import { useMutation, useQuery } from '@apollo/client'
+import { GET_ONE_EVENT } from '@/apollo/queries/request'
+import { ADD_USER_TO_EVENT } from '@/apollo/mutations/request'
 
-const eventData = {
+const eventData2 = {
     id: 'tewgwegwe',
     eventName: 'Event First',
     eventDate: '2023-09-15',
@@ -94,11 +97,34 @@ const eventData = {
 export default function Event(props: EventProps) {
     const router = useRouter()
 
-    const handleRole = (id: string, role: RoleType, name: string, isRemove: boolean) => {
+    const eventId = props?.searchParams?.id
+
+    const { data: eventData } = useQuery(GET_ONE_EVENT, {
+        variables: {
+            id: eventId,
+        }
+    })
+
+    const [addUserToEvent, { error: eventError }] = useMutation(ADD_USER_TO_EVENT)
+
+    console.log(223, eventData)
+
+    const handleRole = (id: string, role: RoleType, name: string, isRemove: boolean, roleId: string) => {
+        console.log(24, id, role, name, roleId)
         if (isRemove) {
             console.log('for remove my item')
         } else if (id && role && name?.trim()) {
-            console.log(34, id, role, name)
+            addUserToEvent({
+                variables: {
+                    addUserToEventInput: {
+                        roleId,
+                        roleName: role,
+                        squadId: id,
+                        playerName: name,
+                    }
+                }
+            })
+            console.log(222222, eventError)
         } else {
             alert('Add data')
         }
@@ -114,7 +140,7 @@ export default function Event(props: EventProps) {
                 </p>
             </div>
             <p className={styles.smallTitle}>Open to All - Sep 2, 2023 8:45:00 PM (GMT+3)</p>
-            <Image alt='' src={eventData.eventImage} width={1015} height={568} className={styles.mapImg} />
+            {/* <Image alt='' src={eventData?.image} width={1015} height={568} className={styles.mapImg} /> */}
             <p className={styles.smallTitle}>OPERATION BRIEFING:</p>
             <div className={styles.fullInfo}>
                 <p className={styles.title}>I. SITUATION:</p>
@@ -141,16 +167,16 @@ export default function Event(props: EventProps) {
             <div className={styles.registration}>
                 <p className={styles.subtitle}>Registration</p>
                 <div className={styles.cards}>
-                    {eventData.eventPlatoons.map((e: any) => (
-                        <div key={e.id} className={styles.eventPlatoons}>
+                    {eventData?.getOneEvent?.platoons?.map((e: any) => (
+                        <div key={e._id} className={styles.eventPlatoons}>
                             <RegisterCard
-                                key={e.id}
+                                key={e._id}
                                 title={e.name}
                                 data={e.squads}
                             />
                             <div
                                 style={{
-                                    backgroundImage: `url(${e.image})`
+                                    // backgroundImage: `url(${e.image})`
                                 }}
                                 className={styles.footer}
                             >
@@ -162,9 +188,10 @@ export default function Event(props: EventProps) {
                                                 title={s.name}
                                                 data={s.roles}
                                                 busyRoles={s.busyRoles}
-                                                squadId={s.id}
+                                                squadId={s._id}
                                                 handleRole={handleRole}
                                                 isSelect
+                                                indexId={i}
                                             />
                                         </div>
                                     ))}
