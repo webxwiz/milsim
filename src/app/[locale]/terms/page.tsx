@@ -2,6 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 import styles from './Terms.module.scss'
+import { termsPage } from '@/metadata/metadata'
+
+const metadata = termsPage
 
 export default function Terms() {
     const t = useTranslations('Terms')

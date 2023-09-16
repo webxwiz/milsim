@@ -10,6 +10,8 @@ import { useMutation, useQuery } from '@apollo/client'
 import { GET_ONE_EVENT } from '@/apollo/queries/request'
 import { ADD_USER_TO_EVENT, REMOVE_FROM_BUSY_ROLES } from '@/apollo/mutations/request'
 import { useTranslations } from 'next-intl'
+import { eventPage } from '@/metadata/metadata'
+const metadata = eventPage
 
 export default function Event(props: EventProps) {
     const router = useRouter()

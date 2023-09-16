@@ -19,6 +19,8 @@ import { useEffect } from 'react'
 import { signIn, signOut, useSession } from "next-auth/react"
 import Cookies from 'js-cookie'
 import { SAVE_USER } from '@/apollo/mutations/request'
+import { mainPageMetaData } from '@/metadata/metadata'
+export const metadata = mainPageMetaData
 
 export default function Home() {
   const [saveUser] = useMutation(SAVE_USER)

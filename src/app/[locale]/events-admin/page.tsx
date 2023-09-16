@@ -8,6 +8,9 @@ import { useQuery } from '@apollo/client'
 import { GET_USER } from '@/apollo/queries/request'
 import { useRouter } from 'next/navigation'
 import Cookies from 'js-cookie'
+import { eventsAdmin } from '@/metadata/metadata'
+
+const metadata = eventsAdmin
 
 export default function EventsAdmin() {
     const { data } = useQuery(GET_USER)
