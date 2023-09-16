@@ -119,7 +119,7 @@
   },
   "EventForm": {
     "change": "Change",
-    "new": "ew",
+    "new": "new",
     "eventName": "EVENT NAME",
     "feature": "FEATURE",
     "date": "Date",
