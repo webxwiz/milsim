@@ -1,10 +1,12 @@
+import { useTranslations } from 'next-intl'
 import styles from './Terms.module.scss'
 
 export default function Terms() {
+    const t = useTranslations('Terms')
 
     return (
         <div className={styles.terms}>
-            <p className={styles.title}>use of terms and privacy policy</p>
+            <p className={styles.title}>{t('titles')}</p>
             <p className={styles.subtitle}>RULES RELATING TO COMMON AREAS</p>
             <br />
             <p className={styles.text}>
