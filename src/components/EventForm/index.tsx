@@ -8,14 +8,16 @@ import { EditCard } from '@/uikit/RegisterCard/EditCard'
 import { Button } from '@/uikit/Button'
 import { EventFormProps, EventFormTypes, PlatoonType, RoleType, RolesType, SquadType } from './interface'
 import { FormModal } from '@/uikit/Modal/FormModal'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ImageUploader } from '@/uikit/ImageUploader/ImageUploader'
 import { UploadedImage } from '@/uikit/ImageUploader/interface'
 import { useMutation, useQuery } from '@apollo/client';
 import { CHANGE_EVENT, CREATE_EVENT } from '@/apollo/mutations/request';
 import { GET_ONE_EVENT } from '@/apollo/queries/request';
+import TextareaAutosize from 'react-textarea-autosize';
 
 export const EventForm = ({ id, isEdit }: EventFormProps) => {
+    const [text, setText] = useState("")
     const { data: eventData } = useQuery(GET_ONE_EVENT, {
         variables: {
             id,
@@ -149,7 +151,9 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
 
     const handleSetImage = async (image: UploadedImage[]) => {
         const formData = new FormData();
-        formData.append('file', image[0].preview);
+        // console.log(image[0].file)
+        formData.append('file', image[0].file);
+        console.log(formData)
     
         const response = await fetch(`${process.env.NEXT_PUBLIC_UPLOAD_URL}/api/image`, {
           method: 'POST',
@@ -275,6 +279,105 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         
     }
     const watchData = watch && watch('eventPlatoons')?.find((p: PlatoonType) => p.id === itemId)?.squads?.find((s: SquadType) => s.id === editSquadId)
+    const handleKeyDown = (event) => {
+        // Проверяем, была ли нажата клавиша Enter (код клавиши Enter - 13)
+        if (event.keyCode === 13) {
+          event.preventDefault(); // Отменяем стандартное поведение Enter (переход на новую строку)
+          const textarea = event.target;
+          const caretPosition = textarea.selectionStart;
+          const currentValue = textarea.value;
+    
+          // Добавляем два перевода строки (пустые строки) на место курсора
+          const newTextValue =
+            currentValue.substring(0, caretPosition) +
+            '\n\n' +
+            currentValue.substring(caretPosition);
+    
+          setText(newTextValue);
+        }
+      };
+      
+    const contextMenuRef = useRef(null);
+    const textareaRef = useRef(null);
+    const handleMenuItemClick = (action: string) => {
+  const textarea = textareaRef.current;
+  const text = textarea?.value;
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+
+  if (action === 'addHash') {
+    const newText = `${text.substring(0, start)}# ${text.substring(start, end)}${text.substring(end)}`;
+    textarea.value = newText;
+    setText(newText);
+  }
+
+  if (action === 'add2Hash') {
+    const newText = `${text.substring(0, start)}## ${text.substring(start, end)}${text.substring(end)}`;
+    textarea.value = newText;
+    setText(newText);
+  }
+
+  if (action === 'addImage') {
+    const selectedText = text.substring(start, end);
+    const imageMarkdown = `![Alt Text](${selectedText})`;
+    const newText = `${text.substring(0, start)}${imageMarkdown}${text.substring(end)}`;
+    textarea.value = newText;
+    setText(newText);
+  }
+
+  if (action === 'addBold') {
+    const selectedText = text.substring(start, end);
+    const boldMarkdown = `**${selectedText}**`;
+    const newText = `${text.substring(0, start)}${boldMarkdown}${text.substring(end)}`;
+    textarea.value = newText;
+    setText(newText);
+  }
+
+  if (action === 'addItalic') {
+    const selectedText = text.substring(start, end);
+    const italicMarkdown = `*${selectedText}*`;
+    const newText = `${text.substring(0, start)}${italicMarkdown}${text.substring(end)}`;
+    textarea.value = newText;
+    setText(newText);
+  }
+
+  if (action === 'addStrikethrough') {
+    const selectedText = text.substring(start, end);
+    const strikethroughMarkdown = `~~${selectedText}~~`;
+    const newText = `${text.substring(0, start)}${strikethroughMarkdown}${text.substring(end)}`;
+    textarea.value = newText;
+    setText(newText);
+  }
+
+  if (action === 'addLink') {
+    const selectedText = text.substring(start, end);
+    const linkURL = prompt('Введите URL ссылки:');
+    if (linkURL) {
+      const linkMarkdown = `[${selectedText}](${linkURL})`;
+      const newText = `${text.substring(0, start)}${linkMarkdown}${text.substring(end)}`;
+      textarea.value = newText;
+      setText(newText);
+    }
+  }
+
+  const menu = contextMenuRef.current;
+  // menu.style.display = 'none';
+};
+
+const handleMouseUp = () => {
+    const selection = window.getSelection();
+    const selectedText = selection.toString();
+    setSelectedText(selectedText);
+
+    const textarea = textareaRef.current;
+    const { scrollTop, scrollLeft, offsetTop, offsetLeft } = textarea;
+    const { clientX, clientY } = selection.getRangeAt(0).getBoundingClientRect();
+
+    const menu = contextMenuRef.current;
+    menu.style.top = `${clientY - offsetTop + scrollTop}px`;
+    menu.style.left = `${clientX - offsetLeft + scrollLeft}px`;
+    // menu.style.display = 'block';
+  };
 
     return (
         <div className={styles.event}>
@@ -296,6 +399,19 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                 isBigSingle
             />
             <p className={styles.title}>{isEdit ? 'Change' : 'Write'} DESCRIPTION </p>
+            <TextareaAutosize
+     onChange={(e) => setText(e.target.value)}
+     onKeyDown={handleKeyDown} // Добавляем обработчик события onKeyDown
+     placeholder="Description ..."
+     ref={textareaRef}
+     value={text}
+     className={styles.textArea}
+    //  onMouseUp={handleMouseUp}
+    //  {...register('eventDescription', { required: true })}
+/>
+      <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addBold')}>Bold</button>
+      <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addItalic')}>Italic</button>
+      <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addStrikethrough')}>Strikethrough</button>
             <textarea {...register('eventDescription', { required: true })} className={styles.textArea}></textarea>
             <p className={styles.title}>{isEdit ? 'Change' : 'Add'} Platoon</p>
             <div>

@@ -63,11 +63,8 @@ export default function index() {
           <Link className={styles.title} href={'/'}>
             Home
           </Link>
-          <Link className={styles.title} href={''}>
+          <Link className={styles.title} href={'/#events'}>
             Events
-          </Link>
-          <Link className={styles.title} href={''}>
-            Discord
           </Link>
           {session?.user ? (
             <p onClick={() => {
