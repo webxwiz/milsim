@@ -13,14 +13,23 @@ import { ImageUploader } from '@/uikit/ImageUploader/ImageUploader'
 import { UploadedImage } from '@/uikit/ImageUploader/interface'
 import { useMutation, useQuery } from '@apollo/client';
 import { CHANGE_EVENT, CREATE_EVENT } from '@/apollo/mutations/request';
-import { GET_ONE_EVENT } from '@/apollo/queries/request';
+import { GET_ONE_EVENT, GET_USER } from '@/apollo/queries/request';
 import TextareaAutosize from 'react-textarea-autosize';
 import Image from "next/image"
 import axios from 'axios';
-import { useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl'
+import Cookies from 'js-cookie'
+import { useRouter } from 'next/navigation';
+
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
  
 export const EventForm = ({ id, isEdit }: EventFormProps) => {
+    const router = useRouter()
+    
     const [text, setText] = useState("")
+    const { data: admin } = useQuery(GET_USER)
     const { data: eventData } = useQuery(GET_ONE_EVENT, {
         variables: {
             id,
@@ -48,6 +57,12 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             eventPlatoons: []
         },
     })
+
+    useEffect(() => {
+        if (admin && admin?.getUserByToken?.role !== 'ADMIN' || Cookies.get('token') === undefined) {
+            router.push('/')
+        }
+    }, [admin])
 
     useEffect(() => {
         if (eventData) {
@@ -381,7 +396,11 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             <p className={styles.title}>{isEdit ? t('change') : t('new')} {t('eventName')}</p>
             <input {...register('eventName', { required: true })} className={styles.input} />
             <p className={styles.title}>{isEdit ? t('change') : t('new')} {t('date')}</p>
-            <input {...register('eventDate', { required: true })} className={styles.input} />
+            <DatePicker
+                value={watch('eventDate')}
+                onChange={(date) => setValue('eventDate', new Date(date as never).toLocaleDateString())}
+                className={styles.input}
+            />
             <p className={styles.title}>{t('eventDuration')}</p>
             <input {...register('eventDuration', { required: true })} className={styles.input} />
             <p className={styles.title}>{isEdit ? t('change') : t('feature')} {t('image')}</p>

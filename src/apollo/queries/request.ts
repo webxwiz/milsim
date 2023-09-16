@@ -91,3 +91,14 @@ query GetOneEvent($id: ID) {
   }
 }
 `
+
+export const GET_USER = gql`
+query GetUserByToken {
+  getUserByToken {
+    _id
+    createdAt
+    discordId
+    role
+  }
+}
+`
