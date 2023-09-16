@@ -1,0 +1,12 @@
+{
+    "Home": {
+      "title": "ENList NOW!",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia.",
+      "teamwork": "Teamwork",
+      "communication": "Communication",
+      "discipline": "Discipline",
+      "selectEvent": "select an event",
+      "allEvents": "All Events",
+      "pastEvents": "Past Events"
+    }
+  }

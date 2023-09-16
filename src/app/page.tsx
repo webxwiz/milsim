@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Link, animateScroll as scroll } from 'react-scroll'
+import { useTranslations } from 'next-intl'
 
 import { Button } from '@/uikit/Button'
 import { AboutAny } from '@/uikit/AboutAny'
@@ -47,60 +47,6 @@ const infoData = [
   },
 ]
 
-// const allEvents = [
-//   {
-//     id: 111,
-//     title: 'Lorem ipsum 1',
-//     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-//     url: '/images/eventImg1.webp'
-//   },
-//   {
-//     id: 222,
-//     title: 'Lorem ipsum 2',
-//     description: 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-//     url: '/images/eventImg2.webp'
-//   },
-//   {
-//     id: 333,
-//     title: 'Lorem ipsum 3',
-//     description: 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-//     url: '/images/eventImg3.webp'
-//   },
-//   {
-//     id: 444,
-//     title: 'Lorem ipsum 4',
-//     description: 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-//     url: '/images/eventImg2.webp'
-//   },
-// ]
-
-const pastEventsData = [
-  {
-    id: 1111,
-    title: 'Lorem Ipsum Dolor Sit 1',
-    date: '24 aug 2023',
-    url: '/images/pastEvent1.webp'
-  },
-  {
-    id: 2222,
-    title: 'Lorem Ipsum Dolor Sit 2',
-    date: '25 sep 2023',
-    url: '/images/pastEvent1.webp'
-  },
-  {
-    id: 3333,
-    title: 'Lorem Ipsum Dolor Sit 3',
-    date: '26 oct 2023',
-    url: '/images/pastEvent1.webp'
-  },
-  {
-    id: 4444,
-    title: 'Lorem Ipsum Dolor Sit 4',
-    date: '27 aug 2023',
-    url: '/images/pastEvent1.webp'
-  }
-]
-
 const footerData = [
   {
     id: 12345,
@@ -141,12 +87,11 @@ const footerData = [
 
 export default function Home() {
   const router = useRouter()
+  const t = useTranslations('Home')
 
   const { data: eventsData } = useQuery(GET_ALL_EVENTS)
 
   const allEvents = eventsData?.getAllEvents || []
-
-  console.log(777777, eventsData)
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
