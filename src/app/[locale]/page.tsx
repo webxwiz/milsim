@@ -10,7 +10,7 @@ import { Event } from '@/uikit/Event'
 import { PastEvent } from '@/uikit/PastEvent'
 import { Slider } from '@/uikit/Slider'
 
-import styles from './Home.module.scss'
+import styles from "../Home.module.scss"
 import { useMutation, useQuery } from '@apollo/client'
 import { GET_ALL_EVENTS } from '@/apollo/queries/request'
 import { useRouter } from 'next/navigation'
@@ -95,7 +95,7 @@ export default function Home() {
   const [saveUser] = useMutation(SAVE_USER)
   const { data: session, status } = useSession()
   const router = useRouter()
-  const t = useTranslations('Home')
+  const t = useTranslations('Index');
 
   const { data: eventsData } = useQuery(GET_ALL_EVENTS)
 
@@ -127,7 +127,7 @@ export default function Home() {
       <div className={styles.header}>
         <div className={styles.adaptiveBackground}>
           <div className={styles.headerInfo}>
-            <p className={styles.headerBigTitle}>ENList NOW!</p>
+            <p className={styles.headerBigTitle}>{t('title')}</p>
             <p className={styles.hdDescription}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia.
             </p>

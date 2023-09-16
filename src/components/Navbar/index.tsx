@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { SAVE_USER } from '@/apollo/mutations/request'
 import { useMutation } from '@apollo/client'
+import ChooseLanguage from '../ChooseLanguage'
 
 export default function index() {
   const { data: session, status } = useSession()
@@ -66,6 +67,7 @@ export default function index() {
           <Link className={styles.title} href={'/#events'}>
             Events
           </Link>
+          <ChooseLanguage />
           {session?.user ? (
             <p onClick={() => {
               Cookies.remove('token')

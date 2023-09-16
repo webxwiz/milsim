@@ -1,15 +1,14 @@
-import './globals.css'
+import '../globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar/index'
 import Footer from '@/components/Footer/index'
 import ApolloProvider from '@/apollo/ApolloProvider'
-import { NextAuthProvider } from './NextAuthProvider'
+import { NextAuthProvider } from '../NextAuthProvider'
 import {NextIntlClientProvider} from 'next-intl'
 import {notFound} from 'next/navigation';
- 
 export function generateStaticParams() {
-  return [{locale: 'en'}, {locale: 'de'}];
+  return [{locale: 'en'}, {locale: 'fr'}];
 }
  
 const inter = Inter({ subsets: ['latin'] })
@@ -26,13 +25,17 @@ export default async function RootLayout({
   children: React.ReactNode,
 }) {
   let messages;
-  messages = (await import(`./${locale}.json`)).default;
+  try {
+    messages = (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    notFound();
+  }
   return (
     <html lang="en">
       <body className={inter.className}>
           <NextAuthProvider>
             <ApolloProvider>
-            <NextIntlClientProvider locale={'en'}>
+            <NextIntlClientProvider locale={locale} messages={messages}>
                 <Navbar />
                   {children}
                 <Footer />
