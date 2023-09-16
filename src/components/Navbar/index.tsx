@@ -67,7 +67,7 @@ export default function index() {
           <Link className={styles.title} href={'/#events'}>
             Events
           </Link>
-          <ChooseLanguage />
+          {/* <ChooseLanguage /> */}
           {session?.user ? (
             <p onClick={() => {
               Cookies.remove('token')

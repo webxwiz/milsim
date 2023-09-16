@@ -8,7 +8,7 @@ import { NextAuthProvider } from '../NextAuthProvider'
 import {NextIntlClientProvider} from 'next-intl'
 import {notFound} from 'next/navigation';
 export function generateStaticParams() {
-  return [{locale: 'en'}, {locale: 'fr'}];
+  return [{locale: 'en'}];
 }
  
 const inter = Inter({ subsets: ['latin'] })
