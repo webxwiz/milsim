@@ -143,9 +143,25 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         }
     }
 
-    const handleSetImage = (image: UploadedImage[]) => {
-        setValue('eventImage', image[0].preview)
-    }
+    // const handleSetImage = (image: UploadedImage[]) => {
+    //     setValue('eventImage', image[0].preview)
+    // }
+
+    const handleSetImage = async (image: UploadedImage[]) => {
+        const formData = new FormData();
+        formData.append('file', image[0].preview);
+    
+        const response = await fetch(`${process.env.NEXT_PUBLIC_UPLOAD_URL}/api/image`, {
+          method: 'POST',
+          body: formData,
+        });
+    
+        if (response.ok) {
+          console.log('Изображение успешно загружено');
+        } else {
+          console.error('Ошибка при загрузке изображения');
+        }
+      };
 
     const eventPlatoons = watch('eventPlatoons') || []
 

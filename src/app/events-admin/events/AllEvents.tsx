@@ -4,6 +4,7 @@ import { Button } from "@/uikit/Button"
 import { GET_ALL_EVENTS } from "@/apollo/queries/request"
 import { useMutation, useQuery } from "@apollo/client"
 import { EVENT_DELETE } from "@/apollo/mutations/request"
+import Link from 'next/link'
 
 const eventsData = [
     {
@@ -60,7 +61,7 @@ export const AllEvents = () => {
                     />
                 ))}
             </div>
-            <Button title='Create post' />
+           <Link href="/create-event"> <Button title='Create post' /></Link>
         </div>
     )
 }
