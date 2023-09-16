@@ -15,7 +15,9 @@ import { useMutation, useQuery } from '@apollo/client';
 import { CHANGE_EVENT, CREATE_EVENT } from '@/apollo/mutations/request';
 import { GET_ONE_EVENT } from '@/apollo/queries/request';
 import TextareaAutosize from 'react-textarea-autosize';
-
+import Image from "next/image"
+import axios from 'axios';
+ 
 export const EventForm = ({ id, isEdit }: EventFormProps) => {
     const [text, setText] = useState("")
     const { data: eventData } = useQuery(GET_ONE_EVENT, {
@@ -90,7 +92,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                         _id: id,
                         data: {
                             date: new Date(event.eventDate),
-                            description: event.eventDescription,
+                            description: text,
                             duration: Number(event.eventDuration),
                             image: event.eventImage,
                             name: event.eventName,
@@ -115,7 +117,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                 variables: {
                     createEventInput: {
                         date: new Date(event.eventDate),
-                        description: event.eventDescription,
+                        description: text,
                         duration: Number(event.eventDuration),
                         image: event.eventImage,
                         name: event.eventName,
@@ -149,22 +151,24 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     //     setValue('eventImage', image[0].preview)
     // }
 
+    const [previewImage, setPreviewImage] = useState("")
+
     const handleSetImage = async (image: UploadedImage[]) => {
         const formData = new FormData();
-        // console.log(image[0].file)
-        formData.append('file', image[0].file);
-        console.log(formData)
-    
-        const response = await fetch(`${process.env.NEXT_PUBLIC_UPLOAD_URL}/api/image`, {
-          method: 'POST',
-          body: formData,
-        });
-    
-        if (response.ok) {
-          console.log('Изображение успешно загружено');
-        } else {
-          console.error('Ошибка при загрузке изображения');
-        }
+        formData.append("avatar", image[0].file, image[0].file.name);
+        // const token = Cookies.get('token');
+        const config = {
+            method: "POST",
+            url: "/avatar",
+            headers: {
+                "Content-Type": "multipart/form-data",
+                // Authorization: `Bearer ${token}`,
+            },
+            data: formData,
+        };
+        await axios(config)
+            .then(response => setPreviewImage(response.data.user))
+            .catch(err => console.log(err.message));
       };
 
     const eventPlatoons = watch('eventPlatoons') || []
@@ -279,7 +283,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         
     }
     const watchData = watch && watch('eventPlatoons')?.find((p: PlatoonType) => p.id === itemId)?.squads?.find((s: SquadType) => s.id === editSquadId)
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: any) => {
         // Проверяем, была ли нажата клавиша Enter (код клавиши Enter - 13)
         if (event.keyCode === 13) {
           event.preventDefault(); // Отменяем стандартное поведение Enter (переход на новую строку)
@@ -364,21 +368,6 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
   // menu.style.display = 'none';
 };
 
-const handleMouseUp = () => {
-    const selection = window.getSelection();
-    const selectedText = selection.toString();
-    setSelectedText(selectedText);
-
-    const textarea = textareaRef.current;
-    const { scrollTop, scrollLeft, offsetTop, offsetLeft } = textarea;
-    const { clientX, clientY } = selection.getRangeAt(0).getBoundingClientRect();
-
-    const menu = contextMenuRef.current;
-    menu.style.top = `${clientY - offsetTop + scrollTop}px`;
-    menu.style.left = `${clientX - offsetLeft + scrollLeft}px`;
-    // menu.style.display = 'block';
-  };
-
     return (
         <div className={styles.event}>
             <FormModal isOpen={platoonModal} onSubmit={createPlatoon} mode='platoon' onClose={handlePlatoonModal}  />
@@ -399,6 +388,10 @@ const handleMouseUp = () => {
                 isBigSingle
             />
             <p className={styles.title}>{isEdit ? 'Change' : 'Write'} DESCRIPTION </p>
+            <div className={styles.changeIcon}>
+            <Image src="/B.svg" alt="B" width="12" height="25" onClick={() => handleMenuItemClick('addBold')} />
+      <Image src="/I.svg" alt="B" width="14" height="14" onClick={() => handleMenuItemClick('addItalic')} />
+      </div>
             <TextareaAutosize
      onChange={(e) => setText(e.target.value)}
      onKeyDown={handleKeyDown} // Добавляем обработчик события onKeyDown
@@ -409,10 +402,9 @@ const handleMouseUp = () => {
     //  onMouseUp={handleMouseUp}
     //  {...register('eventDescription', { required: true })}
 />
-      <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addBold')}>Bold</button>
-      <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addItalic')}>Italic</button>
-      <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addStrikethrough')}>Strikethrough</button>
-            <textarea {...register('eventDescription', { required: true })} className={styles.textArea}></textarea>
+
+      {/* <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addItalic')}>Italic</button> */}
+            {/* <textarea {...register('eventDescription', { required: true })} className={styles.textArea}></textarea> */}
             <p className={styles.title}>{isEdit ? 'Change' : 'Add'} Platoon</p>
             <div>
                 <div className={styles.cards}>

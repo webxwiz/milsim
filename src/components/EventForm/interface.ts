@@ -14,7 +14,7 @@ export interface EventFormTypes {
 }
 
 export interface PlatoonType {
-    id: never
+    _id: string
     name: string
     color: string
     image: string
@@ -22,7 +22,7 @@ export interface PlatoonType {
 }
 
 export interface SquadType {
-    id: never
+    _id: string
     name: string
     roles: RoleType[]
 
@@ -32,13 +32,13 @@ export interface SquadType {
 }
 
 export interface RoleType {
-    id: string | number
+    _id: string | number
     name: string
     count: number | string
 }
 
 export interface RolesType {
-    id: string | number
+    _id: string | number
     discordId: String
     name: string
     role: String
