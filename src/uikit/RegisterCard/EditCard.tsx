@@ -10,6 +10,7 @@ import Dropdown from 'react-dropdown'
 import { useSession } from 'next-auth/react'
 import { RolesType } from '@/components/EventForm/interface'
 import { Modal } from '../Modal'
+import { useTranslations } from 'next-intl'
 
 export const EditCard = ({
     title,
@@ -28,6 +29,8 @@ export const EditCard = ({
 }: RegisterCardProps) => {
     const { data: session } = useSession()
 
+    const t = useTranslations('Event')
+
     const [role, setRole] = useState('')
     const [playerName, setPlayerName] = useState('')
     const [isOpenModal, setIsOpenModal] = useState(false)
@@ -37,8 +40,6 @@ export const EditCard = ({
     const userId = session?.user?.id
 
     const roleData = dataRoles.find((_, i) => i === indexId)
-
-    console.log('iddd', userId)
     
     const [data, setData] = useState(dataRoles)
 
@@ -77,17 +78,6 @@ export const EditCard = ({
         if (isMyRole) {
             handleRole && handleRole(squadId as string, role.label as never, playerName, isMyRole, roleData._id as string)
             setBusyRoles([])
-            // setData(
-            //     dataRoles.map((e: any) => {
-            //         if (e.name === busyOptions?.[0]?.label) {
-            //             e.count += 1
-
-            //             return e
-            //         }
-
-            //         return e
-            //     })
-            // )
         }
         handleChangeModal()
     }
@@ -99,8 +89,6 @@ export const EditCard = ({
         )
     }
     
-    console.log(2829, busyOptions?.[0])
-    
     return (
         <div className={styles.editCard}>
             <Modal isOpen={isOpenModal} onClose={handleChangeModal} onSubmit={handleRoleRemove} />
@@ -110,7 +98,7 @@ export const EditCard = ({
             <p className={styles.title}>{title}</p>
             {isSelect ? (
                 <div className={styles.selectRole}>
-                    {!isMyRole && allRolesTaken && <p className={styles.title}>All roles are taken</p>}
+                    {!isMyRole && allRolesTaken && <p className={styles.title}>{t('allRolesTaken')}</p>}
                     {isShowSelect && <>
                         <Dropdown
                             options={isMyRole ? busyOptions : options}
@@ -130,12 +118,12 @@ export const EditCard = ({
                                     <IoMdArrowDropupCircle className={styles.arrowDropdown} />
                                 </div>
                             }
-                            placeholder='Role A'
+                            placeholder={t('roleA')}
                         />
                         <input
                             value={`${isMyRole ? busyOptions?.[0]?.playerName : playerName}`}
                             onChange={(e) => setPlayerName(e.target.value)}
-                            placeholder='Player Name'
+                            placeholder={t('playerName')}
                             disabled={isMyRole}
                             className={styles.input}
                             style={{
@@ -166,7 +154,7 @@ export const EditCard = ({
             </div>}
             {isEdit && (
                 <div onClick={onEdit} className={styles.button}>
-                    <p>Edit</p>
+                    <p>{t('edit')}</p>
                 </div>
             )}
         </div>

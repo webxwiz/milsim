@@ -3,12 +3,14 @@ import { IoClose } from 'react-icons/io5'
 
 import { ModalProps } from './interface'
 import styles from './Modal.module.scss'
+import { useTranslations } from 'next-intl'
 
 export const Modal = ({
     isOpen,
     onClose,
     onSubmit,
 }: ModalProps) => {
+    const t = useTranslations('ConfirmModal')
 
     const handleSubmit = () => {
         onSubmit && onSubmit()
@@ -22,11 +24,11 @@ export const Modal = ({
                     <IoClose onClick={onClose} size={30} className={styles.close} />
                 </div>
                 <div className={styles.content}>
-                    <p className={styles.title}>Please confirm</p>
-                    <p className={styles.bigTitle}>Are you sure?</p>
+                    <p className={styles.title}>{t('confirm')}</p>
+                    <p className={styles.bigTitle}>{t('sure')}</p>
                     <div className={styles.buttons}>
-                        <button onClick={handleSubmit}>Yes</button>
-                        <button onClick={onClose}>No</button>
+                        <button onClick={handleSubmit}>{t('yes')}</button>
+                        <button onClick={onClose}>{t('no')}</button>
                     </div>
                 </div>
             </div>

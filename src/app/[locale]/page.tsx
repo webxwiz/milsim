@@ -20,82 +20,82 @@ import { signIn, signOut, useSession } from "next-auth/react"
 import Cookies from 'js-cookie'
 import { SAVE_USER } from '@/apollo/mutations/request'
 
-const infoData = [
-  {
-    id: 11,
-    title: 'HOW IT WORKS',
-    description: 'Lorem ipsum dolor sit amet',
-    iconUrl: '/svg/helmet.svg'
-  },
-  {
-    id: 22,
-    title: 'WHAT IT TAKES',
-    description: 'what’s required To Join A Platoon',
-    iconUrl: '/svg/engineer.svg'
-  },
-  {
-    id: 33,
-    title: 'HOW TO JOIN',
-    description: 'Lorem ipsum dolor sit amet',
-    iconUrl: '/svg/token.svg'
-  },
-  {
-    id: 44,
-    title: 'BOOTCAMP',
-    description: 'Basic Training in the Bootcamp',
-    iconUrl: '/svg/boots.svg'
-  },
-  {
-    id: 45,
-    title: 'ABOUT US',
-    description: 'All About MilSim Academy',
-    iconUrl: '/svg/UAFlag.svg'
-  },
-]
-
-const footerData = [
-  {
-    id: 12345,
-    url: '/svg/helmet.svg',
-    style: 'title',
-    title: 'how it works',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
-  },
-  {
-    id: 42342,
-    style: 'orangeTitle',
-    url: '/svg/engineer.svg',
-    title: 'what it takes',
-    description: 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
-  },
-  {
-    id: 423413,
-    style: 'title',
-    url: '/svg/token.svg',
-    title: 'how to join',
-    description: 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
-  },
-  {
-    id: 13414,
-    style: 'orangeTitle',
-    url: '/svg/boots.svg',
-    title: 'bootcamp',
-    description: 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
-  },
-  {
-    id: 4425,
-    style: 'title',
-    url: '/svg/UAFlag.svg',
-    title: 'about us',
-    description: 'Lorem 5 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia. Cras ante nunc, eleifend nec malesuada id, malesuada in tellus. Integer et aliquam enim, et pulvinar nulla. Integer ligula felis, finibus nec fringilla id, accumsan eget sem.'
-  },
-]
-
 export default function Home() {
   const [saveUser] = useMutation(SAVE_USER)
   const { data: session, status } = useSession()
   const router = useRouter()
-  const t = useTranslations('Index');
+  const t = useTranslations('Home')
+
+  const infoData = [
+    {
+      id: 11,
+      title: t('infoData.title1'),
+      description: t('infoData.description1'),
+      iconUrl: '/svg/helmet.svg'
+    },
+    {
+      id: 22,
+      title: t('infoData.title2'),
+      description: t('infoData.description2'),
+      iconUrl: '/svg/engineer.svg'
+    },
+    {
+      id: 33,
+      title: t('infoData.title3'),
+      description: t('infoData.description3'),
+      iconUrl: '/svg/token.svg'
+    },
+    {
+      id: 44,
+      title: t('infoData.title4'),
+      description: t('infoData.description4'),
+      iconUrl: '/svg/boots.svg'
+    },
+    {
+      id: 45,
+      title: t('infoData.title5'),
+      description: t('infoData.description5'),
+      iconUrl: '/svg/UAFlag.svg'
+    },
+  ]
+  
+  const footerData = [
+    {
+      id: 12345,
+      url: '/svg/helmet.svg',
+      style: 'title',
+      title: t('infoData.title1'),
+      description: t('infoData.fullInfo')
+    },
+    {
+      id: 42342,
+      style: 'orangeTitle',
+      url: '/svg/engineer.svg',
+      title: t('infoData.title2'),
+      description: t('infoData.fullInfo2')
+    },
+    {
+      id: 423413,
+      style: 'title',
+      url: '/svg/token.svg',
+      title: t('infoData.title3'),
+      description: t('infoData.fullInfo3')
+    },
+    {
+      id: 13414,
+      style: 'orangeTitle',
+      url: '/svg/boots.svg',
+      title: t('infoData.title4'),
+      description: t('infoData.fullInfo4')
+    },
+    {
+      id: 4425,
+      style: 'title',
+      url: '/svg/UAFlag.svg',
+      title: t('infoData.title5'),
+      description: t('infoData.fullInfo5')
+    },
+  ]
 
   const { data: eventsData } = useQuery(GET_ALL_EVENTS)
 
@@ -129,26 +129,26 @@ export default function Home() {
           <div className={styles.headerInfo}>
             <p className={styles.headerBigTitle}>{t('title')}</p>
             <p className={styles.hdDescription}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia.
+             {t('description')}
             </p>
             <div className={styles.facts}>
               <div>
                 <Image alt='' src={'/svg/team.svg'} width={58} height={32} />
-                <p>Teamwork</p>
+                <p>{t('teamwork')}</p>
               </div>
               <div>
                 <Image alt='' src={'/svg/walkieTalkie.svg'} width={20} height={47} />
-                <p>Communication</p>
+                <p>{t('communication')}</p>
               </div>
               <div>
                 <Image alt='' src={'/svg/shoulderStraps.svg'} width={35} height={36} />
-                <p>Discipline</p>
+                <p>{t('discipline')}</p>
               </div>
             </div>
             <div className={styles.footerItems}>
               <div className={styles.headerEvent}>
               <Link style={{textDecoration: "none", color: "white"}} href={'/#events'}>
-                <p>select an event</p>
+                <p>{t('selectEvent')}t</p>
                 </Link>
               </div>
               {session?.user ? (
@@ -156,15 +156,13 @@ export default function Home() {
               Cookies.remove('token')
               signOut()
             }} className={styles.title}>
-              Logout
-            </p>
-          ) : (
-            <div className={styles.discordConnect}>
-              <Button onClick={signIn} title='Connect'>
-              </Button>
-            </div>
-          )}
-              {/* <Button title='Connect' /> */}
+                {t('logout')}
+              </p>
+            ) : (
+              <div className={styles.discordConnect}>
+                <Button onClick={signIn} title={t('connect')} />
+              </div>
+            )}
             </div>
           </div>
         </div>
@@ -193,7 +191,7 @@ export default function Home() {
       <div className={styles.allEvents} id='events'>
         <div className={styles.adaptiveBackground}>
           <div className={styles.eventTitle}>
-            <p className={styles.bigTitle}>All Events</p>
+            <p className={styles.bigTitle}>{t('allEvents')}</p>
           </div>
           <div className={styles.eventItems}>
           <Slider>
@@ -211,7 +209,7 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.pastEvents}>
-        <p className={styles.bigTitle}>Past Events</p>
+        <p className={styles.bigTitle}>{t('pastEvents')}</p>
         <div className={styles.pastEventItems}>
           {allEvents.map(e => (
             <PastEvent

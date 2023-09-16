@@ -7,9 +7,12 @@ import Image from 'next/image'
 
 import styles from './ImageUploader.module.scss'  
 import { ImageUploaderProps, UploadedImage } from './interface';
+import { useTranslations } from 'next-intl';
 
 export const ImageUploader = ({ defaultImage, isSingle, isBigSingle, onSubmit }: ImageUploaderProps) => {
   const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>(defaultImage ? [defaultImage] as never : [] as UploadedImage[]);
+
+  const t = useTranslations('Global')
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const newImages: UploadedImage[] = acceptedFiles.map((file) => ({
@@ -69,7 +72,7 @@ export const ImageUploader = ({ defaultImage, isSingle, isBigSingle, onSubmit }:
                     </div>}
                     <Image
                         src={image.preview}
-                        alt={`Uploaded Image ${index}`}
+                        alt={`${t('uploadedImage')} ${index}`}
                         width={279}
                         height={186}
                         className={isSingle ? styles.singleImage : styles.image}
@@ -79,7 +82,7 @@ export const ImageUploader = ({ defaultImage, isSingle, isBigSingle, onSubmit }:
             {isSingle && <div className={styles.singleAddImage} {...getRootProps()}>
                 <input {...getInputProps()} />
                 <CiImageOn size={30} />
-                <p>{uploadedImages?.length ? 'New File' : 'Upload a File'}</p>
+                <p>{uploadedImages?.length ? t('newFile') : t('uploadFile')}</p>
             </div>}
         </div>
     </div>

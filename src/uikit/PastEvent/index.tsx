@@ -6,9 +6,12 @@ import { PastEventProps } from "./interface"
 import styles from './PastEvent.module.scss'
 import { useState } from "react"
 import { Modal } from "../Modal"
+import { useTranslations } from "next-intl"
 
 export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEventProps) => {
     const router = useRouter()
+
+    const t = useTranslations('Global');
 
     const [openModal, setOpenModal] = useState(false)
 
@@ -18,7 +21,7 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
         router.push(`/${path}?id=${id}`)
     }
 
-    const button = isEdit ? 'Edit' : 'Read'
+    const button = isEdit ? t('edit') : t('read')
     return (
         <div className={styles.pastEvent}>
             <Modal onSubmit={() => eventDelete && eventDelete(id)} isOpen={openModal} onClose={handleModal} />
@@ -26,7 +29,7 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
                 <div className={styles.imageBlock}>
                     {/* <Image alt='' src={url} width={272} height={120} className={styles.image} /> */}
                     <div className={styles.operation}>
-                        <p>operation:</p>
+                        <p>{t('operation')}</p>
                         <p>{title}</p>
                     </div>
                 </div>

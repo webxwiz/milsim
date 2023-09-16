@@ -2,8 +2,11 @@ import { RiCloseCircleFill } from 'react-icons/ri'
 
 import { RegisterCardProps } from './interface'
 import styles from './RegisterCard.module.scss'
+import { useTranslations } from 'next-intl'
 
 export const RegisterCard = ({ platoonId, title, data, isEdit, addSquad, removeSquad, removePlatoon, onChangeName }: RegisterCardProps) => {
+    const t = useTranslations('Event')
+
     return (
         <div className={styles.card}>
             <div className={styles.header}>
@@ -24,7 +27,7 @@ export const RegisterCard = ({ platoonId, title, data, isEdit, addSquad, removeS
             </div>
             {isEdit && (
                 <div onClick={addSquad} className={styles.button}>
-                    <p>add squad</p>
+                    <p>{t('addSquad')}</p>
                 </div>
             )}
         </div>

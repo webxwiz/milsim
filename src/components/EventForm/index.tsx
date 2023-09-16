@@ -17,6 +17,7 @@ import { GET_ONE_EVENT } from '@/apollo/queries/request';
 import TextareaAutosize from 'react-textarea-autosize';
 import Image from "next/image"
 import axios from 'axios';
+import { useTranslations } from 'next-intl';
  
 export const EventForm = ({ id, isEdit }: EventFormProps) => {
     const [text, setText] = useState("")
@@ -25,6 +26,8 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             id,
         }
     })
+
+    const t = useTranslations('EventForm');
 
     const [createEvent, { error }] = useMutation(CREATE_EVENT)
     const [changeEvent, { error: changeEventError }] = useMutation(CHANGE_EVENT)
@@ -375,19 +378,19 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
 
             <FormModal isOpen={editSquad} isEdit watchData={watchData} itemId={itemId} squadId={editSquadId} onSubmit={onEditSquad} mode='squad' onClose={handleEditSquad} />
 
-            <p className={styles.title}>{isEdit ? 'Change' : 'NEW'} EVENT NAME</p>
+            <p className={styles.title}>{isEdit ? t('change') : t('new')} {t('eventName')}</p>
             <input {...register('eventName', { required: true })} className={styles.input} />
-            <p className={styles.title}>{isEdit ? 'Change' : 'NEW'} Date</p>
+            <p className={styles.title}>{isEdit ? t('change') : t('new')} {t('date')}</p>
             <input {...register('eventDate', { required: true })} className={styles.input} />
-            <p className={styles.title}>Duration of the event</p>
+            <p className={styles.title}>{t('eventDuration')}</p>
             <input {...register('eventDuration', { required: true })} className={styles.input} />
-            <p className={styles.title}>{isEdit ? 'Change' : 'FEATURE'} IMAGE</p>
+            <p className={styles.title}>{isEdit ? t('change') : t('feature')} {t('image')}</p>
             <ImageUploader
                 defaultImage={watch('eventImage') ? { preview: watch('eventImage')} : undefined}
                 onSubmit={handleSetImage}
                 isBigSingle
             />
-            <p className={styles.title}>{isEdit ? 'Change' : 'Write'} DESCRIPTION </p>
+            <p className={styles.title}>{isEdit ? t('change') : t('write')} {t('description')} </p>
             <div className={styles.changeIcon}>
             <Image src="/B.svg" alt="B" width="12" height="25" onClick={() => handleMenuItemClick('addBold')} />
       <Image src="/I.svg" alt="B" width="14" height="14" onClick={() => handleMenuItemClick('addItalic')} />
@@ -395,7 +398,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             <TextareaAutosize
      onChange={(e) => setText(e.target.value)}
      onKeyDown={handleKeyDown} // Добавляем обработчик события onKeyDown
-     placeholder="Description ..."
+     placeholder={t('description').toLowerCase() + '...'}
      ref={textareaRef}
      value={text}
      className={styles.textArea}
@@ -405,7 +408,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
 
       {/* <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addItalic')}>Italic</button> */}
             {/* <textarea {...register('eventDescription', { required: true })} className={styles.textArea}></textarea> */}
-            <p className={styles.title}>{isEdit ? 'Change' : 'Add'} Platoon</p>
+            <p className={styles.title}>{isEdit ? t('change') : t('add')} {t('platoon')}</p>
             <div>
                 <div className={styles.cards}>
                     <div onClick={handlePlatoonModal} className={styles.addPlatoon}>
@@ -462,8 +465,8 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                 </div>
             </div>
             <div className={styles.footerButtons}>
-                <Button title='Confirm' onClick={handleSubmit(handleEventSubmit)} />
-                <Button title='Cancel' isCancel />
+                <Button title={t('confirm')} onClick={handleSubmit(handleEventSubmit)} />
+                <Button title={t('cancel')} isCancel />
             </div>
         </div>
     )
