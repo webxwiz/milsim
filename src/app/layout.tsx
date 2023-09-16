@@ -5,7 +5,13 @@ import Navbar from '@/components/Navbar/index'
 import Footer from '@/components/Footer/index'
 import ApolloProvider from '@/apollo/ApolloProvider'
 import { NextAuthProvider } from './NextAuthProvider'
-
+import {NextIntlClientProvider} from 'next-intl'
+import {notFound} from 'next/navigation';
+ 
+export function generateStaticParams() {
+  return [{locale: 'en'}, {locale: 'de'}];
+}
+ 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -15,17 +21,22 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  params: {locale}
 }: {
   children: React.ReactNode,
 }) {
+  let messages;
+  messages = (await import(`./${locale}.json`)).default;
   return (
     <html lang="en">
       <body className={inter.className}>
           <NextAuthProvider>
             <ApolloProvider>
-              <Navbar />
-                {children}
-              <Footer />
+            <NextIntlClientProvider locale={'en'}>
+                <Navbar />
+                  {children}
+                <Footer />
+              </NextIntlClientProvider>
             </ApolloProvider>
           </NextAuthProvider>
       </body>
