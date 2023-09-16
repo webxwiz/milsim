@@ -1,5 +1,11 @@
 {
-    "Index": {
-      "title": "Hello world!- French"
-    }
+  "Index": {
+    "title": "Hello world!",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris. Nam blandit magna eget eros consectetur lacinia.",
+    "first_description_1": "Teamwork",
+    "first_description_2": "Communication",
+    "first_description_3": "Discipline",
+    "button_1": "select an event",
+    "button_2": "connect"
   }
+}
