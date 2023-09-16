@@ -7,7 +7,7 @@ import styles from './PastEvent.module.scss'
 import { useState } from "react"
 import { Modal } from "../Modal"
 
-export const PastEvent = ({ id, title, date, url, isEdit }: PastEventProps) => {
+export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEventProps) => {
     const router = useRouter()
 
     const [openModal, setOpenModal] = useState(false)
@@ -21,10 +21,10 @@ export const PastEvent = ({ id, title, date, url, isEdit }: PastEventProps) => {
     const button = isEdit ? 'Edit' : 'Read'
     return (
         <div className={styles.pastEvent}>
-            <Modal isOpen={openModal} onClose={handleModal} />
+            <Modal onSubmit={() => eventDelete && eventDelete(id)} isOpen={openModal} onClose={handleModal} />
             <div className={styles.event}>
                 <div className={styles.imageBlock}>
-                    <Image alt='' src={url} width={272} height={120} className={styles.image} />
+                    {/* <Image alt='' src={url} width={272} height={120} className={styles.image} /> */}
                     <div className={styles.operation}>
                         <p>operation:</p>
                         <p>{title}</p>

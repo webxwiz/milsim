@@ -4,4 +4,5 @@ export interface PastEventProps {
     date: string
     url: string
     isEdit?: boolean
+    eventDelete?: (id: number | string) => void
 }

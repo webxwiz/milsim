@@ -124,3 +124,17 @@ mutation AddUserToEvent($addUserToEventInput: AddUserToEventInput) {
     }
   }
 `
+
+export const EVENT_DELETE = gql`
+mutation DeleteEvent($id: ID) {
+    deleteEvent(_id: $id)
+  }
+`
+
+export const REMOVE_FROM_BUSY_ROLES = gql`
+mutation RemoveFromBusyRoles($removeFromBusyRolesInput: RemoveFromBusyRolesInput) {
+  removeFromBusyRoles(removeFromBusyRolesInput: $removeFromBusyRolesInput) {
+    _id
+  }
+}
+`

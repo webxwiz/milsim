@@ -16,4 +16,5 @@ export interface RegisterCardProps {
     onChangeNameRole?: (id: string, squadId: string, roleId: string, value: string, type: string) => void
     removeSquadRole?: (id: string, squadId: string, roleId: string) => void
     platoonId?: string
+    indexId?: number
 }

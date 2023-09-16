@@ -51,12 +51,17 @@ export const EditCard = ({
         label: item.name,
         className: styles.dropdownOption
     }))
-    const [busyRoles, setBusyRoles] = useState<RolesType[]>(busyRolesData || [])
+    const [busyRoles, setBusyRoles] = useState<RolesType[] | undefined>(busyRolesData || [])
+
+    useEffect(() => {
+        setBusyRoles(busyRolesData)
+    }, [busyRolesData])
 
     const busyOptions = busyRoles?.filter((e: RolesType) => e.discordId === userId).map((item: RolesType, index: number) => ({
         value: index.toString(),
         label: item.role,
         discordId: item.discordId,
+        playerName: item.playerName,
         className: styles.dropdownOption
     }))
 
@@ -66,20 +71,25 @@ export const EditCard = ({
 
     const handleRoleLogic = () => {
         handleRole && handleRole(squadId as string, role.label as never, playerName, isMyRole, roleData._id as string)
+    }
+
+    const handleRoleRemove = () => {
         if (isMyRole) {
+            handleRole && handleRole(squadId as string, role.label as never, playerName, isMyRole, roleData._id as string)
             setBusyRoles([])
-            setData(
-                dataRoles.map((e: any) => {
-                    if (e.name === busyOptions?.[0]?.label) {
-                        e.count += 1
+            // setData(
+            //     dataRoles.map((e: any) => {
+            //         if (e.name === busyOptions?.[0]?.label) {
+            //             e.count += 1
 
-                        return e
-                    }
+            //             return e
+            //         }
 
-                    return e
-                })
-            )
+            //         return e
+            //     })
+            // )
         }
+        handleChangeModal()
     }
 
     const handleRemoveRole = (roleId: string) => {
@@ -89,9 +99,11 @@ export const EditCard = ({
         )
     }
     
+    console.log(2829, busyOptions?.[0])
+    
     return (
         <div className={styles.editCard}>
-            <Modal isOpen={isOpenModal} onClose={handleChangeModal} onSubmit={handleRoleLogic} />
+            <Modal isOpen={isOpenModal} onClose={handleChangeModal} onSubmit={handleRoleRemove} />
             <div onClick={() => removeSquad && removeSquad(platoonId as string, squadId as string)} className={styles.remove}>
                 {!isSelect && <RiCloseCircleFill size={29} color={'rgba(193, 87, 73, 1)'} />}
             </div>

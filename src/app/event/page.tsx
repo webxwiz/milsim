@@ -8,7 +8,7 @@ import { EventProps } from './interface'
 import { RoleType, SquadType } from '@/components/EventForm/interface'
 import { useMutation, useQuery } from '@apollo/client'
 import { GET_ONE_EVENT } from '@/apollo/queries/request'
-import { ADD_USER_TO_EVENT } from '@/apollo/mutations/request'
+import { ADD_USER_TO_EVENT, REMOVE_FROM_BUSY_ROLES } from '@/apollo/mutations/request'
 
 const eventData2 = {
     id: 'tewgwegwe',
@@ -99,20 +99,27 @@ export default function Event(props: EventProps) {
 
     const eventId = props?.searchParams?.id
 
-    const { data: eventData } = useQuery(GET_ONE_EVENT, {
+    const { data: eventData, refetch } = useQuery(GET_ONE_EVENT, {
         variables: {
             id: eventId,
         }
     })
 
-    const [addUserToEvent, { error: eventError }] = useMutation(ADD_USER_TO_EVENT)
+    const [addUserToEvent] = useMutation(ADD_USER_TO_EVENT)
+    const [removeRoleFromBusyRoles] = useMutation(REMOVE_FROM_BUSY_ROLES)
 
-    console.log(223, eventData)
+    console.log(223, eventData?.getOneEvent)
 
     const handleRole = (id: string, role: RoleType, name: string, isRemove: boolean, roleId: string) => {
-        console.log(24, id, role, name, roleId)
         if (isRemove) {
-            console.log('for remove my item')
+            removeRoleFromBusyRoles({
+                variables: {
+                    removeFromBusyRolesInput: {
+                        roleId,
+                        squadId: id
+                      }
+                }
+            }).then(() => refetch())
         } else if (id && role && name?.trim()) {
             addUserToEvent({
                 variables: {
@@ -123,14 +130,12 @@ export default function Event(props: EventProps) {
                         playerName: name,
                     }
                 }
-            })
-            console.log(222222, eventError)
+            }).then(() => refetch()).catch(error => alert(error))
         } else {
             alert('Add data')
         }
     }
 
-    console.log('event id for event page', props)
     return (
         <div className={styles.content}>
             <div className={styles.header}>

@@ -43,8 +43,6 @@ export default function index() {
       }
   }, [])
 
-  console.log(99991, Cookies.get('token'))
-
   const toggleMenu = () => setOpenMenu(!openMenu)
 
   const isSmallScreen = screenWidth <= 768
