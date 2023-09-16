@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Link, animateScroll as scroll } from 'react-scroll'
+import { animateScroll as scroll } from 'react-scroll'
 
 import { Button } from '@/uikit/Button'
 import { AboutAny } from '@/uikit/AboutAny'
@@ -10,9 +10,14 @@ import { PastEvent } from '@/uikit/PastEvent'
 import { Slider } from '@/uikit/Slider'
 
 import styles from './Home.module.scss'
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { GET_ALL_EVENTS } from '@/apollo/queries/request'
 import { useRouter } from 'next/navigation'
+import Link from "next/link"
+import { useEffect } from 'react'
+import { signIn, signOut, useSession } from "next-auth/react"
+import Cookies from 'js-cookie'
+import { SAVE_USER } from '@/apollo/mutations/request'
 
 const infoData = [
   {
@@ -140,6 +145,8 @@ const footerData = [
 ]
 
 export default function Home() {
+  const [saveUser] = useMutation(SAVE_USER)
+  const { data: session, status } = useSession()
   const router = useRouter()
 
   const { data: eventsData } = useQuery(GET_ALL_EVENTS)
@@ -158,6 +165,16 @@ export default function Home() {
       })
     }
   };
+
+  useEffect(() => {
+    if (session?.user && Cookies.get('token') === undefined) {
+      saveUser({
+        variables: {
+          discordId: session?.user?.id
+        }
+      }).then(data => Cookies.set('token', data?.data?.saveUser?.token))
+    }
+  }, [session])
 
   return (
     <main className={styles.main}>
@@ -184,9 +201,24 @@ export default function Home() {
             </div>
             <div className={styles.footerItems}>
               <div className={styles.headerEvent}>
+              <Link style={{textDecoration: "none", color: "white"}} href={'/#events'}>
                 <p>select an event</p>
+                </Link>
               </div>
-              <Button title='Connect' />
+              {session?.user ? (
+            <p onClick={() => {
+              Cookies.remove('token')
+              signOut()
+            }} className={styles.title}>
+              Logout
+            </p>
+          ) : (
+            <div className={styles.discordConnect}>
+              <Button onClick={signIn} title='Connect'>
+              </Button>
+            </div>
+          )}
+              {/* <Button title='Connect' /> */}
             </div>
           </div>
         </div>
@@ -212,7 +244,7 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.invertRectangle} />
-      <div className={styles.allEvents}>
+      <div className={styles.allEvents} id='events'>
         <div className={styles.adaptiveBackground}>
           <div className={styles.eventTitle}>
             <p className={styles.bigTitle}>All Events</p>
