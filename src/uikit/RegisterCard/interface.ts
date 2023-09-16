@@ -1,11 +1,20 @@
+import { RoleType, RolesType, SquadType } from "@/components/EventForm/interface"
+
 export interface RegisterCardProps {
     title: string
-    data: Data[]
+    data: SquadType[] | RoleType[]
     isEdit?: boolean
-}
-
-interface Data {
-    id: string | number
-    title: string
-    isEdit?: boolean
+    onEdit?: () => void
+    isSelect?: boolean
+    addSquad?: () => void
+    handleRole?: (id: string, role: RoleType, name: string, isRemove: boolean) => void
+    squadId?: string
+    busyRoles?: RolesType[]
+    removeSquad?: (platoonId: string, squadId: string) => void
+    removePlatoon?: (id: string) => void
+    onChangeName?: (id: string, squadId: string, name: string) => void
+    onChangeNameRole?: (id: string, squadId: string, roleId: string, value: string, type: string) => void
+    removeSquadRole?: (id: string, squadId: string, roleId: string) => void
+    platoonId?: string
+    indexId?: number
 }

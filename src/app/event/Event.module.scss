@@ -80,18 +80,32 @@ $white: #fff;
     }
     
     .footer {
-        background-image: url('/images/eventImg4.webp');
         background-size: cover;
         border: 2px solid $gray;
         height: 1033px;
-        margin-bottom: 136px;
         border-radius: 10px;
         padding-right: 40px;
+        overflow: scroll;
     }
     
     .items {
         margin-top: 84px;
         margin-left: 31px;
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .squadTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 40px;
+        padding-bottom: 39px;
+    }
+
+    .eventPlatoons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 }
 
@@ -173,17 +187,31 @@ $white: #fff;
     }
     
     .footer {
-        background-image: url('/images/eventImg4.webp');
         background-size: cover;
         border: 2px solid $gray;
         height: 1033px;
-        margin-bottom: 136px;
         border-radius: 10px;
+        overflow: scroll;
     }
     
     .items {
         margin-top: 84px;
         margin-left: 31px;
+        gap: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .squadTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 60px;
+        padding-bottom: 39px;
+    }
+
+    .eventPlatoons {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
     }
 }
 
@@ -265,16 +293,30 @@ $white: #fff;
     }
     
     .footer {
-        background-image: url('/images/eventImg4.webp');
         background-size: cover;
         border: 2px solid $gray;
         height: 1546px;
-        margin-bottom: 183px;
         border-radius: 10px;
+        overflow: scroll;
     }
     
     .items {
         margin-top: 84px;
         margin-left: 31px;
+        gap: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .squadTitle {
+        font-family: 'Bebas Neue Regular';
+        font-size: 60px;
+        padding-bottom: 39px;
+    }
+
+    .eventPlatoons {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
     }
 }

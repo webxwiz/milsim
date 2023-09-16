@@ -5,6 +5,8 @@ $gray1: rgba(167, 168, 168, 1);
 $gray2: rgba(54, 56, 57, 1);
 $whiteOpacity: rgba(216, 216, 216, 0.15);
 $borderOpacity: rgba(216, 216, 216, 0.7);
+$aquaBlue: #46A7A7;
+$brown: #C15749;
 
 //phone
 @media screen and (max-width: 768px) {
@@ -13,6 +15,7 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
         border-radius: 10px;
         max-width: 337px;
         padding-bottom: 40px;
+        padding-top: 15px;
     }
     
     .editCard {
@@ -20,7 +23,6 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
         border-radius: 10px;
         max-width: 337px;
         padding-bottom: 40px;
-
         background-color: $whiteOpacity;
     }
     
@@ -86,7 +88,7 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
     .button {
         background-color: $black;
         cursor: pointer;
-        max-width: 140px;
+        max-width: 113px;
         border: 2px solid $white;
         border-radius: 5px;
         margin-left: 8px;
@@ -94,13 +96,112 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
             padding-top: 8px;
             padding-bottom: 8px;
             text-align: center;
-            font-size: 18px;
+            font-size: 14px;
             text-transform: uppercase;
         }
     }
     
     .button:hover {
         background-color: transparent;
+    }
+
+    .dropdown {
+        font-family: 'Noto Sans';
+        font-size: 16px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $aquaBlue;
+        width: 123px;
+        overflow: hidden;
+    }
+    
+    .editDropdown {
+        font-family: 'Noto Sans';
+        font-size: 16px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $brown;
+        width: 123px;
+        overflow: hidden;
+    }
+
+    .dropdownOption {
+        width: 113px;
+        border-top: 1px solid $aquaBlue;
+        padding: 2px;
+        padding-left: 9px;
+    }
+
+    .dropdownPlaceholder {
+        color: $orange;
+        padding-top: 4px;
+    }
+
+    .arrowDropdown {
+        position: relative;
+        bottom: 24px;
+        left: 75px;
+        color: $orange;
+        font-size: 24px;
+    }
+
+    .controlDropdown {
+        height: 30px;
+        padding-left: 9px;
+    }
+
+    .selectRole {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+    }
+
+    .input {
+        font-family: 'Noto Sans';
+        font-size: 16px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $gray1;
+        width: 113px;
+        height: 30px;
+        outline: none;
+        padding-left: 10px;
+        color: $white;
+    }
+
+    .input::placeholder {
+        color: $white;
+    }
+
+    .checkIcon {
+        background-color: $white;
+        border-radius: 100px;
+        border-radius: 100px;
+    }
+
+    .editDataItems {
+        margin-left: 8px;
+        margin-top: 20px;
+    }
+
+    .editDataItem {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        div {
+            font-family: 'Noto Sans';
+            font-size: 20px;
+            background-color: $gray2;
+            padding: 5px;
+            padding-right: 50px;
+            border-radius: 5px;
+            border: 1px solid $gray1;
+            max-height: 30px;
+        }
     }
 }
 
@@ -112,6 +213,7 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
         max-width: 519px;
         padding-bottom: 40px;
         padding-right: 20px;
+        padding-top: 25px;
     }
     
     .editCard {
@@ -199,6 +301,104 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
     .button:hover {
         background-color: transparent;
     }
+
+    .dropdown {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $aquaBlue;
+        margin-left: 23px;
+        width: 163px;
+        overflow: hidden;
+    }
+
+    .editDropdown {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $brown;
+        margin-left: 23px;
+        width: 163px;
+        overflow: hidden;
+    }
+
+    .dropdownOption {
+        width: 163px;
+        border-top: 1px solid $aquaBlue;
+        padding: 2px;
+        padding-left: 9px;
+    }
+
+    .dropdownPlaceholder {
+        color: $orange;
+        padding-top: 2px;
+    }
+
+    .arrowDropdown {
+        position: relative;
+        bottom: 24px;
+        left: 125px;
+        color: $orange;
+        font-size: 24px;
+    }
+
+    .controlDropdown {
+        height: 30px;
+        padding-left: 9px;
+    }
+
+    .selectRole {
+        margin-top: 32px;
+        display: flex;
+        gap: 26px;
+    }
+
+    .input {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $gray1;
+        width: 163px;
+        height: 30px;
+        outline: none;
+        padding-left: 10px;
+        color: $white;
+    }
+
+    .input::placeholder {
+        color: $white;
+    }
+
+    .checkIcon {
+        background-color: $white;
+        border-radius: 100px;
+    }
+
+    .editDataItems {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .editDataItem {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        div {
+            font-family: 'Noto Sans';
+            font-size: 20px;
+            background-color: $gray2;
+            padding: 5px;
+            padding-right: 50px;
+            border-radius: 5px;
+            border: 1px solid $gray1;
+            max-height: 30px;
+        }
+    }
 }
 
 //desktop
@@ -208,6 +408,7 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
         border-radius: 10px;
         width: 573px;
         padding-bottom: 40px;
+        padding-top: 25px;
     }
 
     .header {
@@ -222,15 +423,15 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
         border-radius: 10px;
         width: 573px;
         padding-bottom: 40px;
+        padding-top: 25px;
 
-        background-color: $whiteOpacity;
+        background-color: rgba(0, 0, 0, 0.3);
     }
     
     .remove {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        margin-top: 25px;
         margin-right: 25px;
         cursor: pointer;
         position: relative;
@@ -277,6 +478,29 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
             max-height: 30px;
         }
     }
+
+    .editDataItems {
+        margin-left: 36px;
+        margin-top: 32px;
+    }
+
+    .editDataItem {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        div {
+            font-family: 'Noto Sans';
+            font-size: 20px;
+            background-color: $gray2;
+            padding: 5px;
+            padding-right: 50px;
+            border-radius: 5px;
+            border: 1px solid $gray1;
+            max-height: 30px;
+        }
+    }
     
     .button {
         background-color: $black;
@@ -296,5 +520,80 @@ $borderOpacity: rgba(216, 216, 216, 0.7);
     
     .button:hover {
         background-color: transparent;
+    }
+
+    .dropdown {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $aquaBlue;
+        margin-left: 23px;
+        width: 163px;
+        overflow: hidden;
+    }
+
+    .editDropdown {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $brown;
+        margin-left: 23px;
+        width: 163px;
+        overflow: hidden;
+    }
+
+    .dropdownOption {
+        width: 163px;
+        border-top: 1px solid $aquaBlue;
+        padding: 2px;
+        padding-left: 9px;
+    }
+
+    .dropdownPlaceholder {
+        color: $orange;
+        padding-top: 2px;
+    }
+
+    .arrowDropdown {
+        position: relative;
+        bottom: 24px;
+        left: 125px;
+        color: $orange;
+        font-size: 24px;
+    }
+
+    .controlDropdown {
+        height: 30px;
+        padding-left: 9px;
+    }
+
+    .selectRole {
+        margin-top: 32px;
+        display: flex;
+        gap: 26px;
+    }
+
+    .input {
+        font-family: 'Noto Sans';
+        font-size: 18px;
+        background-color: $gray2;
+        border-radius: 5px;
+        border: 1px solid $gray1;
+        width: 163px;
+        height: 30px;
+        outline: none;
+        padding-left: 10px;
+        color: $white;
+    }
+
+    .input::placeholder {
+        color: $white;
+    }
+
+    .checkIcon {
+        background-color: $white;
+        border-radius: 100px;
     }
 }

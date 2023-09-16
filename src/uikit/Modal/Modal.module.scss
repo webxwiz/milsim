@@ -137,6 +137,11 @@ $borderGray: #A7A8A8;
         border-top-right-radius: 10px;
         overflow: scroll;
     }
+
+    .sketchColor {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     
     .squadData {
         display: flex;
@@ -396,6 +401,11 @@ $borderGray: #A7A8A8;
     .addSquad:hover {
         opacity: 0.5;
     }
+
+    .sketchColor {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     
     .title {
         font-family: 'Noto Sans';
@@ -576,6 +586,13 @@ $borderGray: #A7A8A8;
         margin-top: 16px;
         gap: 16px;
     }
+
+    .squadItems {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+    }
     
     .squadItem {
         display: flex;
@@ -625,6 +642,11 @@ $borderGray: #A7A8A8;
         font-size: 60px;
         margin-top: 40px;
         margin-bottom: 40px;
+    }
+
+    .sketchColor {
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
     
     .content {

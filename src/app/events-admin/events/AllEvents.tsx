@@ -1,6 +1,9 @@
 import { PastEvent } from "@/uikit/PastEvent"
 import styles from '../EventsAdmin.module.scss'
 import { Button } from "@/uikit/Button"
+import { GET_ALL_EVENTS } from "@/apollo/queries/request"
+import { useMutation, useQuery } from "@apollo/client"
+import { EVENT_DELETE } from "@/apollo/mutations/request"
 
 const eventsData = [
     {
@@ -30,15 +33,29 @@ const eventsData = [
 ]
 
 export const AllEvents = () => {
+  const { data, refetch } = useQuery(GET_ALL_EVENTS)
+
+  const [eventDelete] = useMutation(EVENT_DELETE)
+
+  const removeModal = (id: string | number) => {
+      eventDelete({
+          variables: {
+              id
+          }
+      }).then(() => refetch())
+  }
+
     return (
         <div className={styles.main}>
             <div className={styles.events}>
-                {eventsData.map(e => (
+                {data?.getAllEvents?.map((e) => (
                     <PastEvent
-                        key={e.id}
-                        title={e.title}
+                        key={e._id}
+                        id={e._id}
+                        title={e.name}
                         date={e.date}
-                        url={e.url}
+                        url={e.image}
+                        eventDelete={removeModal}
                         isEdit
                     />
                 ))}

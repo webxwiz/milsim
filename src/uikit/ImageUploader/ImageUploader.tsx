@@ -8,9 +8,8 @@ import Image from 'next/image'
 import styles from './ImageUploader.module.scss'  
 import { ImageUploaderProps, UploadedImage } from './interface';
 
-export const ImageUploader = ({ isSingle }: ImageUploaderProps) => {
-    const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([]);
-
+export const ImageUploader = ({ defaultImage, isSingle, isBigSingle, onSubmit }: ImageUploaderProps) => {
+  const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>(defaultImage ? [defaultImage] as never : [] as UploadedImage[]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const newImages: UploadedImage[] = acceptedFiles.map((file) => ({
@@ -18,7 +17,15 @@ export const ImageUploader = ({ isSingle }: ImageUploaderProps) => {
             preview: URL.createObjectURL(file),
         }));
 
-        setUploadedImages((prevImages) => isSingle ? [...newImages] : [...prevImages, ...newImages]);
+        setUploadedImages((prevImages) => {
+            if (isBigSingle || isSingle) {
+                onSubmit([...newImages])
+                return [...newImages]
+            }
+
+            onSubmit([...prevImages, ...newImages])
+            return [...prevImages, ...newImages]
+        });
     }, []);
 
   const removeImage = (indexToRemove: number) => {
@@ -32,8 +39,8 @@ export const ImageUploader = ({ isSingle }: ImageUploaderProps) => {
         'image/*': ['.png', '.jpg', '.jpeg', '.bmp', '.webp'],
     },
     onDrop,
-    maxFiles: isSingle ? 1 : 10,
-    multiple: !isSingle
+    maxFiles: isSingle ? 1 : isBigSingle ? 1 : 10,
+    multiple: isSingle ? false : isBigSingle ? false : true
   })
 
   return (

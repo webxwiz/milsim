@@ -10,6 +10,9 @@ import { PastEvent } from '@/uikit/PastEvent'
 import { Slider } from '@/uikit/Slider'
 
 import styles from './Home.module.scss'
+import { useQuery } from '@apollo/client'
+import { GET_ALL_EVENTS } from '@/apollo/queries/request'
+import { useRouter } from 'next/navigation'
 
 const infoData = [
   {
@@ -44,32 +47,32 @@ const infoData = [
   },
 ]
 
-const allEventsData = [
-  {
-    id: 111,
-    title: 'Lorem ipsum 1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-    url: '/images/eventImg1.webp'
-  },
-  {
-    id: 222,
-    title: 'Lorem ipsum 2',
-    description: 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-    url: '/images/eventImg2.webp'
-  },
-  {
-    id: 333,
-    title: 'Lorem ipsum 3',
-    description: 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-    url: '/images/eventImg3.webp'
-  },
-  {
-    id: 444,
-    title: 'Lorem ipsum 4',
-    description: 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
-    url: '/images/eventImg2.webp'
-  },
-]
+// const allEvents = [
+//   {
+//     id: 111,
+//     title: 'Lorem ipsum 1',
+//     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+//     url: '/images/eventImg1.webp'
+//   },
+//   {
+//     id: 222,
+//     title: 'Lorem ipsum 2',
+//     description: 'Lorem 2 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+//     url: '/images/eventImg2.webp'
+//   },
+//   {
+//     id: 333,
+//     title: 'Lorem ipsum 3',
+//     description: 'Lorem 3 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+//     url: '/images/eventImg3.webp'
+//   },
+//   {
+//     id: 444,
+//     title: 'Lorem ipsum 4',
+//     description: 'Lorem 4 ipsum dolor sit amet, consectetur adipiscing elit. Integer vel ultricies mauris.',
+//     url: '/images/eventImg2.webp'
+//   },
+// ]
 
 const pastEventsData = [
   {
@@ -137,6 +140,14 @@ const footerData = [
 ]
 
 export default function Home() {
+  const router = useRouter()
+
+  const { data: eventsData } = useQuery(GET_ALL_EVENTS)
+
+  const allEvents = eventsData?.getAllEvents || []
+
+  console.log(777777, eventsData)
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId)
 
@@ -208,12 +219,13 @@ export default function Home() {
           </div>
           <div className={styles.eventItems}>
           <Slider>
-            {allEventsData.map(e => (
+            {allEvents?.map(e => (
                 <Event
-                  key={e.id}
-                  title={e.title}
+                  key={e._id}
+                  title={e.name}
                   description={e.description}
-                  url={e.url}
+                  url={e.image}
+                  onClick={() => router.push('/event?id=' + e._id)}
                 />
             ))}
             </Slider>
@@ -223,10 +235,11 @@ export default function Home() {
       <div className={styles.pastEvents}>
         <p className={styles.bigTitle}>Past Events</p>
         <div className={styles.pastEventItems}>
-          {pastEventsData.map(e => (
+          {allEvents.map(e => (
             <PastEvent
-              key={e.id}
-              title={e.title}
+              key={e._id}
+              id={e._id}
+              title={e.name}
               date={e.date}
               url={e.url}
             />
