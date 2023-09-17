@@ -24,6 +24,7 @@ import { useRouter } from 'next/navigation';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import instans from '@/config/axios';
  
 export const EventForm = ({ id, isEdit }: EventFormProps) => {
     const router = useRouter()
@@ -178,22 +179,25 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     const [previewImage, setPreviewImage] = useState("")
 
     const handleSetImage = async (image: UploadedImage[]) => {
-        const formData = new FormData();
-        formData.append("avatar", image[0].file, image[0].file.name);
-        // const token = Cookies.get('token');
-        const config = {
-            method: "POST",
-            url: "/avatar",
+        if (!image[0].file) return
+        const formData = new FormData()
+
+        formData.append('image', image[0].file)
+
+        instans.post('image', formData, {
             headers: {
-                "Content-Type": "multipart/form-data",
-                // Authorization: `Bearer ${token}`,
-            },
-            data: formData,
-        };
-        await axios(config)
-            .then(response => setPreviewImage(response.data.user))
-            .catch(err => console.log(err.message));
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((res) => {
+            // window.location.reload()
+            setPreviewImage(res)
+        }).catch((err) => {
+            alert("Eror")
+            console.log(error)
+        })
       };
+
+      console.log(previewImage)
 
     const eventPlatoons = watch('eventPlatoons') || []
 
