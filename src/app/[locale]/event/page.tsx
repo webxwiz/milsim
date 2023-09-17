@@ -100,7 +100,7 @@ export default function Event(props: EventProps) {
                             />
                             <div
                                 style={{
-                                    // backgroundImage: `url(${e.image})`
+                                    backgroundImage: `url(${e.image})`
                                 }}
                                 className={styles.footer}
                             >

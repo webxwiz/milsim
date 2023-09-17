@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { animateScroll as scroll } from 'react-scroll'
 import { useTranslations } from 'next-intl'
 
 import { Button } from '@/uikit/Button'
@@ -20,7 +19,7 @@ import { signIn, signOut, useSession } from "next-auth/react"
 import Cookies from 'js-cookie'
 import { SAVE_USER } from '@/apollo/mutations/request'
 import { mainPageMetaData } from '@/metadata/metadata'
-export const metadata = mainPageMetaData
+const metadata = mainPageMetaData
 
 export default function Home() {
   const [saveUser] = useMutation(SAVE_USER)

@@ -25,7 +25,8 @@ export const EditCard = ({
     platoonId,
     removeSquad,
     removeSquadRole,
-    indexId
+    indexId,
+    busyRolesForAdmin
 }: RegisterCardProps) => {
     const { data: session } = useSession()
 
@@ -39,7 +40,7 @@ export const EditCard = ({
     
     const userId = session?.user?.id
 
-    const roleData = dataRoles.find((_, i) => i === indexId)
+    const roleData = dataRoles?.find((_, i) => i === indexId)
     
     const [data, setData] = useState(dataRoles)
 
@@ -89,11 +90,22 @@ export const EditCard = ({
         )
     }
     
+    const handleRemoveBusyRole = (roleId: string) => {
+        removeSquadRole && removeSquadRole(platoonId as string, squadId as string, roleId)
+        setData(
+            dataRoles.filter((role) => role.id !== roleId) as never
+        )
+    }
+
+    // if (busyRolesForAdmin && !data?.length) {
+    //     return null
+    // }
+    
     return (
         <div className={styles.editCard}>
             <Modal isOpen={isOpenModal} onClose={handleChangeModal} onSubmit={handleRoleRemove} />
             <div onClick={() => removeSquad && removeSquad(platoonId as string, squadId as string)} className={styles.remove}>
-                {!isSelect && <RiCloseCircleFill size={29} color={'rgba(193, 87, 73, 1)'} />}
+                {!isSelect && !busyRolesForAdmin && <RiCloseCircleFill size={29} color={'rgba(193, 87, 73, 1)'} />}
             </div>
             <p className={styles.title}>{title}</p>
             {isSelect ? (
@@ -135,7 +147,7 @@ export const EditCard = ({
                     </>}
                 </div>
             ) : <div className={isEdit ? styles.editDataItems : styles.editItems}>
-                {data?.map((e: any) => (
+                {/* {data?.map((e: any) => (
                     <div className={styles.editDataItem} key={e.id}>
                         {isEdit ? <input
                             defaultValue={e.name}
@@ -150,9 +162,27 @@ export const EditCard = ({
                         />
                         {isEdit && <RiCloseCircleFill onClick={() => handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
                     </div>
+                ))} */}
+                {data?.map((e: any) => (
+                    <div className={styles.editDataItem} key={e.id}>
+                        {isEdit ? <input
+                            defaultValue={busyRolesForAdmin ? e.role : e.name}
+                            className={styles.input}
+                            disabled={busyRolesForAdmin}
+                            onChange={(event) => onChangeNameRole && onChangeNameRole(platoonId as string, squadId as string, e.id, event.target.value, 'name')}
+                        />
+                        : <div>{e.name}</div>}
+                        <input
+                            defaultValue={busyRolesForAdmin ? e.playerName : e.count}
+                            className={styles.input}
+                            disabled={busyRolesForAdmin}
+                            onChange={(event) => onChangeNameRole && onChangeNameRole(platoonId as string, squadId as string, e.id, event.target.value, 'count')}
+                        />
+                        {isEdit && <RiCloseCircleFill onClick={() => busyRolesForAdmin ? handleRemoveBusyRole(e.id) : handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                    </div>
                 ))}
             </div>}
-            {isEdit && (
+            {!busyRolesForAdmin && isEdit && (
                 <div onClick={onEdit} className={styles.button}>
                     <p>{t('edit')}</p>
                 </div>

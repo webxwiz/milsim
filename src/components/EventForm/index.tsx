@@ -84,6 +84,12 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                             id: r._id,
                             count: Number(r.count),
                             name: r.name,
+                        })),
+                        busyRoles: s.busyRoles.map(b => ({
+                            id: b._id,
+                            discordId: b.discordId,
+                            role: b.role,
+                            playerName: b.playerName
                         }))
                     }))
                 }))
@@ -251,6 +257,21 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         }))
     }
 
+    const removeFromBusyRole = (id: string, squadId: string, roleId: string) => {
+        setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
+            if (platoon.id === id) {
+                platoon.squads.map((squad: SquadType) => {
+                    if (squad.id === squadId) {
+                        squad.busyRoles = squad.busyRoles.filter(b => b.id !== roleId)
+                    }
+                    return squad
+                })
+            }
+
+            return platoon
+        }))
+    }
+
     const removeSquadRole = (id: string, squadId: string, roleId: string) => {
         setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
             if (platoon.id === id) {
@@ -386,6 +407,10 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
   // menu.style.display = 'none';
 };
 
+    // const removeFromBusyRole = (platoonid: string, squadId: string, roleId: string) => {
+    //     console.log(1234567, squadId, roleId)
+    // }
+
     return (
         <div className={styles.event}>
             <FormModal isOpen={platoonModal} onSubmit={createPlatoon} mode='platoon' onClose={handlePlatoonModal}  />
@@ -475,6 +500,17 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                                                 removeSquad={removeSquad}
                                                 onChangeNameRole={onChangeNameRole}
                                             />
+                                            <br />
+                                            {squad?.busyRoles?.[0] && <EditCard
+                                                platoonId={e.id}
+                                                squadId={squad.id}
+                                                title={'Busy Roles'}
+                                                data={squad?.busyRoles}
+                                                isEdit={true}
+                                                busyRolesForAdmin
+
+                                                removeSquadRole={removeFromBusyRole}
+                                            />}
                                         </div>
                                     ))}
                                 </div>
