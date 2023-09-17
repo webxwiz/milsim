@@ -12,7 +12,10 @@ import { SAVE_USER } from '@/apollo/mutations/request'
 import { useMutation } from '@apollo/client'
 import ChooseLanguage from '../ChooseLanguage'
 
+
 export default function index() {
+
+
   const { data: session, status } = useSession()
 
   const [openMenu, setOpenMenu] = useState(false)
@@ -67,7 +70,7 @@ export default function index() {
           <Link className={styles.title} href={'/#events'}>
             Events
           </Link>
-          {/* <ChooseLanguage /> */}
+          <ChooseLanguage />
           {session?.user ? (
             <p onClick={() => {
               Cookies.remove('token')

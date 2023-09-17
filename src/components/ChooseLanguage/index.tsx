@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import Select, { components } from "react-select";
 
 import styles from './ChooseLanguage.module.scss'
-import { useRouter } from 'next/navigation'
+import {useLocale, useTranslations} from 'next-intl';
+import {usePathname, useRouter} from 'next-intl/client';
+import {ChangeEvent, useTransition} from 'react';
 
 const countries = [
-  { value: "MG", icon: "../../../french.png" },
-  { value: "UE", icon: "../../../english.jpg" }
+  { value: "en", icon: "../../../english.jpg" },
+  { value: "fr", icon: "../../../french.png" },
 ];
 
 interface Country {
@@ -22,13 +24,19 @@ const Option = (props: any) => (
 );
 
 const ChooseLanguage = () => {
-    const router = useRouter()
+  const t = useTranslations('LocaleSwitcher');
+  const [isPending, startTransition] = useTransition();
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   const handleChange = (value: Country) => {
     setSelectedCountry(value);
-
+    startTransition(() => {
+      router.replace(pathname, {locale: value.value});
+    });
   };
 
   // useEffect(() => {

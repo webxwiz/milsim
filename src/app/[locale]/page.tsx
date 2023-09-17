@@ -113,7 +113,7 @@ export default function Home() {
       })
     }
   };
-
+  console.log(session?.user?.id)
   useEffect(() => {
     if (session?.user && Cookies.get('token') === undefined) {
       saveUser({
