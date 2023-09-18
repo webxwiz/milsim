@@ -196,7 +196,7 @@ export default function Home() {
           </div>
           <div className={styles.eventItems}>
           <Slider>
-            {allEvents?.map(e => (
+            {allEvents?.filter((pastEvent) => new Date(pastEvent.date) >= new Date()).map(e => (
                 <Event
                   key={e._id}
                   title={e.name}
@@ -212,7 +212,7 @@ export default function Home() {
       <div className={styles.pastEvents}>
         <p className={styles.bigTitle}>{t('pastEvents')}</p>
         <div className={styles.pastEventItems}>
-          {allEvents.map(e => (
+          {allEvents.filter((pastEvent) => new Date(pastEvent.date) <= new Date()).map(e => (
             <PastEvent
               key={e._id}
               id={e._id}

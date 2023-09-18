@@ -14,7 +14,7 @@ import { eventPage } from '@/metadata/metadata'
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export const metadata = eventPage
+const metadata = eventPage
 
 export default function Event(props: EventProps) {
     const router = useRouter()
