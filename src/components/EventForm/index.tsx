@@ -119,7 +119,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                             date: new Date(event.eventDate),
                             description: text,
                             duration: Number(event.eventDuration),
-                            image: event.eventImage,
+                            image: previewImage,
                             name: event.eventName,
                             platoons: event.eventPlatoons.map(p => ({
                                 color: p.color,
@@ -144,7 +144,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                         date: new Date(event.eventDate),
                         description: text,
                         duration: Number(event.eventDuration),
-                        image: event.eventImage,
+                        image: previewImage,
                         name: event.eventName,
                         platoons: event.eventPlatoons.map(p => ({
                             color: p.color,
@@ -190,7 +190,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             }
         }).then((res) => {
             // window.location.reload()
-            setPreviewImage(res)
+            setPreviewImage(res.data.imageURL)
         }).catch((err) => {
             alert("Eror")
             console.log(error)

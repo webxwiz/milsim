@@ -11,6 +11,7 @@ import { Button } from '../Button'
 import { ImageUploader } from '../ImageUploader/ImageUploader'
 import { UploadedImage } from '../ImageUploader/interface'
 import { RoleType } from '@/components/EventForm/interface'
+import instans from '@/config/axios'
 
 export const FormModal = ({
     isOpen,
@@ -25,7 +26,7 @@ export const FormModal = ({
     
     const [platoonName, setPlatoonName] = useState('')
     const [activeColor, setActiveColor] = useState<string>()
-    const [image, setImage] = useState<UploadedImage[]>([])
+    const [image, setImage] = useState<UploadedImage[]>('')
     
     const [mode, setMode] = useState(formMode)
 
@@ -45,7 +46,7 @@ export const FormModal = ({
     const handleClose = () => {
         setActiveColor('#')
         setMode(formMode)
-        setImage([])
+        setImage('')
         setPlatoonName('')
         setSquadName('')
         setRoleName('')
@@ -53,6 +54,25 @@ export const FormModal = ({
         setRoles([])
         onClose()
     }
+
+    const handleSetImage = async (image: UploadedImage[]) => {
+        if (!image[0].file) return
+        const formData = new FormData()
+
+        formData.append('image', image[0].file)
+
+        instans.post('image', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((res) => {
+            // window.location.reload()
+            setImage(res.data.imageURL)
+        }).catch((err) => {
+            alert("Eror")
+            console.log(error)
+        })
+      };
 
     const onNext = () => {
         switch (mode) {
@@ -98,6 +118,8 @@ export const FormModal = ({
     const inputValue = isPlatoon ? platoonName : isSquad ? squadName : roleName
     const inputChange = isPlatoon ? setPlatoonName : isSquad ? setSquadName : setRoleName
 
+    console.log(image)
+
     return isOpen && (
         <div className={styles.modal}>
             <div className={styles.formModalContent}>
@@ -131,7 +153,7 @@ export const FormModal = ({
                     
                     {isPlatoon ? <div>
                         <p className={styles.subtitle}>Platoon image</p>
-                        <ImageUploader isSingle onSubmit={setImage} />
+                        <ImageUploader isSingle onSubmit={handleSetImage} />
                     </div> : isSquad && <div className={styles.squadData}>
                         {!roles.length && <div onClick={addSquade} className={styles.addSquad}>
                             <FaPlus size={20} />
