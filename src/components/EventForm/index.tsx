@@ -141,7 +141,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             createEvent({
                 variables: {
                     createEventInput: {
-                        date: new Date(event.eventDate),
+                        date: event.eventDate,
                         description: text,
                         duration: Number(event.eventDuration),
                         image: previewImage,
