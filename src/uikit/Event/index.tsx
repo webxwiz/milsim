@@ -24,7 +24,7 @@ export const Event = ({
                 src={url}
                 loader={({ src, width: w, quality }) => {
                     const q = quality || 75;
-                    return `${'/images/eventImg1.webp'}?w=${w}&q=${q}`;
+                    return `${url}?w=${w}&q=${q}`;
                 }}
                 alt={title}
             />

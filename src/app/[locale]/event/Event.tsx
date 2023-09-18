@@ -72,7 +72,7 @@ export default function Event({ props }: { props: EventProps }) {
                 className={styles.mapImg}
                 loader={({ src, width: w, quality }) => {
                     const q = quality || 75;
-                    return `${'/images/eventImg1.webp'}?w=${w}&q=${q}`;
+                    return `${eventData?.image}?w=${w}&q=${q}`;
                 }}
             />
             <p className={styles.smallTitle}>{t('operationBriefing')}</p>

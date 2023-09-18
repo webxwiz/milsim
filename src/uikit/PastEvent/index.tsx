@@ -35,7 +35,7 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
                         className={styles.image}
                         loader={({ src, width: w, quality }) => {
                             const q = quality || 75;
-                            return `${'/images/eventImg1.webp'}?w=${w}&q=${q}`;
+                            return `${url}?w=${w}&q=${q}`;
                         }}
                     />
                     <div className={styles.operation}>
