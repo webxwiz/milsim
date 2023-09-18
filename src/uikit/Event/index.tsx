@@ -14,7 +14,7 @@ export const Event = ({
 
     return (
         <div className={styles.event}>
-            <Image
+            {/* <Image
                 alt=''
                 src={url}
                 width={295}
@@ -24,7 +24,7 @@ export const Event = ({
                     e.target.src = '/images/eventImg1.webp' // Путь к изображению по умолчанию
                 }}
                 className={styles.image}
-            />
+            /> */}
             <p className={styles.title}>{title}</p>
             <p className={styles.description}>{description}</p>
             <div className={styles.button} onClick={onClick}>
