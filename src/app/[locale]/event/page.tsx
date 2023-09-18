@@ -11,7 +11,10 @@ import { GET_ONE_EVENT } from '@/apollo/queries/request'
 import { ADD_USER_TO_EVENT, REMOVE_FROM_BUSY_ROLES } from '@/apollo/mutations/request'
 import { useTranslations } from 'next-intl'
 import { eventPage } from '@/metadata/metadata'
-const metadata = eventPage
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+export const metadata = eventPage
 
 export default function Event(props: EventProps) {
     const router = useRouter()
@@ -67,7 +70,14 @@ export default function Event(props: EventProps) {
             {/* <Image alt='' src={eventData?.image} width={1015} height={568} className={styles.mapImg} /> */}
             <p className={styles.smallTitle}>{t('operationBriefing')}</p>
             <div className={styles.fullInfo}>
-                <p className={styles.title}>{t('situation')}</p>
+                <div className={styles.list}>
+            <ReactMarkdown
+                    className={styles.text}
+                    children={eventData?.getOneEvent?.description}
+                    remarkPlugins={[remarkGfm]}
+                  />
+                  </div>
+                {/* <p className={styles.title}>{t('situation')}</p>
                 <div className={styles.list}>
                     <p className={styles.text}>{t('usForces')}</p>
                     <br />
@@ -86,7 +96,7 @@ export default function Event(props: EventProps) {
                         <p className={styles.text}>{t('ifInfo1')}</p>
                         <p className={styles.text}>{t('ifInfo2')}</p>
                     </div>
-                </div>
+                </div> */}
             </div>
             <div className={styles.registration}>
                 <p className={styles.subtitle}>{t('registration')}</p>
