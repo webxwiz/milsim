@@ -55,6 +55,7 @@ export default function Event({ props }: { props: EventProps }) {
         }
     }
 
+
     return (
         <div className={styles.content}>
             <div className={styles.header}>
@@ -66,13 +67,13 @@ export default function Event({ props }: { props: EventProps }) {
             <p className={styles.smallTitle}>{t('openToAll')} - {eventData?.getOneEvent?.date}</p>
             <Image
                 alt=''
-                src={eventData?.image}
+                src={eventData?.getOneEvent.image}
                 width={1015}
                 height={568}
                 className={styles.mapImg}
                 loader={({ src, width: w, quality }) => {
                     const q = quality || 75;
-                    return `${eventData?.image}?w=${w}&q=${q}`;
+                    return `${src}?w=${w}&q=${q}`;
                 }}
             />
             <p className={styles.smallTitle}>{t('operationBriefing')}</p>

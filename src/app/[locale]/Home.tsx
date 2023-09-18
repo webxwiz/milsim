@@ -151,12 +151,7 @@ export default function Home() {
                 </Link>
               </div>
               {session?.user ? (
-            <p onClick={() => {
-              Cookies.remove('token')
-              signOut()
-            }} className={styles.title}>
-                {t('logout')}
-              </p>
+                ""
             ) : (
               <div className={styles.discordConnect}>
                 <Button onClick={signIn} title={t('connect')} />
@@ -216,7 +211,7 @@ export default function Home() {
               id={e._id}
               title={e.name}
               date={e.date}
-              url={e.url}
+              url={e.image}
             />
           ))}
         </div>

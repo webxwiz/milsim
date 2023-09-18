@@ -15,47 +15,53 @@ mutation SaveUser($discordId: String!) {
 `
 
 export const CREATE_EVENT = gql`
-mutation CreateEvent($createEventInput: CreateEventInput) {
-    createEvent(createEventInput: $createEventInput) {
+mutation Mutation($createEventInput: EventInput) {
+  createEvent(createEventInput: $createEventInput) {
+    _id
+    createdAt
+    name
+    image
+    description
+    date
+    duration
+    platoons {
       _id
-      createdAt
-      date
-      description
-      duration
-      image
       name
-      platoons {
+      color
+      image
+      squads {
         _id
-        color
-        image
         name
-        squads {
+        roles {
           _id
-          busyRoles {
-            _id
-            discordId
-            role
-          }
-          enlisted {
-            _id
-            discordId
-            role
-          }
           name
-          roles {
-            _id
-            count
-            name
-          }
-          waitingList {
-            _id
-            discordId
-            role
-          }
+          count
+        }
+        busyRoles {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+        waitingList {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+        enlisted {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
         }
       }
     }
   }
+}
 `
 
 export const CHANGE_EVENT = gql`

@@ -35,7 +35,7 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
                         className={styles.image}
                         loader={({ src, width: w, quality }) => {
                             const q = quality || 75;
-                            return `${url}?w=${w}&q=${q}`;
+                            return `${src}?w=${w}&q=${q}`;
                         }}
                     />
                     <div className={styles.operation}>
