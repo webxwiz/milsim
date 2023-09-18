@@ -26,7 +26,10 @@ export const Event = ({
         width={50}
         height={50}
         src={url}
-        loader={imageLoader}
+        loader={({ src, width: w, quality }) => {
+            const q = quality || 75;
+            return `${url}?w=${w}&q=${q}`;
+          }}
         alt={title}
     />
             <p className={styles.title}>{title}</p>
