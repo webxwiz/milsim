@@ -64,7 +64,17 @@ export default function Event({ props }: { props: EventProps }) {
                 </p>
             </div>
             <p className={styles.smallTitle}>{t('openToAll')} - {eventData?.getOneEvent?.date}</p>
-            {/* <Image alt='' src={eventData?.image} width={1015} height={568} className={styles.mapImg} /> */}
+            <Image
+                alt=''
+                src={eventData?.image}
+                width={1015}
+                height={568}
+                className={styles.mapImg}
+                loader={({ src, width: w, quality }) => {
+                    const q = quality || 75;
+                    return `${eventData?.image}?w=${w}&q=${q}`;
+                }}
+            />
             <p className={styles.smallTitle}>{t('operationBriefing')}</p>
             <div className={styles.fullInfo}>
                 <div className={styles.list}>

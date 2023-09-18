@@ -4,10 +4,6 @@ import { EventProps } from "./interface"
 import styles from './Event.module.scss'
 import { useTranslations } from "next-intl"
 
-const imageLoader = ({ url, width, quality }: {url: String, width: Number, quality: Number}) => {
-    return `${url}?w=${width}&q=${quality || 75}`
-  }
-
 export const Event = ({
     url,
     title,
@@ -21,17 +17,17 @@ export const Event = ({
        
     return (
         <div className={styles.event}>
-    <Image 
-    className={styles.image}
-        width={50}
-        height={50}
-        src={url}
-        loader={({ src, width: w, quality }) => {
-            const q = quality || 75;
-            return `${url}?w=${w}&q=${q}`;
-          }}
-        alt={title}
-    />
+            <Image 
+                className={styles.image}
+                width={50}
+                height={50}
+                src={url}
+                loader={({ src, width: w, quality }) => {
+                    const q = quality || 75;
+                    return `${url}?w=${w}&q=${q}`;
+                }}
+                alt={title}
+            />
             <p className={styles.title}>{title}</p>
             <p className={styles.description}>{description}</p>
             <div className={styles.button} onClick={onClick}>
