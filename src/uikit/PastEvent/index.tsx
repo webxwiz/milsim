@@ -27,7 +27,17 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
             <Modal onSubmit={() => eventDelete && eventDelete(id)} isOpen={openModal} onClose={handleModal} />
             <div className={styles.event}>
                 <div className={styles.imageBlock}>
-                    {/* <Image alt='' src={url} width={272} height={120} className={styles.image} /> */}
+                    <Image
+                        alt=''
+                        src={url}
+                        width={272}
+                        height={120}
+                        className={styles.image}
+                        loader={({ src, width: w, quality }) => {
+                            const q = quality || 75;
+                            return `${'/images/eventImg1.webp'}?w=${w}&q=${q}`;
+                        }}
+                    />
                     <div className={styles.operation}>
                         <p>{t('operation')}</p>
                         <p>{title}</p>
