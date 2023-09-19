@@ -30,7 +30,6 @@ const ChooseLanguage = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  console.log(locale)
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   useEffect(() => {

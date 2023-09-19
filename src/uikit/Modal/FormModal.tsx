@@ -118,8 +118,6 @@ export const FormModal = ({
     const inputValue = isPlatoon ? platoonName : isSquad ? squadName : roleName
     const inputChange = isPlatoon ? setPlatoonName : isSquad ? setSquadName : setRoleName
 
-    console.log(image)
-
     return isOpen && (
         <div className={styles.modal}>
             <div className={styles.formModalContent}>
