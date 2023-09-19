@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './EventsAdmin.module.scss'
 import { AllEvents } from './events/AllEvents'
 import { steps } from './steps'
@@ -20,9 +20,12 @@ export default function EventsAdmin() {
 
     const handleChangeStep = (step: number) => setStep(step)
     
-    if (data && data?.getUserByToken?.role !== 'ADMIN' || Cookies.get('token') === undefined) {
-        router.push('/')
-    }
+    useEffect(() => {
+        if (data && data?.getUserByToken?.role !== 'ADMIN' || Cookies.get('token') === undefined) {
+            router.push('/')
+        }
+    }, [])
+
 
     return (
         <div className={styles.header}>

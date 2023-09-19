@@ -23,6 +23,7 @@ export default async function RootLayout({
   params: {locale}
 }: {
   children: React.ReactNode,
+  params: any
 }) {
   let messages;
   try {
