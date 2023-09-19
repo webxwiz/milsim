@@ -14,7 +14,7 @@ module.exports = {
         },
         env_production: {
           APP_ENV: 'prod', // APP_ENV=prod
-          NEXTAUTH_URL: 'https://combinedinitiative.com',
+          NEXTAUTH_URL: 'https://c-i.army',
           HOST_NAME_SERVER: 'https://combinedinitiative.com/graphql',
           DISCORD_CLIENT_ID: '1153033502468608090',
           DISCORD_CLIENT_SECRET: 'MakB7F_PNVjmkWE2UvyPqqxBhHPuwAIA',
