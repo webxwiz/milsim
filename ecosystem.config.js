@@ -4,7 +4,7 @@ module.exports = {
         name: 'NextAppName',
         exec_mode: 'cluster',
         instances: '1', // Or a number of instances
-        script: 'yarn',
+        script: 'node_modules/next/dist/bin/next',
         args: 'start',
         env_local: {
           APP_ENV: 'local' // APP_ENV=local
@@ -12,7 +12,6 @@ module.exports = {
         env_development: {
           APP_ENV: 'dev' // APP_ENV=dev
         },
-        autorestart: true,
         env_production: {
           APP_ENV: 'prod', // APP_ENV=prod
           NEXTAUTH_URL: 'https://c-i.army',
@@ -21,7 +20,7 @@ module.exports = {
           DISCORD_CLIENT_SECRET: 'MakB7F_PNVjmkWE2UvyPqqxBhHPuwAIA',
           NEXTAUTH_SECRET: 'a_random_string_of_jumbo',
           NEXT_PUBLIC_GRAPHQL_URL: 'https://api.c-i.army/graphql',
-          NEXT_PUBLIC_UPLOAD_URL: 'https://api.c-i.army'
+          NEXT_PUBLIC_UPLOAD_URL: 'https://api.combinedinitiative.com'
         }
       }
     ]

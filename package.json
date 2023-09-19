@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3131",
+    "dev": "next dev -p 3030",
     "build": "next build",
-    "start": "next start -p 3131",
+    "start": "next start -p 3030",
     "lint": "next lint",
     "deploy:local": "next build && pm2 startOrRestart ecosystem.config.js --env local",
     "deploy:dev": "next build && pm2 startOrRestart ecosystem.config.js --env development",
