@@ -427,7 +427,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             <p className={styles.title}>{isEdit ? t('change') : t('new')} {t('date')}</p>
             <DatePicker
                 value={watch('eventDate')}
-                onChange={(date) => setValue('eventDate', new Date(date as never).toLocaleDateString())}
+                onChange={(date) => setValue('eventDate', date)}
                 className={styles.input}
             />
             <p className={styles.title}>{t('eventDuration')}</p>
