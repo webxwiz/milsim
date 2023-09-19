@@ -6,7 +6,10 @@
     "dev": "next dev -p 40104",
     "build": "next build",
     "start": "next start -p 40104",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:local": "next build && pm2 startOrRestart ecosystem.config.js --env local",
+    "deploy:dev": "next build && pm2 startOrRestart ecosystem.config.js --env development",
+    "deploy:prod": "next build && pm2 startOrRestart ecosystem.config.js --env production"
   },
   "dependencies": {
     "@apollo/client": "^3.8.3",
