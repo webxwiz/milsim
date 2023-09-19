@@ -81,9 +81,8 @@ export default function Event({ props }: { props: EventProps }) {
                 <div className={styles.list}>
             <ReactMarkdown
                     className={styles.text}
-                    children={eventData?.getOneEvent?.description}
                     remarkPlugins={[remarkGfm]}
-                  />
+                  >{eventData?.getOneEvent?.description}</ReactMarkdown>
                   </div>
                 {/* <p className={styles.title}>{t('situation')}</p>
                 <div className={styles.list}>

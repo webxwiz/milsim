@@ -13,7 +13,7 @@ import { useMutation } from '@apollo/client'
 import ChooseLanguage from '../ChooseLanguage'
 
 
-export default function index() {
+export default function Navbar() {
 
 
   const { data: session, status } = useSession()
