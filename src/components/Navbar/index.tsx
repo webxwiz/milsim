@@ -15,7 +15,6 @@ import ChooseLanguage from '../ChooseLanguage'
 
 export default function Navbar() {
 
-
   const { data: session, status } = useSession()
 
   const [openMenu, setOpenMenu] = useState(false)
@@ -80,7 +79,7 @@ export default function Navbar() {
             </p>
           ) : (
             <div className={styles.discordConnect}>
-              <Button onClick={signIn} title='connect to discord'>
+              <Button onClick={() => signIn('discord')} title='connect to discord'>
                 <BsDiscord size={20} />
               </Button>
             </div>

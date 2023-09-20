@@ -3,7 +3,7 @@ const nextConfig = {
     typescript: {
       ignoreBuildErrors: true,
     },
-    images: {
+    /*images: {
         remotePatterns: [
           {
             protocol: 'https',
@@ -12,7 +12,7 @@ const nextConfig = {
             // pathname: '/account123/**',
           },
         ],
-      },
+      },*/
 }
 
 module.exports = nextConfig
