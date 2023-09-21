@@ -14,12 +14,12 @@ module.exports = {
         },
         env_production: {
           APP_ENV: 'prod', // APP_ENV=prod
-          NEXTAUTH_URL: 'https://c-i.army',
-          HOST_NAME_SERVER: 'https://api.c-i.army/graphql',
+          NEXTAUTH_URL: 'https://combinedinitiative.com',
+          HOST_NAME_SERVER: 'https://api.combinedinitiative.com/graphql',
           DISCORD_CLIENT_ID: '1153033502468608090',
           DISCORD_CLIENT_SECRET: 'MakB7F_PNVjmkWE2UvyPqqxBhHPuwAIA',
           NEXTAUTH_SECRET: 'a_random_string_of_jumbo',
-          NEXT_PUBLIC_GRAPHQL_URL: 'https://api.c-i.army/graphql',
+          NEXT_PUBLIC_GRAPHQL_URL: 'https://api.combinedinitiative.com/graphql',
           NEXT_PUBLIC_UPLOAD_URL: 'https://api.combinedinitiative.com'
         }
       }
