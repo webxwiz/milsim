@@ -13,6 +13,7 @@ module.exports = {
           APP_ENV: 'dev' // APP_ENV=dev
         },
         env_production: {
+          NODE_ENV: 'production',
           APP_ENV: 'prod', // APP_ENV=prod
           NEXTAUTH_URL: 'https://www.combinedinitiative.com',
           HOST_NAME_SERVER: 'https://api.combinedinitiative.com/graphql',

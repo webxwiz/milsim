@@ -43,8 +43,6 @@ const makeClient = () => {
     //     authLink.concat(link),
     // )
 
-    console.log(process.env.NEXT_PUBLIC_GRAPHQL_URL)
-
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),
         link:
