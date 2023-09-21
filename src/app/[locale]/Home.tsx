@@ -145,8 +145,8 @@ export default function Home() {
             </div>
             <div className={styles.footerItems}>
               <div className={styles.headerEvent}>
-              <Link style={{textDecoration: "none", color: "white"}} href={'/#events'}>
-                <p>{t('selectEvent')}t</p>
+              <Link style={{textDecoration: "none", color: "white", minWidth: '38px'}} href={'/#events'}>
+                <p>{t('selectEvent')}</p>
                 </Link>
               </div>
               {session?.user ? (

@@ -28,7 +28,9 @@ export default function Navbar() {
         variables: {
           discordId: session?.user?.id
         }
-      }).then(data => Cookies.set('token', data?.data?.saveUser?.token))
+      }).then(data => {
+        Cookies.set('token', data?.data?.saveUser?.token)
+      })
     }
   }, [session])
 
@@ -69,7 +71,7 @@ export default function Navbar() {
           <Link className={styles.title} href={'/#events'}>
             Events
           </Link>
-          <ChooseLanguage />
+          <div style={{ marginLeft: showMenu ? 10 : 0 }}><ChooseLanguage /></div>
           {session?.user ? (
             <p onClick={() => {
               Cookies.remove('token')

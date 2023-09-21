@@ -44,7 +44,7 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
                     </div>
                 </div>
                 <div className={styles.date}>
-                    <p className={styles.dateText}>{date}</p>
+                    <p className={styles.dateText}>{new Date(date).toLocaleDateString()}</p>
                     <div
                         onClick={handleOpenEvent}
                         className={styles.button}
