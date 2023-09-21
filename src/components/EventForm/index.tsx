@@ -16,7 +16,6 @@ import { CHANGE_EVENT, CREATE_EVENT } from '@/apollo/mutations/request';
 import { GET_ONE_EVENT, GET_USER } from '@/apollo/queries/request';
 import TextareaAutosize from 'react-textarea-autosize';
 import Image from "next/image"
-import axios from 'axios';
 import { useTranslations } from 'next-intl'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation';
