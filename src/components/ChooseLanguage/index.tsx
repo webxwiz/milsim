@@ -76,7 +76,8 @@ const ChooseLanguage = () => {
           singleValue: (base) => ({
             ...base,
             display: "flex",
-            alignItems: "center"
+            alignItems: "center",
+            height: window.innerWidth >= 768 ? 38 : 28
           })
         }}
         components={{

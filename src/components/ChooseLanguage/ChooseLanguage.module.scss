@@ -1,16 +1,56 @@
-.widthS {
-    width: 100px;
-  }
+
   
-  .country_logo {
-    width: 35px;
-    height: 20px;
-    margin-right: 8px;
+
+  @media screen and (max-width: 768px) {
+    .widthS {
+      width: 100px;
+    }
+    
+    .country_logo {
+      width: 35px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    
+    .selected_logo {
+      width: 35px;
+      height: 20px;
+      margin-right: 8px;
+    }
   }
-  
-  .selected_logo {
-    width: 35px;
-    height: 20px;
-    margin-right: 8px;
+
+  @media screen and (min-width: 768px) and (max-width: 998px) {
+    .widthS {
+      width: 100px;
+    }
+    
+    .country_logo {
+      width: 35px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    
+    .selected_logo {
+      width: 35px;
+      height: 20px;
+      margin-right: 8px;
+    }
   }
-  
+
+  @media screen and (min-width: 998px) {
+    .widthS {
+      width: 100px;
+    }
+    
+    .country_logo {
+      width: 35px;
+      height: 20px;
+      margin-right: 8px;
+    }
+    
+    .selected_logo {
+      width: 35px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  }

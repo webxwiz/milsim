@@ -7,7 +7,7 @@ import { EVENT_DELETE } from "@/apollo/mutations/request"
 import Link from 'next/link'
 import { useTranslations } from "next-intl"
 
-export const AllEvents = () => {
+export const PastEvents = () => {
   const { data, refetch } = useQuery(GET_ALL_EVENTS)
 
   const t = useTranslations('Global');
@@ -25,7 +25,7 @@ export const AllEvents = () => {
     return (
         <div className={styles.main}>
             <div className={styles.events}>
-                {data?.getAllEvents?.filter((pastEvent) => new Date(pastEvent.date) >= new Date()).map((e) => (
+                {data?.getAllEvents?.filter((pastEvent) => new Date(pastEvent.date) <= new Date()).map((e) => (
                     <PastEvent
                         key={e._id}
                         id={e._id}

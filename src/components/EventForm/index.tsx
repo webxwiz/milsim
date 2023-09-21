@@ -58,11 +58,11 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         },
     })
 
-    useEffect(() => {
-        if (admin && admin?.getUserByToken?.role !== 'ADMIN' || Cookies.get('token') === undefined) {
-            router.push('/')
-        }
-    }, [admin])
+    // useEffect(() => {
+    //     if (admin && admin?.getUserByToken?.role !== 'ADMIN' || Cookies.get('token') === undefined) {
+    //         router.push('/')
+    //     }
+    // }, [admin])
 
     useEffect(() => {
         if (eventData) {

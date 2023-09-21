@@ -33,7 +33,7 @@ export const EditCard = ({
     const t = useTranslations('Event')
 
     const [role, setRole] = useState('')
-    const [playerName, setPlayerName] = useState('')
+    // const [playerName, setPlayerName] = useState('')
     const [isOpenModal, setIsOpenModal] = useState(false)
 
     const handleChangeModal = () => setIsOpenModal(!isOpenModal)
@@ -63,7 +63,7 @@ export const EditCard = ({
         value: index.toString(),
         label: item.role,
         discordId: item.discordId,
-        playerName: item.playerName,
+        // playerName: item.playerName,
         className: styles.dropdownOption
     }))
 
@@ -72,12 +72,12 @@ export const EditCard = ({
     const isShowSelect = isMyRole ? true : !allRolesTaken
 
     const handleRoleLogic = () => {
-        handleRole && handleRole(squadId as string, role.label as never, playerName, isMyRole, roleData._id as string)
+        handleRole && handleRole(squadId as string, role.label as never, 'playerName', isMyRole, roleData._id as string)
     }
 
     const handleRoleRemove = () => {
         if (isMyRole) {
-            handleRole && handleRole(squadId as string, role.label as never, playerName, isMyRole, roleData._id as string)
+            handleRole && handleRole(squadId as string, role.label as never, 'playerName', isMyRole, roleData._id as string)
             setBusyRoles([])
         }
         handleChangeModal()
@@ -132,7 +132,7 @@ export const EditCard = ({
                             }
                             placeholder={t('roleA')}
                         />
-                        <input
+                        {/* <input
                             value={`${isMyRole ? busyOptions?.[0]?.playerName : playerName}`}
                             onChange={(e) => setPlayerName(e.target.value)}
                             placeholder={t('playerName')}
@@ -141,7 +141,7 @@ export const EditCard = ({
                             style={{
                                 border: `1px solid ${isMyRole ? '#C15749' : '#46A7A7'}`
                             }}
-                        />
+                        /> */}
                         {isMyRole ? <RiCloseCircleFill onClick={handleChangeModal} size={29} color={'rgba(193, 87, 73, 1)'} />
                         : <BsCheckCircleFill onClick={handleRoleLogic} size={29} color={'green'} className={styles.checkIcon} />}
                     </>}

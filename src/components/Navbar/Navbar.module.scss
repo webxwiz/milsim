@@ -11,8 +11,8 @@ $darkGray: #1A1C1D;
   }
 
   .logo {
-    width: 105px;
-    height: 23px;
+    width: 135px;
+    height: 24px;
   }
   
   .navbar {
@@ -33,6 +33,7 @@ $darkGray: #1A1C1D;
     top: 99px;
     position: absolute;
     background-color: $darkGray;
+    box-shadow: rgba(0, 0, 0, 1) 5px 5px 15px;
     width: 100%;
     padding-top: 38px;
     padding-bottom: 20px;

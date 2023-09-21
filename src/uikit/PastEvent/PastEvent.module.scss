@@ -17,6 +17,7 @@ $gray2: rgba(216, 216, 216, 0.7);
         max-width: 170px;
         width: 100%;
         height: 79px;
+        border-radius: 10px;
     }
     
     .event {
@@ -94,6 +95,7 @@ $gray2: rgba(216, 216, 216, 0.7);
     .image {
         width: 136px;
         height: 78px;
+        border-radius: 15px;
     }
     
     .event {
@@ -177,6 +179,10 @@ $gray2: rgba(216, 216, 216, 0.7);
         justify-content: space-between;
     }
     
+    .image {
+        border-radius: 15px;
+    }
+
     .imageBlock {
         display: flex;
         align-items: center;
