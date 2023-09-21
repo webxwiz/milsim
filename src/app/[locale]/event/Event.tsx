@@ -61,13 +61,13 @@ export default function Event({ props }: { props: EventProps }) {
             <div className={styles.header}>
                 <p className={styles.bigOrangeTitle}>Operation: </p>
                 <p className={styles.bigTitle}>
-                    {eventData?.getOneEvent.name}
+                    {eventData?.getOneEvent?.name}
                 </p>
             </div>
             <p className={styles.smallTitle}>{t('openToAll')} - {eventData?.getOneEvent?.date}</p>
             <Image
                 alt=''
-                src={eventData?.getOneEvent.image}
+                src={eventData?.getOneEvent?.image}
                 width={1015}
                 height={568}
                 className={styles.mapImg}
