@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { BsDiscord } from 'react-icons/bs'
 import styles from './Navbar.module.scss'
 import Image from 'next/image'
 import { Button } from '@/uikit/Button';
@@ -78,7 +79,9 @@ export default function Navbar() {
             </p>
           ) : (
             <div className={styles.discordConnect}>
-              <Button onClick={signIn} title='Login'></Button>
+              <Button onClick={() => signIn('discord')} title='Login with discord'>
+                <BsDiscord size={20} />
+              </Button>
             </div>
           )}
         </div>}

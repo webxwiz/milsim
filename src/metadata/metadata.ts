@@ -15,49 +15,40 @@ export const generalMetaData: Metadata = {
     ],
 };
 
-export const mainPageMetaData: Metadata = {
-    title: "Pristine Cleaning - Your trusted cleaning company partner",
+export const generalOpenGraph: {} = {
+    type: "website",
+    url: "https://www.combinedinitiative.com",
+    title: "Combined Initiative",
     description:
-        "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
+        "Combined Initiative.",
+    images: "/preview.png",
+}
+
+export const generalTwitter: {} = {
+    card: "summary_large_image",
+    title: "Combined Initiative",
+    description:
+        "Combined Initiative.",
+    images: ["https://pristinefm.com/preview.png"],
+}
+
+export const mainPageMetaData: Metadata = {
+    title: "Combined Initiative",
+    description:
+        "Combined Initiative.",
     keywords: [],
-    metadataBase: new URL("https://pristinefm.com"),
-    openGraph: {
-        type: "website",
-        url: "https://pristinefm.com",
-        title: "Pristine Cleaning - Your trusted cleaning company partner",
-        description:
-            "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
-        images: "/preview.png",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Pristine Cleaning - Your trusted cleaning company partner",
-        description:
-        "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
-        images: ["https://pristinefm.com/preview.png"],
-    },
+    metadataBase: new URL("https://www.combinedinitiative.com"),
+    openGraph: generalOpenGraph,
+    twitter: generalTwitter,
 };
 
 export const eventPage: Metadata = {
-    title: "Cleaning company - About",
-    description: "Pristine Cleaning - Your trusted cleaning company partner",
+    title: "Combined Initiative - About",
+    description: "Combined Initiative",
     keywords: [],
-    metadataBase: new URL("https://pristinefm.com/about"),
-    openGraph: {
-        type: "website",
-        url: "https://pristinefm.com",
-        title: "Cleaning company - About",
-        description:
-            "Pristine Cleaning - Your trusted cleaning company partner",
-        images: "/preview.png",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Pristine Cleaning - Your trusted cleaning company partner",
-        description:
-        "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
-        images: ["https://pristinefm.com/preview.png"],
-    },
+    metadataBase: new URL("https://www.combinedinitiative.com/about"),
+    openGraph: generalOpenGraph,
+    twitter: generalTwitter,
 };
 
 export const termsPage: Metadata = {
@@ -65,21 +56,8 @@ export const termsPage: Metadata = {
     description: "Pristine Cleaning - Your trusted cleaning company partner",
     keywords: [],
     metadataBase: new URL("https://pristinefm.com/industries"),
-    openGraph: {
-        type: "website",
-        url: "https://pristinefm.com",
-        title: "Cleaning company - Industries",
-        description:
-            "Pristine Cleaning - Your trusted cleaning company partner",
-        images: "/preview.png",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Pristine Cleaning - Your trusted cleaning company partner",
-        description:
-        "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
-        images: ["https://pristinefm.com/preview.png"],
-    },
+    openGraph: generalOpenGraph,
+    twitter: generalTwitter,
 };
 
 export const changeEvent: Metadata = {
@@ -87,21 +65,8 @@ export const changeEvent: Metadata = {
     description: "Pristine Cleaning - Your trusted cleaning company partner",
     keywords: [],
     metadataBase: new URL("https://pristinefm.com/service"),
-    openGraph: {
-        type: "website",
-        url: "https://pristinefm.com",
-        title: "Cleaning company - Services",
-        description:
-            "Pristine Cleaning - Your trusted cleaning company partner",
-        images: "/preview.png",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Pristine Cleaning - Your trusted cleaning company partner",
-        description:
-        "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
-        images: ["https://pristinefm.com/preview.png"],
-    },
+    openGraph: generalOpenGraph,
+    twitter: generalTwitter,
 };
 
 export const createEvent: Metadata = {
@@ -109,21 +74,8 @@ export const createEvent: Metadata = {
     description: "Pristine Cleaning - Your trusted cleaning company partner",
     keywords: [],
     metadataBase: new URL("https://pristinefm.com/contact"),
-    openGraph: {
-        type: "website",
-        url: "https://pristinefm.com",
-        title: "Cleaning company - Contact",
-        description:
-            "Pristine Cleaning - Your trusted cleaning company partner",
-        images: "/preview.png",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Pristine Cleaning - Your trusted cleaning company partner",
-        description:
-        "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
-        images: ["https://pristinefm.com/preview.png"],
-    },
+    openGraph: generalOpenGraph,
+    twitter: generalTwitter,
 };
 
 export const eventsAdmin: Metadata = {
@@ -131,19 +83,6 @@ export const eventsAdmin: Metadata = {
     description: "Pristine Cleaning - Your trusted cleaning company partner",
     keywords: [],
     metadataBase: new URL("https://pristinefm.com/contact"),
-    openGraph: {
-        type: "website",
-        url: "https://pristinefm.com",
-        title: "Cleaning company - Contact",
-        description:
-            "Pristine Cleaning - Your trusted cleaning company partner",
-        images: "/preview.png",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Pristine Cleaning - Your trusted cleaning company partner",
-        description:
-        "We use only eco-friendly contemporary products for cleaning and choose methods and techniques specifically for your order and area. Pristine workers are equipped with the latest technology that is not harmful for health or environment at all.",
-        images: ["https://pristinefm.com/preview.png"],
-    },
+    openGraph: generalOpenGraph,
+    twitter: generalTwitter,
 };

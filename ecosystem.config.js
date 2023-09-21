@@ -14,11 +14,11 @@ module.exports = {
         },
         env_production: {
           APP_ENV: 'prod', // APP_ENV=prod
-          NEXTAUTH_URL: 'https://combinedinitiative.com',
+          NEXTAUTH_URL: 'https://www.combinedinitiative.com',
           HOST_NAME_SERVER: 'https://api.combinedinitiative.com/graphql',
           DISCORD_CLIENT_ID: '1153033502468608090',
-          DISCORD_CLIENT_SECRET: 'MakB7F_PNVjmkWE2UvyPqqxBhHPuwAIA',
-          NEXTAUTH_SECRET: 'a_random_string_of_jumbo',
+          DISCORD_CLIENT_SECRET: '_dG9qRlrudC69tHvE7MXzMYTlJNkVQVl',
+          NEXTAUTH_SECRET: 'iwaeMSquNzmsfPMek5Yfack/977JVT2K5QtuligcBA0=',
           NEXT_PUBLIC_GRAPHQL_URL: 'https://api.combinedinitiative.com/graphql',
           NEXT_PUBLIC_UPLOAD_URL: 'https://api.combinedinitiative.com'
         }
