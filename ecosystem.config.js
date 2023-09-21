@@ -20,7 +20,7 @@ module.exports = {
           DISCORD_CLIENT_SECRET: 'MakB7F_PNVjmkWE2UvyPqqxBhHPuwAIA',
           NEXTAUTH_SECRET: 'a_random_string_of_jumbo',
           NEXT_PUBLIC_GRAPHQL_URL: 'https://api.c-i.army/graphql',
-          NEXT_PUBLIC_UPLOAD_URL: 'https://api.combinedinitiative.com'
+          NEXT_PUBLIC_UPLOAD_URL: 'https://api.c-i.army.com'
         }
       }
     ]
