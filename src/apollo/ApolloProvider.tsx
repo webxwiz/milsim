@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { ApolloLink, HttpLink, split } from '@apollo/client'
+import {ApolloLink, concat, HttpLink, split} from '@apollo/client'
 import {
     ApolloNextAppProvider,
     NextSSRInMemoryCache,
@@ -43,15 +43,17 @@ const makeClient = () => {
     //     authLink.concat(link),
     // )
 
+    console.log(process.env.NEXT_PUBLIC_GRAPHQL_URL)
+
     return new NextSSRApolloClient({
         cache: new NextSSRInMemoryCache(),
         link:
             typeof window === 'undefined'
                 ? ApolloLink.from([
                       new SSRMultipartLink({ stripDefer: true }),
-                      authLink.concat(httpLink),
+                    concat(authLink, httpLink),
                   ])
-                : authLink.concat(httpLink),
+                : concat(authLink, httpLink),
     })
 }
 
