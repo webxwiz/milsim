@@ -19,11 +19,21 @@ import Image from "next/image"
 import { useTranslations } from 'next-intl'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
 
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import instans from '@/config/axios';
+import MarkdownIt from 'markdown-it';
+import MdEditor from 'react-markdown-editor-lite';
+// import style manually
+import 'react-markdown-editor-lite/lib/index.css';
+
+// Register plugins if required
+// MdEditor.use(YOUR_PLUGINS_HERE);
+
+
  
 export const EventForm = ({ id, isEdit }: EventFormProps) => {
     const router = useRouter()
@@ -35,6 +45,14 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             id,
         }
     })
+
+    // Initialize a markdown parser
+const mdParser = new MarkdownIt(/* Markdown-it options */);
+
+// Finish!
+function handleEditorChange({ html, text }) {
+  setText(text)
+}
 
     const t = useTranslations('EventForm');
 
@@ -452,6 +470,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     //  onMouseUp={handleMouseUp}
     //  {...register('eventDescription', { required: true })}
 />
+<MdEditor style={{ height: '500px'}} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
 
       {/* <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addItalic')}>Italic</button> */}
             {/* <textarea {...register('eventDescription', { required: true })} className={styles.textArea}></textarea> */}

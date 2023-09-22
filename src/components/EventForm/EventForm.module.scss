@@ -12,6 +12,15 @@ $gray: rgba(168, 168, 168, 1);
     gap: 15px;
     position: absolute;
 }
+.rme-editor {
+    background-color: black;
+    color: white; /* Цвет текста на черном фоне */
+  }
+  
+  /* Фон панели инструментов (по желанию) */
+  .rme-toolbar {
+    background-color: #333; /* Замените на свой цвет по желанию */
+  }
 //phone
 @media screen and (max-width: 768px) {
     .event {
