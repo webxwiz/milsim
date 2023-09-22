@@ -102,3 +102,19 @@ p {
 .react-select__option{
   background-color: #1A1C1D;
 }
+
+html::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+html::-webkit-scrollbar-track {
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.1);
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: rgba(233, 189, 62, 1);
+  transition: background-color 200ms linear;
+}
