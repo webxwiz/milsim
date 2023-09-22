@@ -71,7 +71,7 @@ export const ImageUploader = ({ defaultImage, isSingle, isBigSingle, onSubmit }:
                         />
                     </div>}
                     <Image
-                        src={image.preview}
+                        src={image?.preview}
                         alt={`${t('uploadedImage')} ${index}`}
                         width={279}
                         height={186}

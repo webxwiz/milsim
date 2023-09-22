@@ -99,6 +99,10 @@ const ChooseLanguage = () => {
           control(base, props) {
             return {
               ...base,
+              backgroundColor: 'black',
+              border: 'none',
+              outline: 'none',
+              height: isSmallScreen ? 18 : screenWidth > 998 ? 45 : 38
             }
           },
         }}
