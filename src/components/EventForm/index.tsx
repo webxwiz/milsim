@@ -182,7 +182,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         if (!image[0].file) return
         const formData = new FormData()
 
-        formData.append('image', image[0].file);
+        formData.append('image', image[0].file)
 
         instans.post('image', formData, {
             headers: {
