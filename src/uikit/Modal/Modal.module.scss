@@ -136,7 +136,15 @@ $borderGray: #A7A8A8;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         overflow: scroll;
+
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer и Edge */
     }
+
+    .formModalContent::-webkit-scrollbar {
+        display: none;
+      }
 
     .sketchColor {
         margin-top: 20px;
@@ -357,7 +365,15 @@ $borderGray: #A7A8A8;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         overflow: scroll;
+
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer и Edge */
     }
+
+    .formModalContent::-webkit-scrollbar {
+        display: none;
+      }
     
     .squadData {
         display: flex;
@@ -578,6 +594,15 @@ $borderGray: #A7A8A8;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         overflow: scroll;
+
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer и Edge */
+    }
+
+    /* Для WebKit (Chrome, Safari) */
+    .formModalContent::-webkit-scrollbar {
+        display: none;
     }
     
     .squadData {

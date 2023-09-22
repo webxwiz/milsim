@@ -87,6 +87,14 @@ $white: #fff;
         border-radius: 10px;
         padding-right: 40px;
         overflow: scroll;
+
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer и Edge */
+    }
+
+    .footer::-webkit-scrollbar {
+        display: none;
     }
     
     .items {
@@ -193,7 +201,15 @@ $white: #fff;
         height: 333px;
         border-radius: 10px;
         overflow: scroll;
+
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer и Edge */
     }
+    
+    .footer::-webkit-scrollbar {
+        display: none;
+      }
     
     .items {
         margin-top: 84px;
@@ -301,7 +317,14 @@ $white: #fff;
         height: 500px;
         border-radius: 10px;
         overflow: scroll;
+        overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer и Edge */
     }
+
+    .footer::-webkit-scrollbar {
+        display: none;
+      }
     
     .items {
         margin-top: 84px;
