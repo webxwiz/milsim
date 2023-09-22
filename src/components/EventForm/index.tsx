@@ -448,7 +448,7 @@ function handleEditorChange({ html, text }) {
                 className={styles.input}
             />
             <p className={styles.title}>{t('eventDuration')}</p>
-            <input {...register('eventDuration', { required: true })} className={styles.input} />
+            <input {...register('eventDuration', { required: true })} className={styles.input} placeholder='Type hours of the event' />
             <p className={styles.title}>{isEdit ? t('change') : t('feature')} {t('image')}</p>
             <ImageUploader
                 defaultImage={watch('eventImage') ? { preview: watch('eventImage')} : undefined}

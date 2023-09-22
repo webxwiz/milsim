@@ -55,7 +55,6 @@ export default function Event({ props }: { props: EventProps }) {
         }
     }
 
-
     return (
         <div className={styles.content}>
             <div className={styles.header}>
