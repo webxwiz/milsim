@@ -7,6 +7,7 @@ import styles from './PastEvent.module.scss'
 import { useState } from "react"
 import { Modal } from "../Modal"
 import { useTranslations } from "next-intl"
+import convertISOToCustomFormat from "@/components/customDate"
 
 export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEventProps) => {
     const router = useRouter()
@@ -22,6 +23,8 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
     }
 
     const button = isEdit ? t('edit') : t('read')
+
+
     return (
         <div className={styles.pastEvent}>
             <Modal onSubmit={() => eventDelete && eventDelete(id)} isOpen={openModal} onClose={handleModal} />
@@ -44,7 +47,7 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
                     </div>
                 </div>
                 <div className={styles.date}>
-                    <p className={styles.dateText}>{new Date(date).toLocaleDateString()}</p>
+                    <p className={styles.dateText}>{convertISOToCustomFormat(date)}</p>
                     <div
                         onClick={handleOpenEvent}
                         className={styles.button}

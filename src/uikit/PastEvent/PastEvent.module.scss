@@ -5,6 +5,9 @@ $gray: rgba(216, 216, 216, 0.15);
 $gray2: rgba(216, 216, 216, 0.7);
 
 //phone
+.image{
+    object-fit: cover;
+}
 @media screen and (max-width: 768px) {
     .pastEvent {
         background-color: $gray;

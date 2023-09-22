@@ -12,6 +12,7 @@ import { ADD_USER_TO_EVENT, REMOVE_FROM_BUSY_ROLES } from '@/apollo/mutations/re
 import { useTranslations } from 'next-intl'
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import convertISOToCustomFormat from '@/components/customDate'
 
 export default function Event({ props }: { props: EventProps }) {
     const router = useRouter()
@@ -55,6 +56,8 @@ export default function Event({ props }: { props: EventProps }) {
         }
     }
 
+    console.log(eventData?.getOneEvent)
+
     return (
         <div className={styles.content}>
             <div className={styles.header}>
@@ -63,7 +66,7 @@ export default function Event({ props }: { props: EventProps }) {
                     {eventData?.getOneEvent?.name}
                 </p>
             </div>
-            <p className={styles.smallTitle}>{t('openToAll')} - {eventData?.getOneEvent?.date}</p>
+            <p className={styles.smallTitle}>{t('openToAll')} - {convertISOToCustomFormat(eventData?.getOneEvent?.date)}</p>
             <Image
                 alt=''
                 src={eventData?.getOneEvent?.image}

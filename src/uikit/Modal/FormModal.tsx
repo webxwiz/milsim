@@ -106,8 +106,10 @@ export const FormModal = ({
     }
 
     const handleSetActiveColor = (color: ColorResult) => {
-        setActiveColor(color.hex)
+        setActiveColor(color.hex.slice(1))
     }
+
+    console.log(activeColor)
 
     const isPlatoon = mode === 'platoon'
     const isSquad = mode === 'squad'
