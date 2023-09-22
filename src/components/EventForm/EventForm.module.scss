@@ -98,7 +98,8 @@ $gray: rgba(168, 168, 168, 1);
         border-radius: 10px;
         padding-right: 35px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
 
     }
     
@@ -215,7 +216,8 @@ $gray: rgba(168, 168, 168, 1);
         border: 2px solid $gray;
         border-radius: 10px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     
     .items {
@@ -343,7 +345,8 @@ $gray: rgba(168, 168, 168, 1);
         border-radius: 10px;
         margin-top: 40px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     
     .items {
