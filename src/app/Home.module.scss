@@ -81,7 +81,6 @@ $black: #000;
     .rectangle {
         background-image: url('/images/rectangle.webp');
         background-size: cover;
-        background-position: center bottom; /* Прижимаем изображение к нижней части */
         height: 15px;
         margin-top: 65px;
     }
@@ -257,7 +256,6 @@ $black: #000;
         background-image: url('/images/rectangle.webp');
         background-size: cover;
         height: 15px;
-        background-position: center bottom; /* Прижимаем изображение к нижней части */
         margin-top: 65px;
     }
     
@@ -448,7 +446,6 @@ $black: #000;
     .rectangle {
         background-image: url('/images/rectangle.webp');
         background-size: cover;
-        background-position: center bottom; /* Прижимаем изображение к нижней части */
         height: 25px;
         margin-top: 179px;
     }

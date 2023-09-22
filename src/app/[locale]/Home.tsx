@@ -198,7 +198,6 @@ const isSmallScreen = screenWidth <= 768
           ))}
         </div>
       </div>
-      <div className={styles.invertRectangle} />
       <div className={styles.allEvents} id='events'>
         <div className={styles.adaptiveBackground}>
           <div className={styles.eventTitle}>
