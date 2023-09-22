@@ -21,11 +21,11 @@ export default function EventsAdmin() {
 
     const handleChangeStep = (step: number) => setStep(step)
     
-    // useEffect(() => {
-    //     if (data && data?.getUserByToken?.role !== 'ADMIN' || Cookies.get('token') === undefined) {
-    //         router.push('/')
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (data && data?.getUserByToken?.role !== 'ADMIN' || Cookies.get('token') === undefined) {
+            router.push('/')
+        }
+    }, [])
 
 
     return (
