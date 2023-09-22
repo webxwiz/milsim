@@ -89,12 +89,14 @@ const ChooseLanguage = () => {
         value={selectedCountry}
         options={countries}
         onChange={handleChange}
-        className={styles.widthS}
+        className={`react-select-container ${styles.widthS}`}
         styles={{
           singleValue: (base) => ({
             ...base,
             display: "flex",
             alignItems: "center",
+            backgroundColor: 'black', // Уберите это здесь, чтобы не перекрывать фон контейнера
+            color: 'white', // Добавьте стиль цвета текста
           }),
           control(base, props) {
             return {
@@ -106,10 +108,19 @@ const ChooseLanguage = () => {
             }
           },
         }}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 0,
+          colors: {
+            ...theme.colors,
+            primary25: 'black',
+            primary: 'black',
+          },})}
         components={{
           Option,
           SingleValue
         }}
+        classNamePrefix="react-select"
       />
     </div>
   );

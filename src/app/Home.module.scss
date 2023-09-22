@@ -8,6 +8,7 @@ $black: #000;
         background-image: url('/images/homeBackground.webp');
         background-size: cover;
         padding-top: 66px;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
     }
     
     .headerInfo {
@@ -80,6 +81,7 @@ $black: #000;
     .rectangle {
         background-image: url('/images/rectangle.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         height: 15px;
         margin-top: 65px;
     }
@@ -107,12 +109,14 @@ $black: #000;
         background-image: url('/images/invertRectangle.webp');
         background-size: cover;
         height: 30px;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
     }
     
     .allEvents {
         background-image: url('/images/eventsBackground.webp');
         background-size: cover;
         padding-top: 67px;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         padding-bottom: 113px;
     }
     
@@ -176,6 +180,7 @@ $black: #000;
     .header {
         background-image: url('/images/homeBackground.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         padding-top: 66px;
     }
     
@@ -252,6 +257,7 @@ $black: #000;
         background-image: url('/images/rectangle.webp');
         background-size: cover;
         height: 15px;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         margin-top: 65px;
     }
     
@@ -276,12 +282,14 @@ $black: #000;
     .invertRectangle {
         background-image: url('/images/invertRectangle.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         height: 30px;
     }
     
     .allEvents {
         background-image: url('/images/eventsBackground.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         padding-top: 67px;
         padding-bottom: 113px;
     }
@@ -359,11 +367,14 @@ $black: #000;
 
         margin: 0 auto;
         box-sizing: border-box;
+
+       
     }
 
     .header {
         background-image: url('/images/homeBackground.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         padding-top: 105px;
     }
     
@@ -437,6 +448,7 @@ $black: #000;
     .rectangle {
         background-image: url('/images/rectangle.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         height: 25px;
         margin-top: 179px;
     }
@@ -462,12 +474,14 @@ $black: #000;
     .invertRectangle {
         background-image: url('/images/invertRectangle.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         height: 30px;
     }
     
     .allEvents {
         background-image: url('/images/eventsBackground.webp');
         background-size: cover;
+        background-position: center bottom; /* Прижимаем изображение к нижней части */
         padding-top: 67px;
         padding-bottom: 113px;
     }

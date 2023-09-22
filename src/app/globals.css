@@ -91,3 +91,14 @@ p {
   }
 }
 
+.react-select__menu{
+  background-color: #1A1C1D;
+}
+
+.react-select__menu-list{
+  background-color: #1A1C1D;
+}
+
+.react-select__option{
+  background-color: #1A1C1D;
+}
