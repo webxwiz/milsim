@@ -14,7 +14,7 @@ import { useMutation, useQuery } from '@apollo/client'
 import { GET_ALL_EVENTS } from '@/apollo/queries/request'
 import { useRouter } from 'next/navigation'
 import Link from "next/link"
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { signIn, signOut, useSession } from "next-auth/react"
 import Cookies from 'js-cookie'
 import { SAVE_USER } from '@/apollo/mutations/request'
@@ -24,6 +24,24 @@ export default function Home() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const t = useTranslations('Home')
+
+  const [screenWidth, setScreenWidth] = useState(0)
+
+  useEffect(() => {
+      const updateScreenWidth = () => {
+          setScreenWidth(window.innerWidth)
+      }
+
+      updateScreenWidth()
+
+      window.addEventListener('resize', updateScreenWidth)
+
+      return () => {
+      window.removeEventListener('resize', updateScreenWidth)
+      }
+  }, [])
+
+const isSmallScreen = screenWidth <= 768
 
   const infoData = [
     {
@@ -145,7 +163,7 @@ export default function Home() {
             </div>
             <div className={styles.footerItems}>
               <div className={styles.headerEvent}>
-              <Link style={{textDecoration: "none", color: "white", minWidth: '38px'}} href={'/#events'}>
+              <Link style={{textDecoration: "none", color: "white"}} href={'/#events'}>
                 <p>{t('selectEvent')}</p>
                 </Link>
               </div>
@@ -219,7 +237,7 @@ export default function Home() {
         {footerData.map(e => (
           <div key={e.id}>
             <div className={styles.footerItem}>
-              <Image alt='' src={e.url} width={41} height={41} />
+              <Image alt='' src={e.url} width={isSmallScreen ? 34 : 41} height={isSmallScreen ? 34 : 41} />
               <p className={styles[e.style]}>{e.title}</p>
             </div>
             <p className={styles.footerDescription}>

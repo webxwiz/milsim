@@ -43,7 +43,7 @@ $black: #000;
     .facts {
         max-width: 600px;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         text-align: center;
         justify-content: space-between;
         p {
@@ -56,8 +56,8 @@ $black: #000;
     .footerItems {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 10px;
+        justify-content: center;
+        gap: 20px;
         margin-top: 32px;
     }
     
@@ -66,7 +66,7 @@ $black: #000;
         text-transform: uppercase;
         font-weight: 600;
         font-size: 14px;
-        height: 31px;
+        height: 38px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -138,16 +138,17 @@ $black: #000;
     .footer {
         padding-top: 106px;
         margin-left: 20px;
+        margin-bottom: 145px;
     }
     
     .title {
-        font-size: 64px;
+        font-size: 40px;
         font-family: 'Bebas Neue Regular';
         font-weight: 700;
     }
     
     .orangeTitle {
-        font-size: 64px;
+        font-size: 40px;
         font-family: 'Bebas Neue Regular';
         font-weight: 700;
 
@@ -157,6 +158,7 @@ $black: #000;
     .footerItem {
         display: flex;
         gap: 11px;
+        padding-bottom: 20px;
     }
     
     .footerDescription {
@@ -213,7 +215,7 @@ $black: #000;
     .facts {
         max-width: 600px;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         text-align: center;
         justify-content: space-between;
         p {
@@ -235,7 +237,7 @@ $black: #000;
         text-transform: uppercase;
         font-weight: 600;
         font-size: 16px;
-        height: 37px;
+        height: 38px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -310,25 +312,29 @@ $black: #000;
     .footer {
         padding-top: 106px;
         margin-left: 40px;
+        margin-bottom: 50%;
     }
     
     .title {
         font-size: 64px;
         font-family: 'Bebas Neue Regular';
         font-weight: 700;
+        height: 41px;
     }
     
     .orangeTitle {
         font-size: 64px;
         font-family: 'Bebas Neue Regular';
         font-weight: 700;
-
+        height: 41px;
         color: $orange;
     }
     
     .footerItem {
         display: flex;
         gap: 11px;
+        padding-bottom: 20px;
+        align-items: center;
     }
     
     .footerDescription {
@@ -397,7 +403,7 @@ $black: #000;
     .facts {
         max-width: 600px;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         text-align: center;
         justify-content: space-between;
         p {
@@ -494,26 +500,30 @@ $black: #000;
         max-width: 1440px;
         width: 100%;
         margin: 0 auto;
+        margin-bottom: 230px;
     }
     
     .title {
         font-size: 64px;
         font-family: 'Bebas Neue Regular';
         font-weight: 700;
+        height: 41px;
     }
     
     .orangeTitle {
         font-size: 64px;
         font-family: 'Bebas Neue Regular';
         font-weight: 700;
-
+        height: 41px;
         color: $orange;
     }
     
     .footerItem {
         display: flex;
+        align-items: center;
         gap: 11px;
         margin-left: 40px;
+        padding-bottom: 20px;
     }
     
     .footerDescription {

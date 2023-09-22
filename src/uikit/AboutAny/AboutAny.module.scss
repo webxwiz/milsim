@@ -4,7 +4,7 @@ $orange: rgba(233, 189, 62, 1);
 //phone
 @media screen and (max-width: 768px) {
     .block {
-        max-width: 250px;
+        width: 60vw;
         max-height: 306px;
         border: 2px solid rgba(216, 216, 216, 0.6);
         border-radius: 10px;

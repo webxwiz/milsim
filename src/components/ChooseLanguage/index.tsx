@@ -32,6 +32,24 @@ const ChooseLanguage = () => {
 
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
+  const [screenWidth, setScreenWidth] = useState(0)
+
+  useEffect(() => {
+      const updateScreenWidth = () => {
+          setScreenWidth(window.innerWidth)
+      }
+
+      updateScreenWidth()
+
+      window.addEventListener('resize', updateScreenWidth)
+
+      return () => {
+      window.removeEventListener('resize', updateScreenWidth)
+      }
+  }, [])
+
+  const isSmallScreen = screenWidth <= 768
+
   useEffect(() => {
     if (locale == "fr") {
       setSelectedCountry(countries[1])
@@ -77,8 +95,12 @@ const ChooseLanguage = () => {
             ...base,
             display: "flex",
             alignItems: "center",
-            height: window.innerWidth >= 768 ? 38 : 28
-          })
+          }),
+          control(base, props) {
+            return {
+              ...base,
+            }
+          },
         }}
         components={{
           Option,
