@@ -19,6 +19,7 @@ import Image from "next/image"
 import { useTranslations } from 'next-intl'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2'
 import ReactMarkdown from 'react-markdown';
 
 import DatePicker from "react-datepicker";
@@ -443,7 +444,7 @@ function handleEditorChange({ html, text }) {
             <input {...register('eventName', { required: true })} className={styles.input} />
             <p className={styles.title}>{isEdit ? t('change') : t('new')} {t('date')}</p>
             <DatePicker
-                value={watch('eventDate')}
+                value={watch('eventDate') ? new Date(watch('eventDate')).toLocaleDateString() : ''}
                 onChange={(date) => setValue('eventDate', date)}
                 className={styles.input}
             />
@@ -543,7 +544,18 @@ function handleEditorChange({ html, text }) {
             </div>
             <div className={styles.footerButtons}>
                 <Button title={t('confirm')} onClick={handleSubmit(handleEventSubmit)} />
-                <Button title={t('cancel')} isCancel />
+                <Button title={t('cancel')} isCancel onClick={() => {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        showDenyButton: true,
+                        confirmButtonText: 'Cancel',
+                        denyButtonText: `Back`,
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            router.push('/events-admin')
+                        }
+                      })
+                }} />
             </div>
         </div>
     )

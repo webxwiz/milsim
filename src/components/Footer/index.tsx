@@ -1,10 +1,32 @@
+'use client'
 import Image from 'next/image'
 import { BsDiscord } from 'react-icons/bs'
+import Cookies from 'js-cookie'
 
 import styles from './Footer.module.scss'
 import Link from 'next/link'
+import { useMutation } from '@apollo/client'
+import { SAVE_USER } from '@/apollo/mutations/request'
+import { useSession, signIn } from 'next-auth/react'
+import { useEffect } from 'react'
 
 export default function index() {
+    const { data: session, status } = useSession()
+
+    const [saveUser] = useMutation(SAVE_USER)
+
+    useEffect(() => {
+      if (session?.user && Cookies.get('token') === undefined) {
+        saveUser({
+          variables: {
+            discordId: session?.user?.id
+          }
+        }).then(data => {
+          Cookies.set('token', data?.data?.saveUser?.token)
+        })
+      }
+    }, [session])
+
     const webXwizLink = 'https://webxwiz.com'
     return (
         <footer className={styles.footer}>
@@ -22,10 +44,7 @@ export default function index() {
                         Events
                     </Link>
                     <Link className={styles.title} href={'#'}>
-                        Discord
-                    </Link>
-                    <Link className={styles.title} href={'#'}>
-                        Connect
+                        <p onClick={() => signIn('discord')}>Discord</p>
                     </Link>
                 </div>
             </div>

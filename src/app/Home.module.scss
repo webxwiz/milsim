@@ -55,8 +55,8 @@ $black: #000;
     
     .footerItems {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        // align-items: center;
+        // justify-content: center;
         gap: 20px;
         margin-top: 32px;
     }
@@ -455,8 +455,8 @@ $black: #000;
         gap: 27px;
         margin-left: 40px;
         margin-right: 40px;
-        margin-top: 107px;
-        margin-bottom: 106px;
+        margin-top: 106px;
+        margin-bottom: 80px;
     }
     
     .invertRectangle {

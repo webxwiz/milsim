@@ -77,7 +77,7 @@ export const FormModal = ({
     const onNext = () => {
         switch (mode) {
             case 'platoon': {
-                onSubmit && onSubmit(platoonName, activeColor, image[0].preview)
+                onSubmit && onSubmit(platoonName, activeColor, image[0]?.preview)
                 return handleClose()
             }
             case 'squad': {

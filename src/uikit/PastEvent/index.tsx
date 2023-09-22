@@ -40,7 +40,7 @@ export const PastEvent = ({ id, title, date, url, isEdit, eventDelete }: PastEve
                     />
                     <div className={styles.operation}>
                         <p>{t('operation')}</p>
-                        <p>{title}</p>
+                        <p style={{ maxWidth: 200 }}>{title}</p>
                     </div>
                 </div>
                 <div className={styles.date}>

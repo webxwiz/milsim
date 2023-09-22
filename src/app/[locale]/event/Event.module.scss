@@ -83,12 +83,18 @@ $white: #fff;
     .footer {
         background-size: cover;
         border: 2px solid $gray;
-        height: 1033px;
+        height: 333px;
         border-radius: 10px;
         padding-right: 40px;
         overflow: scroll;
-        overflow-x: hidden;
-        overflow-y: hidden;
+
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* Internet Explorer и Edge */
+    }
+
+    .footer::-webkit-scrollbar {
+        display: none;
     }
     
     .items {
@@ -192,12 +198,18 @@ $white: #fff;
     .footer {
         background-size: cover;
         border: 2px solid $gray;
-        height: 1033px;
+        height: 333px;
         border-radius: 10px;
         overflow: scroll;
-        overflow-x: hidden;
-        overflow-y: hidden;
+
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer и Edge */
     }
+    
+    .footer::-webkit-scrollbar {
+        display: none;
+      }
     
     .items {
         margin-top: 84px;
@@ -302,12 +314,17 @@ $white: #fff;
     .footer {
         background-size: cover;
         border: 2px solid $gray;
-        height: 1546px;
+        height: 500px;
         border-radius: 10px;
         overflow: scroll;
-        overflow-x: hidden;
-        overflow-y: hidden;
+        overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer и Edge */
     }
+
+    .footer::-webkit-scrollbar {
+        display: none;
+      }
     
     .items {
         margin-top: 84px;
