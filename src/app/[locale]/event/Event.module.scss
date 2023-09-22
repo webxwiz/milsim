@@ -87,7 +87,8 @@ $white: #fff;
         border-radius: 10px;
         padding-right: 40px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     
     .items {
@@ -194,7 +195,8 @@ $white: #fff;
         height: 1033px;
         border-radius: 10px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     
     .items {
@@ -302,8 +304,9 @@ $white: #fff;
         border: 2px solid $gray;
         height: 1546px;
         border-radius: 10px;
-        -ms-overflow-style: none;
         overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     
     .items {

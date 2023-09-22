@@ -136,7 +136,8 @@ $borderGray: #A7A8A8;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
 
     .sketchColor {
@@ -358,7 +359,8 @@ $borderGray: #A7A8A8;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     
     .squadData {
@@ -580,7 +582,8 @@ $borderGray: #A7A8A8;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         overflow: scroll;
-        -ms-overflow-style: none;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
     
     .squadData {
