@@ -23,6 +23,7 @@ import Swal from 'sweetalert2'
 import ReactMarkdown from 'react-markdown';
 
 import DatePicker from "react-datepicker";
+import './date-picker.css'
 
 import "react-datepicker/dist/react-datepicker.css";
 import instans from '@/config/axios';
@@ -84,7 +85,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         if (eventData) {
             reset({
                 eventName: eventData.getOneEvent.name,
-                eventDate: new Date(eventData.getOneEvent.date).toLocaleDateString(),
+                eventDate: eventData.getOneEvent.date,
                 eventDescription: eventData.getOneEvent.description,
                 eventDuration: eventData.getOneEvent.duration,
                 eventImage: eventData.getOneEvent.image,
@@ -353,10 +354,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     }
 
     const addToWaitingList = (squadId: string, playerName: string, discordId: string, role: string, roleId: string) => {
-        console.log(`Rolename: ${role}`)
-        console.log(`_id: ${discordId}`)
-        console.log(`roleId: ${roleId}`)
-        console.log(`squadId: ${squadId}`)
+
         addToWTList({
             variables: {
             addToWaitingListInput: {
@@ -399,14 +397,18 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
           })
     }
 
-    const addToBusyRoleFromAdm = (squadId: string, roleId: string, roleName: string, id: string) => {
+    const addToBusyRoleFromAdm = (squadId: string, roleId: string, role: string, discordId: string) => {
+        console.log(`Rolename: ${role}`)
+        console.log(`_id: ${discordId}`)
+        console.log(`roleId: ${roleId}`)
+        console.log(`squadId: ${squadId}`)
         addToBusyRole({
             variables: {
                 addToBusyRoleFromAdminInput: {
                     squadId,
                     roleId,
-                    roleName,
-                    _id: id
+                    roleName: role,
+                    _id: discordId
                 }
             }
         })

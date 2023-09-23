@@ -1,0 +1,29 @@
+/* Задайте черный фон для всего календаря */
+.react-datepicker {
+    background-color: black;
+    color: white; /* Цвет текста на черном фоне */
+  }
+  
+  /* Задайте черный фон для заголовка календаря */
+  .react-datepicker__header {
+    background-color: black;
+    color: white; /* Цвет текста на черном фоне */
+  }
+  
+  /* Задайте черный фон для дней недели в заголовке календаря */
+  .react-datepicker__day-name {
+    color: white; /* Цвет текста на черном фоне */
+  }
+  
+  /* Задайте черный фон для выбранных дней */
+  .react-datepicker__day--selected {
+    background-color: #333; /* Черный с небольшой прозрачностью */
+    color: white; /* Цвет текста на выбранном дне */
+  }
+  
+  /* Задайте черный фон для дней, наведенных курсором мыши */
+  .react-datepicker__day--keyboard-selected {
+    background-color: #333; /* Черный с небольшой прозрачностью */
+    color: white; /* Цвет текста на выбранном дне */
+  }
+  

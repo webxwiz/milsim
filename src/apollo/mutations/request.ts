@@ -252,8 +252,8 @@ mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
 }
 `
 export const ADD_TO_BUSY_ROLE_FROM_ADM = gql`
-mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
-  deleteFromWaitingList(deleteFromWaitingListInput: $deleteFromWaitingListInput) {
+mutation AddToBusyRoleFromAdmin($addToBusyRoleFromAdminInput: AddToBusyRoleFromAdminInput) {
+  addToBusyRoleFromAdmin(addToBusyRoleFromAdminInput: $addToBusyRoleFromAdminInput) {
     _id
     createdAt
     name
