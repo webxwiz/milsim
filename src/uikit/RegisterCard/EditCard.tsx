@@ -26,7 +26,10 @@ export const EditCard = ({
     removeSquad,
     removeSquadRole,
     indexId,
-    busyRolesForAdmin
+    busyRolesForAdmin,
+    addToWaitingList,
+    isWaitingList,
+    deleteFromWaitingList
 }: RegisterCardProps) => {
     const { data: session } = useSession()
 
@@ -178,7 +181,9 @@ export const EditCard = ({
                             disabled={busyRolesForAdmin}
                             onChange={(event) => onChangeNameRole && onChangeNameRole(platoonId as string, squadId as string, e.id, event.target.value, 'count')}
                         />
-                        {isEdit && <RiCloseCircleFill onClick={() => busyRolesForAdmin ? handleRemoveBusyRole(e.id) : handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                        {isWaitingList && <RiCloseCircleFill onClick={() => deleteFromWaitingList(e.discordId, e.role, e._id, squadId )} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                        {isEdit && !isWaitingList && !busyRolesForAdmin && <RiCloseCircleFill onClick={() => busyRolesForAdmin ? handleRemoveBusyRole(e.id) : handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                        {busyRolesForAdmin && <IoMdArrowDropdownCircle onClick={() => addToWaitingList(squadId, e.playerName, e.discordId, e.role)} size={22} color='orange' />}
                     </div>
                 ))}
             </div>}

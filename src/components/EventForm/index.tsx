@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ImageUploader } from '@/uikit/ImageUploader/ImageUploader'
 import { UploadedImage } from '@/uikit/ImageUploader/interface'
 import { useMutation, useQuery } from '@apollo/client';
-import { CHANGE_EVENT, CREATE_EVENT } from '@/apollo/mutations/request';
+import { ADD_TO_WL, CHANGE_EVENT, CREATE_EVENT, DELETE_FROM_WL } from '@/apollo/mutations/request';
 import { GET_ONE_EVENT, GET_USER } from '@/apollo/queries/request';
 import TextareaAutosize from 'react-textarea-autosize';
 import Image from "next/image"
@@ -58,6 +58,8 @@ function handleEditorChange({ html, text }) {
     const t = useTranslations('EventForm');
 
     const [createEvent, { error }] = useMutation(CREATE_EVENT)
+    const [addToWTList] = useMutation(ADD_TO_WL)
+    const [deleteFromWTList] = useMutation(DELETE_FROM_WL)
     const [changeEvent, { error: changeEventError }] = useMutation(CHANGE_EVENT)
 
     const {
@@ -308,6 +310,20 @@ function handleEditorChange({ html, text }) {
         }))
     }
 
+    const addToWaitingList = (squadId: string, playerName: string, discordId: string, role: string) => {
+        console.log(9999, squadId, playerName, discordId, role)
+        // addToWTList({
+        //     addToWaitingListInput: {
+        //         squadId,
+        //         usedRole: {
+        //             discordId,
+        //             role,
+        //             playerName
+        //         }
+        //     }
+        // })
+    }
+
     const createSquad = (name: string, roles: RoleType[]) => {
         watch('eventPlatoons').find((e: PlatoonType) => e.id === itemId).squads.push({
             id: Date.now(),
@@ -324,6 +340,17 @@ function handleEditorChange({ html, text }) {
 
             return platoon
         }))
+    }
+
+    const deleteFromWaitingList = (id: any, roleName: any, roleId: any, squadId: any) => {
+        deleteFromWTList({
+            deleteFromWaitingListInput: {
+              _id: id,
+              roleName,
+              roleId,
+              squadId,
+            }
+          })
     }
 
     const onEditSquad = (id: string, squadId: string, squadName: string, roles: RoleType[]) => {
@@ -531,8 +558,18 @@ function handleEditorChange({ html, text }) {
                                                 data={squad?.busyRoles}
                                                 isEdit={true}
                                                 busyRolesForAdmin
-
-                                                removeSquadRole={removeFromBusyRole}
+                                                addToWaitingList={addToWaitingList}
+                                            />}
+                                            <br />
+                                            {squad?.waitingList?.[0] && <EditCard
+                                                platoonId={e.id}
+                                                squadId={squad.id}
+                                                title={'Waiting List'}
+                                                data={squad?.waitingList}
+                                                isEdit={true}
+                                                busyRolesForAdmin
+                                                isWaitingList
+                                                deleteFromWaitingList={deleteFromWaitingList}
                                             />}
                                         </div>
                                     ))}
