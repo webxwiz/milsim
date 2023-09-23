@@ -112,6 +112,7 @@ export const EditCard = ({
             </div>
             <p className={styles.title}>{title}</p>
             {isSelect ? (
+                <div>
                 <div className={styles.selectRole}>
                     {!isMyRole && allRolesTaken && <p className={styles.title}>{t('allRolesTaken')}</p>}
                     {isShowSelect && <>
@@ -148,6 +149,33 @@ export const EditCard = ({
                         {isMyRole ? <RiCloseCircleFill onClick={handleChangeModal} size={29} color={'rgba(193, 87, 73, 1)'} />
                         : <BsCheckCircleFill onClick={handleRoleLogic} size={29} color={'green'} className={styles.checkIcon} />}
                     </>}
+                </div>
+                {isSelect && (
+                    <div style={{ marginTop: 20, display: 'flex', alignItems: 'center', gap: 25 }}>
+                        <Dropdown
+                            options={isMyRole ? busyOptions : options}
+                            className={isMyRole ? styles.editDropdown : styles.dropdown}
+                            value={isMyRole ? busyOptions?.[0]?.value : role.value}
+                            disabled={isMyRole}
+                            onChange={(e) => setRole(e)}
+                            placeholderClassName={styles.dropdownPlaceholder}
+                            controlClassName={styles.controlDropdown}
+                            arrowClosed={
+                                <div>
+                                    <IoMdArrowDropdownCircle className={styles.arrowDropdown} />
+                                </div>
+                            }
+                            arrowOpen={
+                                <div>
+                                    <IoMdArrowDropupCircle className={styles.arrowDropdown} />
+                                </div>
+                            }
+                            placeholder={t('roleA')}
+                        />
+                        {isMyRole ? <RiCloseCircleFill onClick={handleChangeModal} size={29} color={'rgba(193, 87, 73, 1)'} />
+                        : <BsCheckCircleFill onClick={handleRoleLogic} size={29} color={'green'} className={styles.checkIcon} />}
+                    </div>
+                )}
                 </div>
             ) : <div className={isEdit ? styles.editDataItems : styles.editItems}>
                 {/* {data?.map((e: any) => (

@@ -30,6 +30,7 @@ import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 // import style manually
 import 'react-markdown-editor-lite/lib/index.css';
+import { Modal } from '@/uikit/Modal';
 
 // Register plugins if required
 // MdEditor.use(YOUR_PLUGINS_HERE);
@@ -40,6 +41,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     const router = useRouter()
     
     const [text, setText] = useState("")
+    const [confirmModal, setConfirmModal] = useState(false)
     const { data: admin } = useQuery(GET_USER)
     const { data: eventData } = useQuery(GET_ONE_EVENT, {
         variables: {
@@ -464,7 +466,7 @@ function handleEditorChange({ html, text }) {
         <div className={styles.event}>
             <FormModal isOpen={platoonModal} onSubmit={createPlatoon} mode='platoon' onClose={handlePlatoonModal}  />
             <FormModal isOpen={squadModal} onSubmit={createSquad} itemId={itemId} mode='squad' onClose={handleSquadModal} />
-
+            <Modal onSubmit={() => router.push('/events-admin')} isOpen={confirmModal} onClose={() => setConfirmModal(false)} />
             <FormModal isOpen={editSquad} isEdit watchData={watchData} itemId={itemId} squadId={editSquadId} onSubmit={onEditSquad} mode='squad' onClose={handleEditSquad} />
 
             <p className={styles.title}>{isEdit ? t('change') : t('new')} {t('eventName')}</p>
@@ -581,18 +583,7 @@ function handleEditorChange({ html, text }) {
             </div>
             <div className={styles.footerButtons}>
                 <Button title={t('confirm')} onClick={handleSubmit(handleEventSubmit)} />
-                <Button title={t('cancel')} isCancel onClick={() => {
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        showDenyButton: true,
-                        confirmButtonText: 'Cancel',
-                        denyButtonText: `Back`,
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                            router.push('/events-admin')
-                        }
-                      })
-                }} />
+                <Button title={t('cancel')} isCancel onClick={() => setConfirmModal(true)} />
             </div>
         </div>
     )

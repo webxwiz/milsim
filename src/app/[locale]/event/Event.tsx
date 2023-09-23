@@ -112,12 +112,12 @@ export default function Event({ props }: { props: EventProps }) {
                 <div className={styles.cards}>
                     {eventData?.getOneEvent?.platoons?.map((e: any) => (
                         <div key={e._id} className={styles.eventPlatoons}>
-                            <RegisterCard
+                            {e.squads?.[0] && <RegisterCard
                                 key={e._id}
                                 title={e.name}
                                 data={e.squads}
-                            />
-                            <div
+                            />}
+                            {e.squads?.[0] && <div
                                 style={{
                                     backgroundImage: `url(${e.image})`
                                 }}
@@ -139,7 +139,7 @@ export default function Event({ props }: { props: EventProps }) {
                                         </div>
                                     ))}
                                 </div>
-                            </div>
+                            </div>}
                         </div>
                     ))}
                 </div>
