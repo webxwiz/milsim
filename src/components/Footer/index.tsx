@@ -10,7 +10,7 @@ import { SAVE_USER } from '@/apollo/mutations/request'
 import { useSession, signIn } from 'next-auth/react'
 import { useEffect } from 'react'
 
-export default function index() {
+export default function Footer() {
     const { data: session, status } = useSession()
 
     const [saveUser] = useMutation(SAVE_USER)
