@@ -199,8 +199,11 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
               })
         }
         if (isEdit ? changeEventError : error) {
-            console.log(error)
-            alert('Error!')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
         } else {
             if (!isEdit) {
                 reset()
@@ -228,8 +231,11 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             // window.location.reload()
             setPreviewImage(res.data.imageURL)
         }).catch((err) => {
-            alert("Eror")
-            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
         })
       };
 
