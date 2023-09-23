@@ -159,6 +159,17 @@ function handleEditorChange({ html, text }) {
                     }
                 }
             })
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Home'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  router.push('/')
+                }
+              })
         } else {
             createEvent({
                 variables: {
@@ -183,6 +194,17 @@ function handleEditorChange({ html, text }) {
                     }
                 }
             })
+            Swal.fire({
+                title: 'Success!',
+                icon: 'success',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Home'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  router.push('/')
+                }
+              })
         }
         if (isEdit ? changeEventError : error) {
             console.log(error)
