@@ -51,40 +51,47 @@ query GetOneEvent($id: ID) {
   getOneEvent(_id: $id) {
     _id
     createdAt
-    date
-    description
-    duration
-    image
     name
+    image
+    description
+    date
+    duration
     platoons {
       _id
+      name
       color
       image
-      name
       squads {
         _id
+        name
+        roles {
+          _id
+          name
+          count
+        }
         busyRoles {
           _id
           discordId
           role
           playerName
+          roleDiscordId
+          roleId
+        }
+        waitingList {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+          roleId
         }
         enlisted {
           _id
           discordId
           role
           playerName
-        }
-        name
-        roles {
-          _id
-          count
-          name
-        }
-        waitingList {
-          _id
-          discordId
-          role
+          roleDiscordId
+          roleId
         }
       }
     }

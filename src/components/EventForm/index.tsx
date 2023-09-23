@@ -104,8 +104,26 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                             id: b._id,
                             discordId: b.discordId,
                             role: b.role,
-                            playerName: b.playerName
-                        }))
+                            playerName: b.playerName,
+                            roleDiscordId: b.roleDiscordId,
+                            roleId: b.roleId
+                        })),
+                        waitingList: s.waitingList.map(b => ({
+                            id: b._id,
+                            discordId: b.discordId,
+                            role: b.role,
+                            playerName: b.playerName,
+                            roleDiscordId: b.roleDiscordId,
+                            roleId: b.roleId
+                        })),
+                        enlisted: s.enlisted.map(b => ({
+                            id: b._id,
+                            discordId: b.discordId,
+                            role: b.role,
+                            playerName: b.playerName,
+                            roleDiscordId: b.roleDiscordId,
+                            roleId: b.roleId
+                        })),
                     }))
                 }))
             })
