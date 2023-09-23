@@ -147,14 +147,105 @@ mutation RemoveFromBusyRoles($removeFromBusyRolesInput: RemoveFromBusyRolesInput
 `
 
 export const ADD_TO_WL = gql`
-mutation AddToWaitingList($addToWaitingListInput: MoveUsedRoleInput) {
+mutation AddToWaitingList($addToWaitingListInput: addToWaitingList) {
   addToWaitingList(addToWaitingListInput: $addToWaitingListInput) {
     _id
+    createdAt
+    name
+    image
+    description
+    date
+    duration
+    platoons {
+      _id
+      name
+      color
+      image
+      squads {
+        _id
+        name
+        roles {
+          _id
+          name
+          count
+        }
+        busyRoles {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+        waitingList {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+        enlisted {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+      }
+    }
   }
 }
 `
 
 export const DELETE_FROM_WL = gql`
+mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
+  deleteFromWaitingList(deleteFromWaitingListInput: $deleteFromWaitingListInput) {
+    _id
+    createdAt
+    name
+    image
+    description
+    date
+    duration
+    platoons {
+      _id
+      name
+      color
+      image
+      squads {
+        _id
+        name
+        roles {
+          _id
+          name
+          count
+        }
+        busyRoles {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+        waitingList {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+        enlisted {
+          _id
+          discordId
+          role
+          playerName
+          roleDiscordId
+        }
+      }
+    }
+  }
+}
+`
+export const ADD_TO_BUSY_ROLE_FROM_ADM = gql`
 mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
   deleteFromWaitingList(deleteFromWaitingListInput: $deleteFromWaitingListInput) {
     _id

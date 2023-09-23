@@ -335,18 +335,16 @@ function handleEditorChange({ html, text }) {
         }))
     }
 
-    const addToWaitingList = (squadId: string, playerName: string, discordId: string, role: string) => {
-        console.log(9999, squadId, playerName, discordId, role)
-        // addToWTList({
-        //     addToWaitingListInput: {
-        //         squadId,
-        //         usedRole: {
-        //             discordId,
-        //             role,
-        //             playerName
-        //         }
-        //     }
-        // })
+    const addToWaitingList = (squadId: string, playerName: string, discordId: string, role: string, id: string) => {
+        // console.log(9999, role)
+        addToWTList({
+            addToWaitingListInput: {
+                _id: discordId,
+                roleName: role,
+                roleId: id,
+                squadId,
+            }
+        })
     }
 
     const createSquad = (name: string, roles: RoleType[]) => {
