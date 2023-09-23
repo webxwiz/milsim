@@ -26,14 +26,10 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import instans from '@/config/axios';
-import MarkdownIt from 'markdown-it';
-import MdEditor from 'react-markdown-editor-lite';
 // import style manually
-import 'react-markdown-editor-lite/lib/index.css';
+import MEditor from "@uiw/react-md-editor";
 import { Modal } from '@/uikit/Modal';
 
-// Register plugins if required
-// MdEditor.use(YOUR_PLUGINS_HERE);
 
 
  
@@ -50,12 +46,8 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     })
 
     // Initialize a markdown parser
-const mdParser = new MarkdownIt(/* Markdown-it options */);
 
-// Finish!
-function handleEditorChange({ html, text }) {
-  setText(text)
-}
+
 
     const t = useTranslations('EventForm');
 
@@ -507,21 +499,11 @@ function handleEditorChange({ html, text }) {
                 isBigSingle
             />
             <p className={styles.title}>{isEdit ? t('change') : t('write')} {t('description')} </p>
-            <div className={styles.changeIcon}>
-            <Image src="/B.svg" alt="B" width="12" height="25" onClick={() => handleMenuItemClick('addBold')} />
-      <Image src="/I.svg" alt="B" width="14" height="14" onClick={() => handleMenuItemClick('addItalic')} />
-      </div>
-            <TextareaAutosize
-     onChange={(e) => setText(e.target.value)}
-     onKeyDown={handleKeyDown} // Добавляем обработчик события onKeyDown
-     placeholder={t('description').toLowerCase() + '...'}
-     ref={textareaRef}
-     value={text}
-     className={styles.textArea}
-    //  onMouseUp={handleMouseUp}
-    //  {...register('eventDescription', { required: true })}
+            <MEditor
+  value={text}
+  onChange={setText}
+  style={{ backgroundColor: 'black', color: 'white', marginBottom: "50px" }}
 />
-<MdEditor style={{ height: '500px'}} renderHTML={text => mdParser.render(text)} onChange={handleEditorChange} />
 
       {/* <button className='s_button' type='button'  onClick={() => handleMenuItemClick('addItalic')}>Italic</button> */}
             {/* <textarea {...register('eventDescription', { required: true })} className={styles.textArea}></textarea> */}
