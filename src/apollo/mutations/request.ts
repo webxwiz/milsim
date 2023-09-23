@@ -1,17 +1,18 @@
 import { gql } from "@apollo/client";
 
 export const SAVE_USER = gql`
-mutation SaveUser($discordId: String!) {
-    saveUser(discordId: $discordId) {
-      token
-      user {
-        _id
-        createdAt
-        discordId
-        role
-      }
+mutation Mutation($discordId: String!, $name: String!) {
+  saveUser(discordId: $discordId, name: $name) {
+    user {
+      _id
+      discordId
+      role
+      createdAt
+      name
     }
+    token
   }
+}
 `
 
 export const CREATE_EVENT = gql`

@@ -47,7 +47,7 @@ export default function Event({ props }: { props: EventProps }) {
                         roleId,
                         roleName: role,
                         squadId: id,
-                        playerName: name,
+                        // playerName: name,
                     }
                 }
             }).then(() => refetch()).catch(error => alert(error))

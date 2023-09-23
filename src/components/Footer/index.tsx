@@ -19,7 +19,8 @@ export default function index() {
       if (session?.user && Cookies.get('token') === undefined) {
         saveUser({
           variables: {
-            discordId: session?.user?.id
+            discordId: session?.user?.id,
+            name: session?.user?.name
           }
         }).then(data => {
           Cookies.set('token', data?.data?.saveUser?.token)

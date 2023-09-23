@@ -26,7 +26,7 @@ export const FormModal = ({
     
     const [platoonName, setPlatoonName] = useState('')
     const [activeColor, setActiveColor] = useState<string>()
-    const [image, setImage] = useState<UploadedImage[]>('')
+    const [image, setImage] = useState<UploadedImage[]>()
     
     const [mode, setMode] = useState(formMode)
 
@@ -77,7 +77,7 @@ export const FormModal = ({
     const onNext = () => {
         switch (mode) {
             case 'platoon': {
-                onSubmit && onSubmit(platoonName, activeColor, image[0]?.preview)
+                onSubmit && onSubmit(platoonName, activeColor, image)
                 return handleClose()
             }
             case 'squad': {

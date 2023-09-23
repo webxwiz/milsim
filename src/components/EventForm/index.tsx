@@ -217,18 +217,19 @@ function handleEditorChange({ html, text }) {
         })
       };
 
-      console.log(previewImage)
+
 
     const eventPlatoons = watch('eventPlatoons') || []
 
-    const createPlatoon = (name: string, color: string | undefined, img: string) => {
+    const createPlatoon = (name: string, color: string | undefined, image: string) => {
         const data = {
             id: Date.now(),
             name,
             color,
-            image: img,
+            image,
             squads: []
         }
+        console.log(data)
         setValue('eventPlatoons', [...watch('eventPlatoons'), data])
     }
 
