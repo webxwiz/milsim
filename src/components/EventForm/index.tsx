@@ -328,7 +328,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     }
 
     const addToWaitingList = (squadId: string, playerName: string, discordId: string, role: string, id: string) => {
-        // console.log(9999, role)
+        console.log(9999, squadId, playerName, discordId, role, id)
         addToWTList({
             addToWaitingListInput: {
                 _id: discordId,

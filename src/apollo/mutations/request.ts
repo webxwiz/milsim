@@ -147,7 +147,7 @@ mutation RemoveFromBusyRoles($removeFromBusyRolesInput: RemoveFromBusyRolesInput
 `
 
 export const ADD_TO_WL = gql`
-mutation AddToWaitingList($addToWaitingListInput: addToWaitingList) {
+mutation Mutation($addToWaitingListInput: addToWaitingList) {
   addToWaitingList(addToWaitingListInput: $addToWaitingListInput) {
     _id
     createdAt
@@ -175,6 +175,7 @@ mutation AddToWaitingList($addToWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
         waitingList {
           _id
@@ -182,6 +183,7 @@ mutation AddToWaitingList($addToWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
         enlisted {
           _id
@@ -189,6 +191,7 @@ mutation AddToWaitingList($addToWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
       }
     }
