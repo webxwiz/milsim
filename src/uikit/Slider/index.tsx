@@ -55,7 +55,7 @@ export const Slider = ({
             customRightArrow={<div/>}
             rtl={false} // library error
             infinite
-            containerClass={styles.container}
+            containerClass={`${styles.container} center-slider-content`}
         >
             {children}
         </Carousel>

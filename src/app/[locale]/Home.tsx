@@ -200,7 +200,7 @@ const isSmallScreen = screenWidth <= 768
         </div>
       </div>
       <div className={styles.allEvents} id='events'>
-        <div className={styles.adaptiveBackground}>
+        <div className={`${styles.adaptiveBackground} ${styles.secondBackground}`}>
           <div className={styles.eventTitle}>
             <p className={styles.bigTitle}>{t('allEvents')}</p>
           </div>

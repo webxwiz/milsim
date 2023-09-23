@@ -4,13 +4,33 @@
         position: relative;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         // width: 420px;
         top: -230px;
-        margin-left: 40px;
-        max-width: 1440px;
+
+        // background-color: red;
+        margin-left: 5vw;
+        max-width: 90vw;
     }
     .container {
-        margin-left: 100px;
+        // margin-left: 100px;
+        width: 90vw;
+        margin-left: 5vw;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        // background-color: red;
+        div{
+            // background-color: white;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
+            // background-color: black;
+            justify-content: center;
+            margin-right: 27vw;
+            width: 60vw;
+        }
     }
 }
 

@@ -172,6 +172,9 @@ $black: #000;
         font-weight: 500;
         line-height: 29px;
     }
+    .secondBackground{
+        min-height: 497px
+    }
 }
 
 //tablet
@@ -349,6 +352,9 @@ $black: #000;
         font-weight: 500;
         line-height: 29px;
     }
+    .secondBackground{
+        min-height: 594px
+    }
 }
 
 //desktop
@@ -365,6 +371,10 @@ $black: #000;
         box-sizing: border-box;
 
        
+    }
+
+    .secondBackground{
+        height: 653px
     }
 
     .header {

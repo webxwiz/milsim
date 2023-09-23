@@ -118,3 +118,9 @@ html::-webkit-scrollbar-thumb {
   background: rgba(233, 189, 62, 1);
   transition: background-color 200ms linear;
 }
+
+.center-slider-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
