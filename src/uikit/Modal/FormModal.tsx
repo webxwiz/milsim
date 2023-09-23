@@ -12,6 +12,7 @@ import { ImageUploader } from '../ImageUploader/ImageUploader'
 import { UploadedImage } from '../ImageUploader/interface'
 import { RoleType } from '@/components/EventForm/interface'
 import instans from '@/config/axios'
+import Swal from 'sweetalert2'
 
 export const FormModal = ({
     isOpen,
@@ -69,11 +70,13 @@ export const FormModal = ({
             // window.location.reload()
             setImage(res.data.imageURL)
         }).catch((err) => {
-            alert("Eror")
-            console.log(error)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
         })
       };
-
     const onNext = () => {
         switch (mode) {
             case 'platoon': {

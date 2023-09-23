@@ -13,6 +13,7 @@ import { useTranslations } from 'next-intl'
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import convertISOToCustomFormat from '@/components/customDate'
+import Swal from 'sweetalert2'
 
 export default function Event({ props }: { props: EventProps }) {
     const router = useRouter()
@@ -52,7 +53,11 @@ export default function Event({ props }: { props: EventProps }) {
                 }
             }).then(() => refetch()).catch(error => alert(error))
         } else {
-            alert('Add data')
+            Swal.fire({
+                icon: 'error',
+                title: 'Add data',
+                text: 'Enter the form',
+            })
         }
     }
 
