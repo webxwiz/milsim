@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from 'react'
 import { ImageUploader } from '@/uikit/ImageUploader/ImageUploader'
 import { UploadedImage } from '@/uikit/ImageUploader/interface'
 import { useMutation, useQuery } from '@apollo/client';
-import { ADD_TO_WL, CHANGE_EVENT, CREATE_EVENT, DELETE_FROM_WL } from '@/apollo/mutations/request';
+import { ADD_TO_BUSY_ROLE_FROM_ADM, ADD_TO_WL, CHANGE_EVENT, CREATE_EVENT, DELETE_FROM_WL } from '@/apollo/mutations/request';
 import { GET_ONE_EVENT, GET_USER } from '@/apollo/queries/request';
 import TextareaAutosize from 'react-textarea-autosize';
 import Image from "next/image"
@@ -53,6 +53,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
 
     const [createEvent, { error }] = useMutation(CREATE_EVENT)
     const [addToWTList] = useMutation(ADD_TO_WL)
+    const [addToBusyRole] = useMutation(ADD_TO_BUSY_ROLE_FROM_ADM)
     const [deleteFromWTList] = useMutation(DELETE_FROM_WL)
     const [changeEvent, { error: changeEventError }] = useMutation(CHANGE_EVENT)
 
@@ -387,13 +388,28 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
 
     const deleteFromWaitingList = (id: any, roleName: any, roleId: any, squadId: any) => {
         deleteFromWTList({
-            deleteFromWaitingListInput: {
-              _id: id,
-              roleName,
-              roleId,
-              squadId,
+            variables: {
+                deleteFromWaitingListInput: {
+                    _id: id,
+                    roleName,
+                    roleId,
+                    squadId,
+                  }
             }
           })
+    }
+
+    const addToBusyRoleFromAdm = (squadId: string, roleId: string, roleName: string, id: string) => {
+        addToBusyRole({
+            variables: {
+                addToBusyRoleFromAdminInput: {
+                    squadId,
+                    roleId,
+                    roleName,
+                    _id: id
+                }
+            }
+        })
     }
 
     const onEditSquad = (id: string, squadId: string, squadName: string, roles: RoleType[]) => {
@@ -603,6 +619,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                                                 busyRolesForAdmin
                                                 isWaitingList
                                                 deleteFromWaitingList={deleteFromWaitingList}
+                                                addToBusyRoleFromAdm={addToBusyRoleFromAdm}
                                             />}
                                         </div>
                                     ))}

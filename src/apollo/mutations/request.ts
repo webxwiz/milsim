@@ -228,6 +228,7 @@ mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
         waitingList {
           _id
@@ -235,6 +236,7 @@ mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
         enlisted {
           _id
@@ -242,6 +244,7 @@ mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
       }
     }
@@ -277,6 +280,7 @@ mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
         waitingList {
           _id
@@ -284,6 +288,7 @@ mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
         enlisted {
           _id
@@ -291,6 +296,7 @@ mutation DeleteFromWaitingList($deleteFromWaitingListInput: addToWaitingList) {
           role
           playerName
           roleDiscordId
+          roleId
         }
       }
     }

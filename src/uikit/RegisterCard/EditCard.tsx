@@ -29,7 +29,8 @@ export const EditCard = ({
     busyRolesForAdmin,
     addToWaitingList,
     isWaitingList,
-    deleteFromWaitingList
+    deleteFromWaitingList,
+    addToBusyRoleFromAdm
 }: RegisterCardProps) => {
     const { data: session } = useSession()
 
@@ -150,32 +151,6 @@ export const EditCard = ({
                         : <BsCheckCircleFill onClick={handleRoleLogic} size={29} color={'green'} className={styles.checkIcon} />}
                     </>}
                 </div>
-                {isSelect && (
-                    <div style={{ marginTop: 20, display: 'flex', alignItems: 'center', gap: 25 }}>
-                        <Dropdown
-                            options={isMyRole ? busyOptions : options}
-                            className={isMyRole ? styles.editDropdown : styles.dropdown}
-                            value={isMyRole ? busyOptions?.[0]?.value : role.value}
-                            disabled={isMyRole}
-                            onChange={(e) => setRole(e)}
-                            placeholderClassName={styles.dropdownPlaceholder}
-                            controlClassName={styles.controlDropdown}
-                            arrowClosed={
-                                <div>
-                                    <IoMdArrowDropdownCircle className={styles.arrowDropdown} />
-                                </div>
-                            }
-                            arrowOpen={
-                                <div>
-                                    <IoMdArrowDropupCircle className={styles.arrowDropdown} />
-                                </div>
-                            }
-                            placeholder={t('roleA')}
-                        />
-                        {isMyRole ? <RiCloseCircleFill onClick={handleChangeModal} size={29} color={'rgba(193, 87, 73, 1)'} />
-                        : <BsCheckCircleFill onClick={handleRoleLogic} size={29} color={'green'} className={styles.checkIcon} />}
-                    </div>
-                )}
                 </div>
             ) : <div className={isEdit ? styles.editDataItems : styles.editItems}>
                 {/* {data?.map((e: any) => (
@@ -209,9 +184,10 @@ export const EditCard = ({
                             disabled={busyRolesForAdmin}
                             onChange={(event) => onChangeNameRole && onChangeNameRole(platoonId as string, squadId as string, e.id, event.target.value, 'count')}
                         />
-                        {isWaitingList && <RiCloseCircleFill onClick={() => deleteFromWaitingList(e.discordId, e.role, e._id, squadId )} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                        {isWaitingList && <RiCloseCircleFill onClick={() => deleteFromWaitingList && deleteFromWaitingList(e.discordId, e.role, e.roleId, squadId )} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                        {isWaitingList && <BsCheckCircleFill onClick={() => addToBusyRoleFromAdm && addToBusyRoleFromAdm(squadId, e.roleId, e.role, e.discordId)} size={22} color='green' />}
                         {isEdit && !isWaitingList && !busyRolesForAdmin && <RiCloseCircleFill onClick={() => busyRolesForAdmin ? handleRemoveBusyRole(e.id) : handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
-                        {busyRolesForAdmin && <IoMdArrowDropdownCircle onClick={() => addToWaitingList(squadId, e.playerName, e.discordId, e.role, e.roleId)} size={22} color='orange' />}
+                        {!isWaitingList && busyRolesForAdmin && <IoMdArrowDropdownCircle onClick={() => addToWaitingList && addToWaitingList(squadId, e.playerName, e.discordId, e.role, e.roleId)} size={22} color='orange' />}
                     </div>
                 ))}
             </div>}
