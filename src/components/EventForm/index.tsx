@@ -19,7 +19,7 @@ import Image from "next/image"
 import { useTranslations } from 'next-intl'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/navigation';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import ReactMarkdown from 'react-markdown';
 
 import DatePicker from "react-datepicker";
@@ -175,7 +175,9 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                 icon: 'success',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Home'
+                confirmButtonText: 'Home',
+                background: 'black',
+                color: 'white'
               }).then((result) => {
                 if (result.isConfirmed) {
                   router.push('/')
@@ -210,7 +212,9 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                 icon: 'success',
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Home'
+                confirmButtonText: 'Home',
+                background: 'black',
+                color: 'white'
               }).then((result) => {
                 if (result.isConfirmed) {
                   router.push('/')
@@ -222,6 +226,8 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Something went wrong!',
+                background: 'black',
+                color: 'white'
             })
         } else {
             if (!isEdit) {
@@ -254,6 +260,8 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Something went wrong!',
+                background: 'black',
+                color: 'white'
             })
         })
       };
