@@ -13,6 +13,7 @@ import { useTranslations } from 'next-intl'
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import convertISOToCustomFormat from '@/components/customDate'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 export default function Event({ props }: { props: EventProps }) {
     const router = useRouter()
@@ -50,7 +51,13 @@ export default function Event({ props }: { props: EventProps }) {
                         // playerName: name,
                     }
                 }
-            }).then(() => refetch()).catch(error => alert(error))
+            }).then(() => refetch()).catch(error => Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error,
+                background: 'black',
+                color: 'white'
+            }))
         } else {
             Swal.fire({
                 icon: 'error',
