@@ -74,6 +74,8 @@ export const FormModal = ({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Something went wrong!',
+                background: 'black',
+                color: 'white'
             })
         })
       };
