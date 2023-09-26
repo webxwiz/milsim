@@ -184,7 +184,7 @@ export const EditCard = ({
                             disabled={busyRolesForAdmin}
                             onChange={(event) => onChangeNameRole && onChangeNameRole(platoonId as string, squadId as string, e.id, event.target.value, 'count')}
                         />
-                        {isWaitingList && <RiCloseCircleFill onClick={() => deleteFromWaitingList && deleteFromWaitingList(e.discordId, e.role, e.roleId, squadId )} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                        {isWaitingList && <RiCloseCircleFill onClick={() => deleteFromWaitingList && deleteFromWaitingList(squadId, e.discordId, e.role, e.roleId)} size={22} color={'rgba(193, 87, 73, 1)'} />}
                         {isWaitingList && <BsCheckCircleFill onClick={() => addToBusyRoleFromAdm && addToBusyRoleFromAdm(squadId, e.roleId, e.role, e.discordId)} size={22} color='green' />}
                         {isEdit && !isWaitingList && !busyRolesForAdmin && <RiCloseCircleFill onClick={() => busyRolesForAdmin ? handleRemoveBusyRole(e.id) : handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
                         {!isWaitingList && busyRolesForAdmin && <IoMdArrowDropdownCircle onClick={() => addToWaitingList && addToWaitingList(squadId, e.playerName, e.discordId, e.role, e.roleId)} size={22} color='orange' />}

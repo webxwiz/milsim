@@ -384,12 +384,12 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         }))
     }
 
-    const deleteFromWaitingList = (id: any, roleName: any, roleId: any, squadId: any) => {
+    const deleteFromWaitingList = (squadId: string, discordId: string, role: string, roleId: string) => {
         deleteFromWTList({
             variables: {
                 deleteFromWaitingListInput: {
-                    _id: id,
-                    roleName,
+                    _id: discordId,
+                    roleName: role,
                     roleId,
                     squadId,
                   }
