@@ -13,13 +13,15 @@
         max-width: 90vw;
     }
     .container {
-        // margin-left: 100px;
-        width: 90vw;
-        margin-left: 5vw;
+        margin-left: 100px;
+        width: 70vw;
+        // padding-left: 115vw;
         display: flex;
         justify-content: center;
         flex-direction: row;
         align-items: center;
+        align-self: center;
+        overflow: hidden;
         // background-color: red;
         div{
             // background-color: white;
@@ -28,7 +30,7 @@
             // align-items: center;
             // background-color: black;
             justify-content: center;
-            margin-right: 27vw;
+            // margin-right: 27vw;
             width: 60vw;
         }
     }
