@@ -37,6 +37,7 @@ export default function Event({ props }: { props: EventProps }) {
                 variables: {
                     removeFromBusyRolesInput: {
                         roleId,
+                        roleName: role,
                         squadId: id
                       }
                 }

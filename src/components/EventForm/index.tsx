@@ -25,7 +25,7 @@ import ReactMarkdown from 'react-markdown';
 import DatePicker from "react-datepicker";
 import './date-picker.css'
 
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 import instans from '@/config/axios';
 // import style manually
 import MEditor from "@uiw/react-md-editor";

@@ -81,7 +81,7 @@ export const EditCard = ({
 
     const handleRoleRemove = () => {
         if (isMyRole) {
-            handleRole && handleRole(squadId as string, role.label as never, 'playerName', isMyRole, roleData._id as string)
+            handleRole && handleRole(squadId as string, roleData.name as never, 'playerName', isMyRole, roleData._id as string)
             setBusyRoles([])
         }
         handleChangeModal()
