@@ -219,6 +219,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
               }).then((result) => {
                 if (result.isConfirmed) {
                   router.push('/')
+                  router.refresh()
                 }
               })
         }
@@ -260,7 +261,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!',
+                text: 'Too big image!',
                 background: 'black',
                 color: 'white'
             })

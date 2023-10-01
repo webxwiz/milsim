@@ -73,7 +73,7 @@ export const FormModal = ({
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Something went wrong!',
+                text: 'Too big image!',
                 background: 'black',
                 color: 'white'
             })
