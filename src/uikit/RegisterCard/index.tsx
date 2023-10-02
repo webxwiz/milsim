@@ -4,7 +4,7 @@ import { RegisterCardProps } from './interface'
 import styles from './RegisterCard.module.scss'
 import { useTranslations } from 'next-intl'
 
-export const RegisterCard = ({ platoonId, title, data, isEdit, addSquad, removeSquad, removePlatoon, onChangeName }: RegisterCardProps) => {
+export const RegisterCard = ({ platoonId, title, data, isEdit, addSquad, removeSquad, removePlatoon, onChangeName, changePlatoon, color, image }: RegisterCardProps) => {
     const t = useTranslations('Event')
 
     return (
@@ -26,9 +26,15 @@ export const RegisterCard = ({ platoonId, title, data, isEdit, addSquad, removeS
                 ))}
             </div>
             {isEdit && (
+                <>
                 <div onClick={addSquad} className={styles.button}>
                     <p>{t('addSquad')}</p>
                 </div>
+                <br />
+                 <div onClick={() => changePlatoon(platoonId, title, color, image)} className={styles.button}>
+                 <p>Change Platoon</p>
+             </div>
+             </>
             )}
         </div>
     )

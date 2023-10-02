@@ -7,6 +7,7 @@ export interface RegisterCardProps {
     onEdit?: () => void
     isSelect?: boolean
     addSquad?: () => void
+    changePlatoon?: (platoonId: string, image: string, color: string, title: string) => void
     handleRole?: (id: string, role: RoleType, name: string, isRemove: boolean) => void
     squadId?: string
     busyRoles?: RolesType[]
@@ -17,4 +18,6 @@ export interface RegisterCardProps {
     removeSquadRole?: (id: string, squadId: string, roleId: string) => void
     platoonId?: string
     indexId?: number
+    image?: string
+    color?: string
 }

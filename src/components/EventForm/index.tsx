@@ -136,10 +136,12 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     const [editSquadId, setEditSquadId] = useState('')
 
     const [platoonModal, setPlatoonModal] = useState(false)
+    const [platoonModalEdit, setPlatoonModalEdit] = useState(false)
     const [squadModal, setSquadModal] = useState(false)
     const [editSquad, setEditSquad] = useState(false)
 
     const handlePlatoonModal = () => setPlatoonModal(!platoonModal)
+    const handleEditPlatoonModal = () => setPlatoonModalEdit(!platoonModalEdit)
     const handleSquadModal = () => setSquadModal(!squadModal)
     const handleEditSquad = () => setEditSquad(!editSquad)
 
@@ -303,6 +305,20 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             return platoon
         }))
     }
+
+    const changePlatoon = (platoonId: any, title: any, color: any, image: any) => {
+
+            const data = {
+            id: platoonId,
+            name: title,
+            color,
+            image,
+            squads: []
+        }
+        console.log(data)
+        setValue('eventPlatoons', [...watch('eventPlatoons'), data])
+    }
+    
 
     const onChangeNameRole = (id: string, squadId: string, roleId: string, value: string, type: string) => {
         setValue('eventPlatoons', watch('eventPlatoons').map((platoon: PlatoonType) => {
@@ -533,6 +549,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     return (
         <div className={styles.event}>
             <FormModal isOpen={platoonModal} onSubmit={createPlatoon} mode='platoon' onClose={handlePlatoonModal}  />
+            <FormModal isOpen={platoonModalEdit} onSubmit={changePlatoon} mode='platoon' onClose={handleEditPlatoonModal}  />
             <FormModal isOpen={squadModal} onSubmit={createSquad} itemId={itemId} mode='squad' onClose={handleSquadModal} />
             <Modal onSubmit={() => router.push('/events-admin')} isOpen={confirmModal} onClose={() => setConfirmModal(false)} />
             <FormModal isOpen={editSquad} isEdit watchData={watchData} itemId={itemId} squadId={editSquadId} onSubmit={onEditSquad} mode='squad' onClose={handleEditSquad} />
@@ -577,6 +594,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                                 onChangeName={onChangeNameSquad}
                                 removeSquad={removeSquad}
                                 removePlatoon={removePlatoon}
+                                changePlatoon={handleEditPlatoonModal}
                                 addSquad={() => {
                                     setItemId(e.id)
                                     handleSquadModal()
