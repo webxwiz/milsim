@@ -30,6 +30,7 @@ import instans from '@/config/axios';
 // import style manually
 import MEditor from "@uiw/react-md-editor";
 import { Modal } from '@/uikit/Modal';
+import { FormModal2 } from '@/uikit/Modal/FormModal2';
 
 
 
@@ -282,7 +283,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             image,
             squads: []
         }
-        console.log(data)
+        // console.log(data)
         setValue('eventPlatoons', [...watch('eventPlatoons'), data])
     }
 
@@ -306,18 +307,54 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         }))
     }
 
-    const changePlatoon = (platoonId: any, title: any, color: any, image: any) => {
+    const [dataPlatoon, setDataPlatoon] = useState({})
 
-            const data = {
+    const changePlatoon = async (platoonId: any, title: any, color: any, image: any) => {
+
+        // const data = {
+        //     id: platoonId,
+        //     name: title,
+        //     color,
+        //     image,
+        //     squads: []
+        // }
+        await setDataPlatoon({
             id: platoonId,
             name: title,
             color,
             image,
             squads: []
-        }
-        console.log(data)
-        setValue('eventPlatoons', [...watch('eventPlatoons'), data])
+        })
+
+       
+        // await console.log(dataPlatoon)
+        // await setPlatoonModalEdit(!platoonModalEdit)
+        setTimeout(() => setPlatoonModalEdit(!platoonModalEdit), 500)
+        // setValue('eventPlatoons', [...watch('eventPlatoons'), data])
     }
+
+    console.log(dataPlatoon)
+
+    const changePlatoonSubmit = (platoonName: string, activeColor: string | undefined, image: string, id: number) => {
+        const platoons = watch('eventPlatoons');
+        const platoonIndex = platoons.findIndex((platoon) => platoon.id === id);
+    console.log(id)
+        if (platoonIndex !== -1) {
+            const updatedPlatoon = {
+                ...platoons[platoonIndex],
+                name: platoonName,
+                color: activeColor,
+                image,
+            };
+            const updatedPlatoons = [...platoons];
+            updatedPlatoons[platoonIndex] = updatedPlatoon;
+            setValue('eventPlatoons', updatedPlatoons);
+        } else {
+            // Если плутон с указанным id не найден, можно вывести ошибку или выполнить другие действия по необходимости.
+            console.error(`Плутон с id ${id} не найден.`);
+        }
+    }
+    
     
 
     const onChangeNameRole = (id: string, squadId: string, roleId: string, value: string, type: string) => {
@@ -423,10 +460,10 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     }
 
     const addToBusyRoleFromAdm = (squadId: string, roleId: string, role: string, discordId: string) => {
-        console.log(`Rolename: ${role}`)
-        console.log(`_id: ${discordId}`)
-        console.log(`roleId: ${roleId}`)
-        console.log(`squadId: ${squadId}`)
+        // console.log(`Rolename: ${role}`)
+        // console.log(`_id: ${discordId}`)
+        // console.log(`roleId: ${roleId}`)
+        // console.log(`squadId: ${squadId}`)
         addToBusyRole({
             variables: {
                 addToBusyRoleFromAdminInput: {
@@ -457,90 +494,11 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
         
     }
     const watchData = watch && watch('eventPlatoons')?.find((p: PlatoonType) => p.id === itemId)?.squads?.find((s: SquadType) => s.id === editSquadId)
-    const handleKeyDown = (event: any) => {
-        // Проверяем, была ли нажата клавиша Enter (код клавиши Enter - 13)
-        if (event.keyCode === 13) {
-          event.preventDefault(); // Отменяем стандартное поведение Enter (переход на новую строку)
-          const textarea = event.target;
-          const caretPosition = textarea.selectionStart;
-          const currentValue = textarea.value;
-    
-          // Добавляем два перевода строки (пустые строки) на место курсора
-          const newTextValue =
-            currentValue.substring(0, caretPosition) +
-            '\n\n' +
-            currentValue.substring(caretPosition);
-    
-          setText(newTextValue);
-        }
-      };
+
       
     const contextMenuRef = useRef(null);
     const textareaRef = useRef(null);
-    const handleMenuItemClick = (action: string) => {
-  const textarea = textareaRef.current;
-  const text = textarea?.value;
-  const start = textarea.selectionStart;
-  const end = textarea.selectionEnd;
 
-  if (action === 'addHash') {
-    const newText = `${text.substring(0, start)}# ${text.substring(start, end)}${text.substring(end)}`;
-    textarea.value = newText;
-    setText(newText);
-  }
-
-  if (action === 'add2Hash') {
-    const newText = `${text.substring(0, start)}## ${text.substring(start, end)}${text.substring(end)}`;
-    textarea.value = newText;
-    setText(newText);
-  }
-
-  if (action === 'addImage') {
-    const selectedText = text.substring(start, end);
-    const imageMarkdown = `![Alt Text](${selectedText})`;
-    const newText = `${text.substring(0, start)}${imageMarkdown}${text.substring(end)}`;
-    textarea.value = newText;
-    setText(newText);
-  }
-
-  if (action === 'addBold') {
-    const selectedText = text.substring(start, end);
-    const boldMarkdown = `**${selectedText}**`;
-    const newText = `${text.substring(0, start)}${boldMarkdown}${text.substring(end)}`;
-    textarea.value = newText;
-    setText(newText);
-  }
-
-  if (action === 'addItalic') {
-    const selectedText = text.substring(start, end);
-    const italicMarkdown = `*${selectedText}*`;
-    const newText = `${text.substring(0, start)}${italicMarkdown}${text.substring(end)}`;
-    textarea.value = newText;
-    setText(newText);
-  }
-
-  if (action === 'addStrikethrough') {
-    const selectedText = text.substring(start, end);
-    const strikethroughMarkdown = `~~${selectedText}~~`;
-    const newText = `${text.substring(0, start)}${strikethroughMarkdown}${text.substring(end)}`;
-    textarea.value = newText;
-    setText(newText);
-  }
-
-  if (action === 'addLink') {
-    const selectedText = text.substring(start, end);
-    const linkURL = prompt('Введите URL ссылки:');
-    if (linkURL) {
-      const linkMarkdown = `[${selectedText}](${linkURL})`;
-      const newText = `${text.substring(0, start)}${linkMarkdown}${text.substring(end)}`;
-      textarea.value = newText;
-      setText(newText);
-    }
-  }
-
-  const menu = contextMenuRef.current;
-  // menu.style.display = 'none';
-};
 
     // const removeFromBusyRole = (platoonid: string, squadId: string, roleId: string) => {
     //     console.log(1234567, squadId, roleId)
@@ -549,7 +507,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
     return (
         <div className={styles.event}>
             <FormModal isOpen={platoonModal} onSubmit={createPlatoon} mode='platoon' onClose={handlePlatoonModal}  />
-            <FormModal isOpen={platoonModalEdit} onSubmit={changePlatoon} mode='platoon' onClose={handleEditPlatoonModal}  />
+            <FormModal2 dataPlatoon={dataPlatoon} isOpen={platoonModalEdit} onSubmit={changePlatoonSubmit} mode='platoon' onClose={handleEditPlatoonModal}  />
             <FormModal isOpen={squadModal} onSubmit={createSquad} itemId={itemId} mode='squad' onClose={handleSquadModal} />
             <Modal onSubmit={() => router.push('/events-admin')} isOpen={confirmModal} onClose={() => setConfirmModal(false)} />
             <FormModal isOpen={editSquad} isEdit watchData={watchData} itemId={itemId} squadId={editSquadId} onSubmit={onEditSquad} mode='squad' onClose={handleEditSquad} />
@@ -594,7 +552,9 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                                 onChangeName={onChangeNameSquad}
                                 removeSquad={removeSquad}
                                 removePlatoon={removePlatoon}
-                                changePlatoon={handleEditPlatoonModal}
+                                image={e.image}
+                                color={e.color}
+                                changePlatoon={changePlatoon}
                                 addSquad={() => {
                                     setItemId(e.id)
                                     handleSquadModal()

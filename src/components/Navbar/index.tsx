@@ -22,7 +22,7 @@ export default function Navbar() {
 
   const [saveUser] = useMutation(SAVE_USER)
 
-  console.log(session?.user)
+  // console.log(session?.user)
 
   useEffect(() => {
     if (session?.user && Cookies.get('token') === undefined) {

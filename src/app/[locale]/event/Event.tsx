@@ -70,7 +70,7 @@ export default function Event({ props }: { props: EventProps }) {
         }
     }
 
-    console.log(eventData?.getOneEvent)
+    // console.log(eventData?.getOneEvent)
 
     return (
         <div className={styles.content}>
