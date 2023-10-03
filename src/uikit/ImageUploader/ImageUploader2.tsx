@@ -76,7 +76,6 @@ export const ImageUploader2 = ({ defaultImage, isSingle, isBigSingle, onSubmit }
                         width={279}
                         height={186}
                         className={isSingle ? styles.singleImage : styles.image}
-                        className={styles.image}
                         loader={({ src, width: w, quality }) => {
                             const q = quality || 75;
                             return `${src}?w=${w}&q=${q}`;
