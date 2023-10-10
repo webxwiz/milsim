@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation'
 
 
 export default function Navbar() {
+  const router = useRouter()
   const { data, error } = useQuery(GET_USER)
 
   const { data: session, status } = useSession()
@@ -66,7 +67,7 @@ export default function Navbar() {
   console.log(data?.getUserByToken)
   console.log(error)
 
-  const router = useRouter()
+
 
   async function discordIn() {
     await router.push("/")
