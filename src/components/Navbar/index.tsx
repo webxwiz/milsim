@@ -9,11 +9,14 @@ import { Loading } from '@/uikit/Loading'
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie'
 import { SAVE_USER } from '@/apollo/mutations/request'
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import ChooseLanguage from '../ChooseLanguage'
+import { GET_USER } from '@/apollo/queries/request'
+import { useRouter } from 'next/navigation'
 
 
 export default function Navbar() {
+  const { data, error } = useQuery(GET_USER)
 
   const { data: session, status } = useSession()
 
@@ -60,6 +63,16 @@ export default function Navbar() {
   if (status === 'loading') {
     return <Loading />
   }
+  console.log(data?.getUserByToken)
+  console.log(error)
+
+  const router = useRouter()
+
+  async function discordIn() {
+    await router.push("/")
+    await signIn('discord')
+    await router.refresh()
+  }
 
   return (
     <header className={styles.header}>
@@ -71,6 +84,12 @@ export default function Navbar() {
           <Link className={styles.title} href={'/'}>
             Home
           </Link>
+          {(data && data?.getUserByToken?.role == 'ADMIN') ?
+          <Link className={styles.title} href={'/events-admin'}>
+          Admin
+        </Link>
+        : ""
+        }
           <Link className={styles.title} href={'/#events'}>
             Events
           </Link>
@@ -84,7 +103,7 @@ export default function Navbar() {
             </p>
           ) : (
             <div className={styles.discordConnect}>
-              <Button onClick={() => signIn('discord')} title='Login with discord'>
+              <Button onClick={() => discordIn()} title='Login with discord'>
                 <BsDiscord size={20} />
               </Button>
             </div>

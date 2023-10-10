@@ -25,6 +25,12 @@ $black: #000;
         font-size: 14px;
         margin-top: 8px;
         margin-bottom: 32px;
+        font-size: 18px;
+        margin-top: 8px;
+        margin-bottom: 32px;
+        height: 57px; /* Задайте желаемую высоту */
+        overflow: hidden; /* Скрываем все, что не умещается в блоке */
+        text-overflow: ellipsis; 
     }
     
     .button {
@@ -69,6 +75,12 @@ $black: #000;
         font-size: 18px;
         margin-top: 8px;
         margin-bottom: 32px;
+        font-size: 18px;
+        margin-top: 8px;
+        margin-bottom: 32px;
+        height: 75px; /* Задайте желаемую высоту */
+        overflow: hidden; /* Скрываем все, что не умещается в блоке */
+        text-overflow: ellipsis; 
     }
     
     .button {
@@ -113,6 +125,10 @@ $black: #000;
         font-size: 18px;
         margin-top: 8px;
         margin-bottom: 32px;
+        width: auto;
+        height: 75px; /* Задайте желаемую высоту */
+        overflow: hidden; /* Скрываем все, что не умещается в блоке */
+        text-overflow: ellipsis; 
     }
     
     .button {

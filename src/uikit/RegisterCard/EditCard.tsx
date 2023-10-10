@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react'
 import { RolesType } from '@/components/EventForm/interface'
 import { Modal } from '../Modal'
 import { useTranslations } from 'next-intl'
+import Image from 'next/image'
 
 export const EditCard = ({
     title,
@@ -30,7 +31,8 @@ export const EditCard = ({
     addToWaitingList,
     isWaitingList,
     deleteFromWaitingList,
-    addToBusyRoleFromAdm
+    addToBusyRoleFromAdm,
+    noArrow
 }: RegisterCardProps) => {
     const { data: session } = useSession()
 
@@ -106,7 +108,7 @@ export const EditCard = ({
     // }
     
     return (
-        <div className={styles.editCard}>
+        <div className={styles.editCard} style={{position: "relative"}}>
             <Modal isOpen={isOpenModal} onClose={handleChangeModal} onSubmit={handleRoleRemove} />
             <div onClick={() => removeSquad && removeSquad(platoonId as string, squadId as string)} className={styles.remove}>
                 {!isSelect && !busyRolesForAdmin && <RiCloseCircleFill size={29} color={'rgba(193, 87, 73, 1)'} />}
@@ -114,9 +116,11 @@ export const EditCard = ({
             <p className={styles.title}>{title}</p>
             {isSelect ? (
                 <div>
-                <div className={styles.selectRole}>
+                <div className={styles.selectRole} >
+                    
                     {!isMyRole && allRolesTaken && <p className={styles.title}>{t('allRolesTaken')}</p>}
                     {isShowSelect && <>
+
                         <Dropdown
                             options={isMyRole ? busyOptions : options}
                             className={isMyRole ? styles.editDropdown : styles.dropdown}
@@ -147,6 +151,8 @@ export const EditCard = ({
                                 border: `1px solid ${isMyRole ? '#C15749' : '#46A7A7'}`
                             }}
                         /> */}
+                                                <Image src="/svg/squad_strange.svg" width={36} height={21} style={{position: "absolute", right: "26px", top: "12px", boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.8)'}}/>
+
                         {isMyRole ? <RiCloseCircleFill onClick={handleChangeModal} size={29} color={'rgba(193, 87, 73, 1)'} />
                         : <BsCheckCircleFill onClick={handleRoleLogic} size={29} color={'green'} className={styles.checkIcon} />}
                     </>}
@@ -186,8 +192,8 @@ export const EditCard = ({
                         />
                         {isWaitingList && <RiCloseCircleFill onClick={() => deleteFromWaitingList && deleteFromWaitingList(squadId, e.discordId, e.role, e.roleId)} size={22} color={'rgba(193, 87, 73, 1)'} />}
                         {isWaitingList && <BsCheckCircleFill onClick={() => addToBusyRoleFromAdm && addToBusyRoleFromAdm(squadId, e.roleId, e.role, e.discordId)} size={22} color='green' />}
-                        {isEdit && !isWaitingList && !busyRolesForAdmin && <RiCloseCircleFill onClick={() => busyRolesForAdmin ? handleRemoveBusyRole(e.id) : handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
-                        {!isWaitingList && busyRolesForAdmin && <IoMdArrowDropdownCircle onClick={() => addToWaitingList && addToWaitingList(squadId, e.playerName, e.discordId, e.role, e.roleId)} size={22} color='orange' />}
+                     {isEdit && !isWaitingList && !busyRolesForAdmin && <RiCloseCircleFill onClick={() => busyRolesForAdmin ? handleRemoveBusyRole(e.id) : handleRemoveRole(e.id)} size={22} color={'rgba(193, 87, 73, 1)'} />}
+                     {noArrow ? <> {!isWaitingList && busyRolesForAdmin && <IoMdArrowDropdownCircle onClick={() => addToWaitingList && addToWaitingList(squadId, e.playerName, e.discordId, e.role, e.roleId)} size={22} color='orange' />}</> : ""}
                     </div>
                 ))}
             </div>}

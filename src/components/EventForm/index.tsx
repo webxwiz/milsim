@@ -49,7 +49,13 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
 
     // Initialize a markdown parser
 
-
+    useEffect(() => {
+        if (eventData) {
+        setText(eventData?.getOneEvent?.description)
+        setPreviewImage(eventData?.getOneEvent?.image)
+    }
+    }, [eventData])
+    
 
     const t = useTranslations('EventForm');
 
@@ -523,8 +529,26 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
             <p className={styles.title}>{t('eventDuration')}</p>
             <input {...register('eventDuration', { required: true })} className={styles.input} placeholder='Type hours of the event' />
             <p className={styles.title}>{isEdit ? t('change') : t('feature')} {t('image')}</p>
+            {previewImage ?
+             <Image
+             src={previewImage}
+             loader={({ src, width: w, quality }) => {
+                 const q = quality || 75;
+                 return `${src}?w=${w}&q=${q}`;
+             }}
+             alt={`${t('uploadedImage')} ${previewImage}`}
+             width={279}
+             height={186}
+             className={styles.image} />
+            :
+             <ImageUploader
+            //  defaultImage={watch('eventImage') ? { preview: watch('eventImage')} : previewImage}
+             onSubmit={handleSetImage}
+             isBigSingle
+         />
+        }
             <ImageUploader
-                defaultImage={watch('eventImage') ? { preview: watch('eventImage')} : undefined}
+                // defaultImage={watch('eventImage') ? { preview: watch('eventImage')} : previewImage}
                 onSubmit={handleSetImage}
                 isBigSingle
             />
@@ -594,6 +618,7 @@ export const EventForm = ({ id, isEdit }: EventFormProps) => {
                                                 squadId={squad.id}
                                                 title={'Busy Roles'}
                                                 data={squad?.busyRoles}
+                                                noArrow={true}
                                                 isEdit={true}
                                                 busyRolesForAdmin
                                                 addToWaitingList={addToWaitingList}

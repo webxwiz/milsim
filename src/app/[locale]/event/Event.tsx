@@ -133,10 +133,12 @@ export default function Event({ props }: { props: EventProps }) {
                             />
                             {e.squads?.[0] && <div
                                 style={{
-                                    backgroundImage: `url(${e.image})`
+                                    backgroundImage: `url(${e.image})`,
+                                    position: 'relative'
                                 }}
                                 className={styles.footer}
                             >
+                                <Image src="/svg/platoon_strange.svg" width={50} height={42} style={{position: "absolute", right: "40px", top: "30px", boxShadow: '0px 16px 16px rgba(0, 0, 0, 0.8)'}}/>
                                 <div className={styles.items}>
                                     {e.squads.map((s: SquadType, i: number) => (
                                         <div key={s.id}>
@@ -150,6 +152,17 @@ export default function Event({ props }: { props: EventProps }) {
                                                 isSelect
                                                 indexId={i}
                                             />
+                                            <br />
+                                            {s?.busyRoles?.[0] && <EditCard
+                                                platoonId={e.id}
+                                                squadId={s.id}
+                                                title={'Busy Roles'}
+                                                data={s?.busyRoles}
+                                                noArrow={false}
+                                                isEdit={true}
+                                                busyRolesForAdmin
+                                                // addToWaitingList={addToWaitingList}
+                                            />}
                                         </div>
                                     ))}
                                 </div>
